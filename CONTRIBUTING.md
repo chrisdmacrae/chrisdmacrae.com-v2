@@ -19,7 +19,7 @@ First, clone the repository:
 https://github.com/chrisdmacrae/chrisdmacrae.com.git
 ```
 
-Then, initialize the node dependencies with `npm`:
+Then, initialize the node dependencies with `npm``:
 
 ```
 npm install
