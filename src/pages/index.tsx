@@ -42,18 +42,22 @@ export function Home({file, preview}) {
   useGithubToolbarPlugins();
 
   return preview
-    ? (<HomeLayout data={data} form={form} />)
-    : (<HomeLayout data={data} form={form} />)
-}
-
-export function HomeLayout({data, form}) {
-  return (
-    <InlineForm form={form}>
-      <Title>
-        <InlineText name="title" />
-      </Title>
-    </InlineForm>
-  )
+    ? (    
+      <InlineForm form={form}>
+        <Title>
+          <InlineText name="title" />
+        </Title>
+        <Paragraph>
+          <InlineText name="title" />
+        </Paragraph>
+      </InlineForm>
+    )
+    : (
+      <>
+        <Title>{data.title}</Title>
+        <Paragraph>{data.description}</Paragraph>
+      </>
+    )
 }
 
 export default Home
