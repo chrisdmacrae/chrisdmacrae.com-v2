@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-Before submitting a pull request, please read the [Code of Conduct][].
+Before submitting a pull request, please read the [Code of Conduct](#code-of-conduct).
 
 ### Pre-requisites
 
