@@ -19,6 +19,7 @@
     "react-aria": "^0.9.5",
     "react-bootstrap": "^1.3.0",
     "react-dom": "16.13.1",
+    "react-three-fiber": "^4.2.20",
     "react-tinacms-github": "^0.4.3",
     "react-tinacms-inline": "^0.8.0",
     "styled-components": "^5.1.1",
