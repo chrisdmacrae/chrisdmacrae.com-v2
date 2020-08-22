@@ -21,9 +21,9 @@ export const getStaticProps: GetStaticProps = async function ({
     }
   }
 
-  if (!process.env.IS_PRODUCTION) {
+  if (process.env.IS_PRODUCTION == "false") {
     props = Object.assign(props, {
-      isEditing: true
+      isEditing: false
     });
   }
 
