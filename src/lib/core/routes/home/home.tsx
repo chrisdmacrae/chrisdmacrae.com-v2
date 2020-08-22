@@ -10,6 +10,7 @@ import { EditLink } from '../../../cms/components/EditLink';
 import { EditableButton } from '../../components/Button';
 import { HomeFormOptions, useHomeForm } from './home.form';
 import styles from "./home.module.css";
+import { GitFile } from 'react-tinacms-github/dist/form/useGitFileSha';
 
 export interface HomeProps {
   file: any;
@@ -19,6 +20,15 @@ export interface HomeProps {
 
 export default function HomeRoute({ file, isEditing = false }: HomeProps) {
   const [data, form] = useHomeForm(file);
+  const repo_path = [
+    "https://github.com",
+    process.env.REPO_FULL_NAME,
+    "blob",
+    process.env.BASE_BRANCH,
+    "src",
+    (file as GitFile).fileRelativePath
+  ].join("/");
+
   const page = {
     title: data.title,
     description: data.description
@@ -110,12 +120,17 @@ export default function HomeRoute({ file, isEditing = false }: HomeProps) {
               </Row>
             </Container>
           ),
-          coverFooter: !process.env.IS_PRODUCTION && (
+          coverFooter: (
             <Container>
               <Row>
                 <Col>
-                  <SafeAnchor href="#" className="text-gray">
-                    <EditLink editMode={isEditing} />
+                  {!process.env.IS_PRODUCTION && (
+                    <SafeAnchor href="#" className="text-gray mr-3">
+                      <EditLink editMode={isEditing} />
+                    </SafeAnchor>
+                  )}
+                  <SafeAnchor href={repo_path} className="text-gray">
+                    View on GitHub
                   </SafeAnchor>
                 </Col>
               </Row>
