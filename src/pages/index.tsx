@@ -14,16 +14,16 @@ export const getStaticProps: GetStaticProps = async function ({
   let props = {
     sourceProvider: null,
     error: null,
-    preview: false,
+    isEditing: false,
     file: {
       fileRelativePath: 'content/home.json',
       data: (await import('../content/home.json')).default,
     }
   }
 
-  if (process.env.IS_PRODUCTION == "false") {
+  if (Boolean(process.env.IS_PRODUCTION) === false) {
     props = Object.assign(props, {
-      isEditing: false
+      isEditing: true
     });
   }
 
