@@ -1,4 +1,4 @@
-import BaseLayout, { BaseLayoutProps } from "./base";
+import BaseLayout, { BaseLayoutProps } from "./Base";
 
 export interface PopupLayout {
   children: React.ReactElement;

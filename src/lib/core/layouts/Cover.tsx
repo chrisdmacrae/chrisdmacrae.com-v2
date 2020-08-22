@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavBar } from '../components/Navigation/NavBar';
-import BaseLayout, { BaseLayoutProps } from './base';
+import BaseLayout, { BaseLayoutProps } from './Base';
 
 type ReactSlots = {
   [key: string]: React.ReactChild

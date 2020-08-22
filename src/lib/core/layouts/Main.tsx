@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavBar } from '../components/Navigation/NavBar';
-import BaseLayout, { BaseLayoutProps } from './base';
+import BaseLayout, { BaseLayoutProps } from './Base';
 
 export interface MainLayoutProps extends BaseLayoutProps {}
 
