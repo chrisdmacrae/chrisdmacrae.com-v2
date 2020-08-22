@@ -2,12 +2,12 @@
   "title": "Chris D. MacRae, Software Developer, Designer, and Dog Dad.",
   "description": "The personal and professional profile of Chris D. MacRae.",
   "cover": {
-    "headline": {
+    "subline": {
       "morning": "Good morning, friend 👋",
       "afternoon": "Good afternoon, friend 👋",
       "evening": "Good evening, friend 👋"
     },
-    "subline": "I'm Chris, and I like figuring out what makes the world tick.",
+    "headline": "I'm Chris, and I like figuring out what makes the world tick.",
     "body": "I'm working on a new website, and I'm designing it in the open.",
     "ctas": [
       {

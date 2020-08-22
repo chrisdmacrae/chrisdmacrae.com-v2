@@ -13,7 +13,29 @@ import { EditLink } from '../lib/cms/components/EditLink';
 export default function PrettyPage({ file, isEditing }) {
   const formOptions = {
     label: 'Home Page',
-    fields: [{ name: 'title', component: 'text' }],
+    fields: [
+      { name: 'title', component: 'text' },
+      { name: 'description', component: 'textarea' },
+      {
+        name: 'cover', component: 'group', fields: [
+          {
+            name: 'subline', component: 'group', fields: [
+              { name: 'morning', component: 'text' },
+              { name: 'afternoon', component: 'text' },
+              { name: 'evening', component: 'text' }
+            ]
+          },
+          { name: 'headline', component: 'text' },
+          { name: 'body', component: 'textarea' },
+          {
+            name: 'ctas', component: 'group-list', fields: [
+              { name: 'text', component: 'text ' },
+              { name: 'href', component: 'text' }
+            ]
+          }
+        ]
+      }
+    ]
   }
   const [data, form] = useGithubJsonForm(file, formOptions);
   const page = {
@@ -32,35 +54,42 @@ export default function PrettyPage({ file, isEditing }) {
               <Col>
                 <Heading>
                   <TimeOfDay
-                    morning="Good morning, friend 👋"
-                    afternoon="Good afternoon, friend 👋"
-                    evening="Good evening, friend 👋"
+                    morning={data.cover.subline.morning}
+                    afternoon={data.cover.subline.afternoon}
+                    evening={data.cover.subline.evening}
                   />
                 </Heading>
                 <Heading as="h1" bold={true} className="secondfont">
-                  I'm Chris, and I like figuring out what makes the world tick.
+                  {data.cover.headline}
                 </Heading>
                 <Paragraph className="lead">
-                  I'm working on a new website, and I'm designing it in the open.
+                  {data.cover.body}
                 </Paragraph>
                 <div className="pt-3">
                   {data.cover.ctas.map((cta, i) => {
+                    const classNames = [];
+
+                    if (i < data.cover.ctas.length) classNames.push("mr-3");
+
                     switch (cta.type) {
                       case "button":
                         return (
                           <SafeAnchor
-                            href="https://github.com/chrisdmacrae/chrisdmacrae.com/issues/6"
-                            className="mr-3"
+                            href={cta.href}
+                            className={classNames.join(" ")}
                             key={i}>
                             <Button>
-                              Learn more
+                              {cta.text}
                             </Button>
                           </SafeAnchor>
                         )
                       default:
                         return (
-                          <SafeAnchor href="https://twitter.com/chrisdmacrae" key={i}>
-                            or follow me on Twitter.
+                          <SafeAnchor
+                            href={cta.href}
+                            className={classNames.join(" ")}
+                            key={i}>
+                            {cta.text}
                           </SafeAnchor>
                         )
                     }
@@ -90,23 +119,34 @@ export const getStaticProps: GetStaticProps = async function ({
   preview,
   previewData,
 }) {
-  if (preview) {
-    return getGithubPreviewProps({
-      ...previewData,
+  let props = {
+    sourceProvider: null,
+    error: null,
+    preview: false,
+    file: {
       fileRelativePath: 'content/home.json',
-      parse: parseJson,
-    })
+      data: (await import('../content/home.json')).default,
+    }
+  }
+
+  if (!process.env.IS_PRODUCTION) {
+    props = Object.assign(props, {
+      isEditing: true
+    });
+  }
+
+  if (preview) {
+    props = {
+      ...props,
+      ...await getGithubPreviewProps({
+        ...previewData,
+        fileRelativePath: 'content/home.json',
+        parse: parseJson,
+      })
+    }
   }
 
   return {
-    props: {
-      sourceProvider: null,
-      error: null,
-      preview: false,
-      file: {
-        fileRelativePath: 'content/home.json',
-        data: (await import('../content/home.json')).default,
-      },
-    },
+    props: props
   }
 }

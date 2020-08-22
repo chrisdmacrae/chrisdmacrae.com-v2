@@ -2,7 +2,7 @@ body {
   padding-top: 0 !important;
 }
 
-html, body, #__next {
+html, body, #__next, #__next > div[class^="SiteWrapper"] {
   height: 100%;
   max-height: 100%;
 }
