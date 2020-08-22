@@ -64,8 +64,6 @@ export default function HomeRoute({ file, isEditing = false }: HomeProps) {
                         return ctasFields.fields;
                       })();
 
-                      console.log(fields, cta);
-
                       const classNames = [];
                       let children;
 

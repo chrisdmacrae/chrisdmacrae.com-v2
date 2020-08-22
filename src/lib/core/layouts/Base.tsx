@@ -1,5 +1,4 @@
 import React from 'react';
-import { useCMS } from 'tinacms';
 import { Head } from '../../seo/components/head/head';
 
 export interface BaseLayoutProps {
