@@ -1,4 +1,25 @@
 {
-    "title": "Chris D. MacRae, Software Developer, Designer, and Dog Dad.",
-    "description": "The personal and professional profile of Chris D. MacRae."
+  "title": "Chris D. MacRae, Software Developer, Designer, and Dog Dad.",
+  "description": "The personal and professional profile of Chris D. MacRae.",
+  "cover": {
+    "headline": {
+      "morning": "Good morning, friend 👋",
+      "afternoon": "Good afternoon, friend 👋",
+      "evening": "Good evening, friend 👋"
+    },
+    "subline": "I'm Chris, and I like figuring out what makes the world tick.",
+    "body": "I'm working on a new website, and I'm designing it in the open.",
+    "ctas": [
+      {
+        "type": "button",
+        "text": "Learn more",
+        "href": "https://github.com/chrisdmacrae/chrisdmacrae.com/issues/6"
+      },
+      {
+        "type": "link",
+        "text": "or follow me on Twitter",
+        "href": "https://twitter.com/chrisdmacrae"
+      }
+    ]
+  }
 }
