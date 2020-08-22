@@ -83,6 +83,7 @@ export default function PrettyPage({ file, isEditing }) {
                             </Button>
                           </SafeAnchor>
                         )
+                        break;
                       default:
                         return (
                           <SafeAnchor
