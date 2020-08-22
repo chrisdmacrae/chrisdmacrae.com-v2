@@ -19,8 +19,8 @@ export function Head({ title, description, children }: HeadProps)
     )
 }
 
-const computeTitle = (title: string) => title.indexOf("chrisdmacrae.com") === -1
+const computeTitle = (title: string) => title?.indexOf("chrisdmacrae.com") === -1
     ? `${title} - chrisdmacrae.com`
-    : title;
+    : title ?? "chrisdmacrae.com";
 
 export default Head;

@@ -1,0 +1,1 @@
+export const Paragraph = (props) => <p {...props}>{props.children}</p>;
