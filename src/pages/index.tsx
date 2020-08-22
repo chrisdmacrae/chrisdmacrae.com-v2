@@ -16,8 +16,8 @@ export const getStaticProps: GetStaticProps = async function ({
     error: null,
     isEditing: false,
     file: {
-      fileRelativePath: 'content/home.json',
-      data: (await import('../content/home.json')).default,
+      fileRelativePath: fileRelativePath,
+      data: (await import('../lib/core/routes/home/home.json')).default,
     }
   }
 
@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps = async function ({
       ...props,
       ...await getGithubPreviewProps({
         ...previewData,
-        fileRelativePath: 'content/home.json',
+        fileRelativePath: fileRelativePath,
         parse: parseJson,
       })
     }
@@ -42,5 +42,7 @@ export const getStaticProps: GetStaticProps = async function ({
     props: props
   }
 }
+
+const fileRelativePath = './lib/core/routes/home/home.json';
 
 export default HomePage;

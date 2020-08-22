@@ -7,13 +7,9 @@ export default function App({ Component, pageProps }) {
   const isEditing = pageProps.isEditing ?? pageProps.preview ?? false;
   const cmsError = pageProps.error;
 
-  console.log(isEditing);
-
   const IsEditing = ({children}) => {
     const cms = useCMS();
     const isEditing = cms.enabled;
-
-    console.log(isEditing);
 
     return (
       <div className={isEditing ? "is-editing" : "is-not-editing"}>
