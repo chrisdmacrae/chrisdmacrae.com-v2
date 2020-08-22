@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { GithubClient, TinacmsGithubProvider, useGithubToolbarPlugins } from "react-tinacms-github";
+import { GithubClient, TinacmsGithubProvider } from "react-tinacms-github";
 import { TinaCMS, TinaProvider } from "tinacms";
 import { enterEditMode, exitEditMode } from "../utils/editMode";
 import { GithubProvider } from "./github";
