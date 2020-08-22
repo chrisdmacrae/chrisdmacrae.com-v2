@@ -2,7 +2,18 @@ body {
   padding-top: 0 !important;
 }
 
-html, body, #__next {
+html, 
+body, 
+#__next, 
+/* Handle prod */
+#__next > .is-not-editing,
+#__next > .is-not-editing > div,
+#__next > .is-not-editing > div > div,
+/* Handle editing */
+#__next > div[class^="SiteWrapper"],
+#__next > div[class^="SiteWrapper"] > .is-editing,
+#__next > div[class^="SiteWrapper"] > .is-editing > div,
+#__next > div[class^="SiteWrapper"] > .is-editing > div > div {
   height: 100%;
   max-height: 100%;
 }
