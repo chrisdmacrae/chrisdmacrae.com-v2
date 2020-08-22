@@ -37,7 +37,7 @@ export default function PrettyPage({ file, isEditing }) {
                     evening="Good evening, friend 👋"
                   />
                 </Heading>
-                <Heading as="h1" bold={true}>
+                <Heading as="h1" bold={true} className="secondfont">
                   I'm Chris, and I like figuring out what makes the world tick.
                 </Heading>
                 <Paragraph className="lead">
