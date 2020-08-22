@@ -30,17 +30,17 @@ export default function PrettyPage({ file, isEditing }) {
           <Container>
             <Row>
               <Col>
-                <Heading className="mb-4 mb-md-5">
+                <Heading>
                   <TimeOfDay
                     morning="Good morning, friend 👋"
                     afternoon="Good afternoon, friend 👋"
                     evening="Good evening, friend 👋"
                   />
                 </Heading>
-                <Heading as="h3" bold={true} className="mb-2">
+                <Heading as="h1" bold={true}>
                   I'm Chris, and I like figuring out what makes the world tick.
                 </Heading>
-                <Paragraph>
+                <Paragraph className="lead">
                   I'm working on a new website, and I'm designing it in the open.
                 </Paragraph>
                 <div className="pt-3">
