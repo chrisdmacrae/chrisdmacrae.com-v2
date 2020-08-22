@@ -30,27 +30,28 @@ export default function PrettyPage({ file, isEditing }) {
           <Container>
             <Row>
               <Col>
-                <Heading>
+                <Heading className="mb-4 mb-md-5">
                   <TimeOfDay
                     morning="Good morning, friend 👋"
                     afternoon="Good afternoon, friend 👋"
                     evening="Good evening, friend 👋"
                   />
                 </Heading>
-                <Heading as="h3" bold={true}>
+                <Heading as="h3" bold={true} className="mb-2">
                   I'm Chris, and I like figuring out what makes the world tick.
                 </Heading>
                 <Paragraph>
                   I'm working on a new website, and I'm designing it in the open.
                 </Paragraph>
                 <div className="pt-3">
-                  {data.cover.ctas.map(cta => {
+                  {data.cover.ctas.map((cta, i) => {
                     switch (cta.type) {
                       case "button":
                         return (
                           <SafeAnchor
                             href="https://github.com/chrisdmacrae/chrisdmacrae.com/issues/6"
-                            className="mr-3">
+                            className="mr-3"
+                            key={i}>
                             <Button>
                               Learn more
                             </Button>
@@ -58,7 +59,7 @@ export default function PrettyPage({ file, isEditing }) {
                         )
                       default:
                         return (
-                          <SafeAnchor href="https://twitter.com/chrisdmacrae">
+                          <SafeAnchor href="https://twitter.com/chrisdmacrae" key={i}>
                             or follow me on Twitter.
                           </SafeAnchor>
                         )
