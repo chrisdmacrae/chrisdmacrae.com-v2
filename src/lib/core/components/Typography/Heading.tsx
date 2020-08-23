@@ -1,5 +1,5 @@
 import React from "react";
-import { InlineText } from "react-tinacms-inline";
+import { InlineTextarea } from "react-tinacms-inline";
 import { useCMS } from "tinacms";
 
 export interface HeadingProps {
@@ -45,7 +45,7 @@ export function EditableHeading(props) {
   if (isEditing) {
     return (
       <Heading {...props}>
-        <InlineText name={name} />
+        <InlineTextarea name={name} />
       </Heading>
     )
   }
