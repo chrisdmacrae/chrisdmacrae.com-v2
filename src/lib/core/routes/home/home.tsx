@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, Form, usePlugin } from 'tinacms';
+import { usePlugin } from 'tinacms';
 import { InlineForm, InlineGroup } from 'react-tinacms-inline';
 import { Col, Container, Row, SafeAnchor } from 'react-bootstrap';
 import { EditableHeading, Heading } from '../../components/Typography/Heading';
