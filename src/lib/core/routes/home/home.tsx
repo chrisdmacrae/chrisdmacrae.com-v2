@@ -28,7 +28,6 @@ export default function HomeRoute({ file, isEditing = false }: HomeProps) {
     "src",
     (file as GitFile).fileRelativePath
   ].join("/");
-
   const page = {
     title: data.title,
     description: data.description
@@ -62,7 +61,7 @@ export default function HomeRoute({ file, isEditing = false }: HomeProps) {
                   <EditableParagraph name="cover.body" className="lead">
                     {data.cover.body}
                   </EditableParagraph>
-                  <div className={`${styles.coverCta} pt-3`}>
+                  <Row className={`${styles.coverCta} align-items-center pt-3`}>
                     {data.cover.ctas.map((cta, i) => {
                       const fields = (() => {
                         let coverFields = HomeFormOptions.fields
@@ -73,49 +72,39 @@ export default function HomeRoute({ file, isEditing = false }: HomeProps) {
 
                         return ctasFields.fields;
                       })();
-
-                      const classNames = [];
                       let children;
-
-                      if (i < data.cover.ctas.length) classNames.push("mr-3");
-
 
                       switch (cta.type) {
                         case "button":
                           children = (
-                            <SafeAnchor
-                              href={isEditing ? "#" : cta.href}
-                              className={classNames.join(" ")}
-                              key={i}>
-                              <EditableButton name="text" className="d-inline-block">
-                                {cta.text}
-                              </EditableButton>
-                            </SafeAnchor>
-                          )
+                            <EditableButton name="text" className="d-inline-block">
+                              {cta.text}
+                            </EditableButton>
+                          );
                           break;
                         default:
                           children = (
-                            <SafeAnchor
-                              href={isEditing ? "#" : cta.href}
-                              className={classNames.join(" ")}
-                              key={i}>
-                              <EditableParagraph name="text">
-                                {cta.text}
-                              </EditableParagraph>
-                            </SafeAnchor>
-                          )
+                            <EditableParagraph name="text" className="mb-0">
+                              {cta.text}
+                            </EditableParagraph>
+                          );
                       }
 
                       return (
-                        <InlineGroup
-                          name={`cover.ctas.${i}`}
-                          fields={fields}
-                        >
-                          {children}
-                        </InlineGroup>
-                      )
+                        <Col xs="auto">
+                          <InlineGroup
+                            name={`cover.ctas.${i}`}
+                            fields={fields}>
+                            <SafeAnchor
+                              href={isEditing ? "#" : cta.href}
+                              key={i}>
+                              {children}
+                            </SafeAnchor>
+                          </InlineGroup>
+                        </Col>
+                      );
                     })}
-                  </div>
+                  </Row>
                 </Col>
               </Row>
             </Container>

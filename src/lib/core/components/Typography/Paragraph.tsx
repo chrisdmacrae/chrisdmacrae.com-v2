@@ -13,10 +13,11 @@ export type EditableParagraphProps = {
 export function EditableParagraph (props) {
   const cms = useCMS();
   const isEditing = cms.enabled;
+  let children = props.children;
   
   if (isEditing) {
-    return <InlineTextarea name={props.name} />
+    children = <InlineTextarea name={props.name} />
   }
   
-  return props.children;
+  return <Paragraph {...props}>{children}</Paragraph>;
 }
