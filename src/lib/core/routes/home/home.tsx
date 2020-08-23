@@ -113,11 +113,9 @@ export default function HomeRoute({ file, isEditing = false }: HomeProps) {
             <Container>
               <Row>
                 <Col>
-                  {!process.env.IS_PRODUCTION && (
-                    <SafeAnchor href="#" className="text-gray mr-3">
-                      <EditLink editMode={isEditing} />
-                    </SafeAnchor>
-                  )}
+                  <SafeAnchor href="#" className="text-gray mr-3">
+                    <EditLink editMode={isEditing} />
+                  </SafeAnchor>
                   <SafeAnchor href={repo_path} className="text-gray">
                     View on GitHub
                   </SafeAnchor>
