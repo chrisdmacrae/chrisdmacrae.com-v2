@@ -11,6 +11,7 @@ import { EditableButton } from '../../components/Button';
 import { HomeFormOptions, useHomeForm } from './home.form';
 import styles from "./home.module.css";
 import { GitFile } from 'react-tinacms-github/dist/form/useGitFileSha';
+import { createGithubLink } from '../../utils/createGithubLink';
 
 export interface HomeProps {
   file: any;
@@ -20,14 +21,7 @@ export interface HomeProps {
 
 export default function HomeRoute({ file, isEditing = false }: HomeProps) {
   const [data, form] = useHomeForm(file);
-  const repo_path = [
-    "https://github.com",
-    process.env.REPO_FULL_NAME,
-    "blob",
-    process.env.BASE_BRANCH,
-    "src",
-    (file as GitFile).fileRelativePath
-  ].join("/");
+  const repo_path = createGithubLink((file as GitFile).fileRelativePath);
   const page = {
     title: data.title,
     description: data.description
@@ -91,7 +85,7 @@ export default function HomeRoute({ file, isEditing = false }: HomeProps) {
                       }
 
                       return (
-                        <Col xs="auto">
+                        <Col xs="auto" key={i}>
                           <InlineGroup
                             name={`cover.ctas.${i}`}
                             fields={fields}>
