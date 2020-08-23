@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom'
 import React, { useRef, useState } from 'react'
 import { Canvas, useFrame } from 'react-three-fiber'
-import './styles.css'
+//import './styles.css'
 
 // function Box(props) {
 //   // This reference will give us direct access to the mesh

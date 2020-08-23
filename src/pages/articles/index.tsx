@@ -1,10 +1,9 @@
-import React from 'react';
-import { GetStaticProps } from 'next'
+import { GetStaticProps } from 'next';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
-import { HomeRoute, useHomeData } from '../lib/core/routes/home';
+import { ArticlesRoute, useArticlesData } from '../../lib/articles/routes/articles';
 
-export const HomePage = ({ file, isEditing }) => (
-  <HomeRoute file={file} isEditing={isEditing} />
+export const ArticleArchivePage = ({ file }) => (
+ <ArticlesRoute file={file} />
 );
 
 export const getStaticProps: GetStaticProps = async function ({
@@ -18,7 +17,7 @@ export const getStaticProps: GetStaticProps = async function ({
     isEditing: false,
     file: {
       fileRelativePath: fileRelativePath,
-      data: await (await useHomeData()).default,
+      data: await (await useArticlesData()).default,
     }
   }
 
@@ -44,4 +43,4 @@ export const getStaticProps: GetStaticProps = async function ({
   }
 }
 
-export default HomePage;
+export default ArticleArchivePage;

@@ -18,7 +18,7 @@ export interface HomeProps {
   children?: React.ReactChild;
 }
 
-export default function HomeRoute({ file, isEditing = false }: HomeProps) {
+export function HomeRoute({ file, isEditing = false }: HomeProps) {
   const [data, form] = useHomeForm(file);
   const repo_path = [
     "https://github.com",
@@ -130,3 +130,5 @@ export default function HomeRoute({ file, isEditing = false }: HomeProps) {
     </InlineForm>
   );
 }
+
+export default HomeRoute;
