@@ -1,6 +1,6 @@
 # chrisdmacrae.com
 
-My personal website, where I keep my thoughts
+My personal website, where I keep my thoughts.
 
 ## Usage
 
