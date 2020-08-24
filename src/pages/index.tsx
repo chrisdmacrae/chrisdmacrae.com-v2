@@ -15,17 +15,11 @@ export const getStaticProps: GetStaticProps = async function ({
   let props = {
     sourceProvider: null,
     error: null,
-    isEditing: false,
+    isEditing: preview ?? false,
     file: {
       fileRelativePath: fileRelativePath,
       data: await (await useHomeData()).default,
     }
-  }
-
-  if (Boolean(process.env.IS_PRODUCTION) === false) {
-    props = Object.assign(props, {
-      isEditing: true
-    });
   }
 
   if (preview) {
