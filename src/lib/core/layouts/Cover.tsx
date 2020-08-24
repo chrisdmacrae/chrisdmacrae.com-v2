@@ -1,4 +1,5 @@
 import React from 'react';
+import { ColorSchemeToggle } from '../components/ColorScheme/ColorSchemeToggle';
 import { NavBar } from '../components/Navigation/NavBar';
 import BaseLayout, { BaseLayoutProps } from './Base';
 
@@ -19,7 +20,11 @@ export default function CoverLayout({ page, children }: CoverLayoutProps) {
       <BaseLayout page={page}>
         <div className="cover-container d-flex h-100 p-3 mx-auto flex-column">
           <div className="mb-auto">
-            <NavBar />
+          <NavBar>
+          {{
+            middle: <ColorSchemeToggle />
+          }}
+        </NavBar>
           </div>
           <div className="inner cover">
             {c.cover ? c.cover : null}

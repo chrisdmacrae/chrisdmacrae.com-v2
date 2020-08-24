@@ -1,21 +1,46 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
+import AppStateContext from '../../state/app';
 
-export interface NavBarProps {}
+export interface NavBarProps {
+  children?: {
+    start?: React.ReactChild
+    middle?: React.ReactChild
+    end?: React.ReactChild
+  }
+}
 
-export function NavBar() {
+export function NavBar({ children }: NavBarProps) {  
+  const { colorScheme } = useContext(AppStateContext);
+
   return (
-    <Navbar expand="lg">
+    <Navbar expand="lg" variant={colorScheme === "light" ? "light" : "dark"}>
       <Container>
-        <Navbar.Brand href="/">Chris D. Macrae</Navbar.Brand>
+        {children && children.start && (
+          <div className="ml-auto">
+            { children.start }
+          </div>
+        )}
+        <Navbar.Brand href="/" className="mr-auto">Chris D. Macrae</Navbar.Brand>
         <Navbar.Toggle aria-controls="primary-nav" />
         <Navbar.Collapse id="primary-nav">
-          <Nav>
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/articles">Articles</Nav.Link>
+          <Nav as="ul" className="mr-auto">
+            <Nav.Item as="li">
+              <Nav.Link href="/">Home</Nav.Link>
+            </Nav.Item>
           </Nav>
-          </Navbar.Collapse>
-        </Container>
+          {children && children.middle && (
+            <>
+              { children.middle }
+            </>
+          )}
+        </Navbar.Collapse>
+        {children && children.end && (
+          <div className="ml-auto">
+          { children.end }
+          </div>
+        )}
+      </Container>
     </Navbar>
-  )
+  );
 }

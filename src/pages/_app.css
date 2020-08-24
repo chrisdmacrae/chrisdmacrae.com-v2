@@ -1,7 +1,68 @@
+/**
+  THIS SHOULD ONLY CONTAIN GLOBAL CSS.
+
+  PLEASE USE SCOPED (*.module.css or *.module.scss) related to 
+  a specific component unless absolutely necessary
+**/
+:root {
+  --stored-dark: var(--dark);
+  --stored-light: var(--light);
+}
+
+/**
+  MUNDANA GLOBAL OVERRIDES
+**/
 body {
   padding-top: 0 !important;
 }
 
+@media (prefers-color-scheme: dark) {
+  body {
+    background: var(--dark);
+  }
+  
+  html, body, h1, h2, h3, h4 h5, h6, p {
+    color: var(--light);
+  }
+}
+
+html.is-light body 
+{
+  background: var(--light) !important;
+}
+  
+html.is-light html, 
+html.is-light body, 
+html.is-light h1, 
+html.is-light h2, 
+html.is-light h3, 
+html.is-light h4,
+html.is-light h5, 
+html.is-light h6, 
+html.is-light p {
+  color: var(--dark) !important;
+}
+
+html.is-dark body 
+{
+  background: var(--dark) !important;
+}
+  
+html.is-dark html, 
+html.is-dark body, 
+html.is-dark h1, 
+html.is-dark h2, 
+html.is-dark h3, 
+html.is-dark h4,
+html.is-dark h5, 
+html.is-dark h6, 
+html.is-dark p {
+  color: var(--light) !important;
+}
+
+/**
+  TINACMS OVERRIDES
+**/
 html, 
 body, 
 #__next, 
