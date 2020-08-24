@@ -10,7 +10,7 @@ export default function MainLayout({ page, children }: MainLayoutProps) {
     <>
       <NavBar>
         {{
-          end: <ColorSchemeToggle />
+          middle: <ColorSchemeToggle className="ml-auto" />
         }}
       </NavBar>
       <BaseLayout page={page}>

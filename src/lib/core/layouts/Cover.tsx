@@ -22,7 +22,7 @@ export default function CoverLayout({ page, children }: CoverLayoutProps) {
           <div className="mb-auto">
           <NavBar>
           {{
-            end: <ColorSchemeToggle />
+            middle: <ColorSchemeToggle />
           }}
         </NavBar>
           </div>
