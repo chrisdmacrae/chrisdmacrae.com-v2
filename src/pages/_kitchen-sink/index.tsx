@@ -1,9 +1,9 @@
 import React from 'react';
 import { useForm, usePlugin } from 'tinacms';
 import MainLayout from '../../lib/core/layouts/Main';
-import { ReferenceCallout } from '../../lib/reference/components/Callout';
+import { ReferenceCallout } from '../../lib/core/components/Reference/Callout';
 import { Col, Container, Row } from 'react-bootstrap';
-import { ReferenceCard } from '../../lib/reference/components/Card';
+import { ReferenceCard } from '../../lib/core/components/Reference/Card';
 import { Heading } from '../../lib/core/components/Typography/Heading';
 
 export default function HomePage({file, preview}) {
