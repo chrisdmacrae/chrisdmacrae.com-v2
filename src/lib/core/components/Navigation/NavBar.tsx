@@ -1,15 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { Container, Nav, Navbar, Row } from 'react-bootstrap';
-import { useColorScheme } from '../../hooks/useColorScheme';
+import React, { useContext } from 'react';
+import { Container, Nav, Navbar } from 'react-bootstrap';
+import AppStateContext from '../../state/app';
 
-export interface NavBarProps {}
+export interface NavBarProps {
+  children?: {
+    start?: React.ReactChild
+    end?: React.ReactChild
+  }
+}
 
-export function NavBar() {
-  let [scheme] = useColorScheme("light");
-  
+export function NavBar({ children }: NavBarProps) {  
+  const { colorScheme } = useContext(AppStateContext);
+
   return (
-    <Navbar expand="lg" variant={scheme === "light" ? "light" : "dark"}>
+    <Navbar expand="lg" variant={colorScheme === "light" ? "light" : "dark"}>
       <Container>
+        {children && children.start && (
+          <div className="ml-auto">
+            { children.start }
+          </div>
+        )}
         <Navbar.Brand href="/" className="mr-auto">Chris D. Macrae</Navbar.Brand>
         <Navbar.Toggle aria-controls="primary-nav" />
         <Navbar.Collapse id="primary-nav">
@@ -19,6 +29,11 @@ export function NavBar() {
             </Nav.Item>
           </Nav>
         </Navbar.Collapse>
+        {children && children.end && (
+          <div className="mr-auto">
+          { children.end }
+          </div>
+        )}
       </Container>
     </Navbar>
   );

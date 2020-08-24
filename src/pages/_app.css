@@ -18,13 +18,46 @@ body {
 
 @media (prefers-color-scheme: dark) {
   body {
-    padding-top: 0 !important;
     background: var(--dark);
   }
   
-  html, body, h1, h2, h3, h5, h6, p {
+  html, body, h1, h2, h3, h4 h5, h6, p {
     color: var(--light);
   }
+}
+
+html.is-light body 
+{
+  background: var(--light) !important;
+}
+  
+html.is-light html, 
+html.is-light body, 
+html.is-light h1, 
+html.is-light h2, 
+html.is-light h3, 
+html.is-light h4,
+html.is-light h5, 
+html.is-light h6, 
+html.is-light p {
+  color: var(--dark) !important;
+}
+
+html.is-dark body 
+{
+  background: var(--dark) !important;
+}
+  
+html.is-dark html, 
+html.is-dark body, 
+html.is-dark h1, 
+html.is-dark h2, 
+html.is-dark h3, 
+html.is-dark h4,
+html.is-dark h5, 
+html.is-dark h6, 
+html.is-dark p {
+  color: var(--light) !important;
 }
 
 /**
