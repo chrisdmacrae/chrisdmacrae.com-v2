@@ -1,33 +1,39 @@
 import { useEffect, useState } from "react";
+import { ColorSchemes, SetColorScheme } from "../state/app";
 
-export function useColorScheme(defaultScheme: "dark" | "light") {
+export function useColorScheme(defaultScheme: ColorSchemes): [ColorSchemes, SetColorScheme] {
   const [scheme, setScheme] = useState(defaultScheme);
+  const setDark = (prefersDark: boolean) => prefersDark ? setScheme("dark") : setScheme("light");
+  const setDarkOnEvent = (event) => {
+    const prefersDark = event.matches;
+
+    setDark(prefersDark);
+  }
+  let mq: MediaQueryList;
  
   useEffect(() => {
-    const mq = window.matchMedia('(prefers-color-scheme: dark)');
-    const setDark = (prefersDark: boolean) => prefersDark ? setScheme("dark") : setScheme("light");
-    const setDarkOnEvent = (event) => {
-      const prefersDark = event.matches;
+    if ("matchMedia" in window) {
+      mq = window.matchMedia('(prefers-color-scheme: dark)');
 
-      setDark(prefersDark);
-    }
+      if (mq) {
+        const prefersDark = mq.matches;
+        
+        mq.addEventListener
+          ? mq.addEventListener("change", (event) => setDarkOnEvent(event))
+          : mq.addListener((event) => setDarkOnEvent(event));
 
-    if (mq) {
-      const prefersDark = mq.matches;
-      
-      mq.addEventListener
-        ? mq.addEventListener("change", (event) => setDarkOnEvent(event))
-        : mq.addListener((event) => setDarkOnEvent(event));
-
-      setDark(prefersDark);
+        setDark(prefersDark);
+      }
     }
 
     return () => {
-      mq.removeEventListener
-        ? mq.removeEventListener("change", setDarkOnEvent)
-        : mq.removeListener(setDarkOnEvent);
+      if (mq) {
+        mq.removeEventListener
+          ? mq.removeEventListener("change", setDarkOnEvent)
+          : mq.removeListener(setDarkOnEvent);
+      }
     }
-  })
+  }, [])
 
   
   return [scheme, setScheme];

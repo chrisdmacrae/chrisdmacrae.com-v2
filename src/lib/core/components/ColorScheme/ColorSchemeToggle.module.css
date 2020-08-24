@@ -1,0 +1,43 @@
+.toggle {
+  position: relative;
+  width: 1em;
+  height: 0.1em;
+  border-radius: 0.5em;
+  border: 0.015em solid #9f9f9f;
+  background-image: linear-gradient(#f2f2f2, #fff, #f2f2f2);
+  margin: 0.26em 0.15em;
+  font-size: 3rem;
+  cursor: pointer;
+  filter: drop-shadow(0.015em 0.015em 0.01em rgba(0, 0, 0, 0.3))
+}
+
+.toggle-btn::after {
+  position: absolute;
+  top: -0.14rem;
+  left: 0;
+  width: 50%;
+  font-size: 0.35em;
+  text-align: center;
+  transition: all 500ms cubic-bezier(0.34, 0.78, 0.55, 1.4);
+}
+
+.toggle-checkbox {
+  position: absolute;
+  visibility: hidden;
+}
+
+.toggle-checkbox + .toggle-btn::after {
+  transform: translate(0, -0.5rem);
+}
+
+.toggle-checkbox:checked + .toggle-btn::after {
+  transform: translate(100%, -0.5rem)
+}
+
+.moon .toggle-checkbox + .toggle-btn::after {
+  content: '🌚';
+}
+
+.sun .toggle-checkbox:checked + .toggle-btn::after {
+  content: '🌞';
+}
