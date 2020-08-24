@@ -5,6 +5,7 @@ import AppStateContext from '../../state/app';
 export interface NavBarProps {
   children?: {
     start?: React.ReactChild
+    middle?: React.ReactChild
     end?: React.ReactChild
   }
 }
@@ -28,9 +29,14 @@ export function NavBar({ children }: NavBarProps) {
               <Nav.Link href="/">Home</Nav.Link>
             </Nav.Item>
           </Nav>
+          {children && children.middle && (
+            <>
+              { children.middle }
+            </>
+          )}
         </Navbar.Collapse>
         {children && children.end && (
-          <div className="mr-auto">
+          <div className="ml-auto">
           { children.end }
           </div>
         )}
