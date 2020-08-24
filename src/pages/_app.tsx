@@ -1,7 +1,7 @@
 import { CmsProvider } from '../lib/cms/providers/cms';
-import "Mundana/assets/css/main.css";
-import './_app.css';
 import { useCMS } from 'tinacms';
+import "Mundana/assets/css/main.css";
+import "./_app.css";
 
 export default function App({ Component, pageProps }) {
   const isEditing = pageProps.isEditing ?? pageProps.preview ?? false;
