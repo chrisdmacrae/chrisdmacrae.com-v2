@@ -4,10 +4,6 @@
   PLEASE USE SCOPED (*.module.css or *.module.scss) related to 
   a specific component unless absolutely necessary
 **/
-:root {
-  --stored-dark: var(--dark);
-  --stored-light: var(--light);
-}
 
 /**
   MUNDANA GLOBAL OVERRIDES
@@ -28,7 +24,7 @@ body {
 
 html.is-light body 
 {
-  background: var(--light) !important;
+  background: var(--light);
 }
   
 html.is-light html, 
@@ -40,12 +36,12 @@ html.is-light h4,
 html.is-light h5, 
 html.is-light h6, 
 html.is-light p {
-  color: var(--dark) !important;
+  color: var(--dark);
 }
 
 html.is-dark body 
 {
-  background: var(--dark) !important;
+  background: var(--dark);
 }
   
 html.is-dark html, 
@@ -57,7 +53,7 @@ html.is-dark h4,
 html.is-dark h5, 
 html.is-dark h6, 
 html.is-dark p {
-  color: var(--light) !important;
+  color: var(--light);
 }
 
 /**

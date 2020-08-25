@@ -22,6 +22,7 @@
     "react-three-fiber": "^4.2.20",
     "react-tinacms-github": "^0.4.3",
     "react-tinacms-inline": "^0.8.0",
+    "slugify": "^1.4.5",
     "styled-components": "^5.1.1",
     "tinacms": "^0.21.2",
     "use-color-scheme": "^1.1.1",

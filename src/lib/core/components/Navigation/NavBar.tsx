@@ -16,7 +16,7 @@ export function NavBar({ children }: NavBarProps) {
   return (
     <Navbar expand="lg" variant={colorScheme === "light" ? "light" : "dark"}>
       <Container>
-        {children && children.start && (
+        {children?.start && (
           <div className="ml-auto">
             { children.start }
           </div>
@@ -24,18 +24,23 @@ export function NavBar({ children }: NavBarProps) {
         <Navbar.Brand href="/" className="mr-auto">Chris D. Macrae</Navbar.Brand>
         <Navbar.Toggle aria-controls="primary-nav" />
         <Navbar.Collapse id="primary-nav">
-          <Nav as="ul" className="mr-auto">
+          <Nav as="ul" className="ml-lg-4 mr-auto">
             <Nav.Item as="li">
               <Nav.Link href="/">Home</Nav.Link>
             </Nav.Item>
+            <Nav.Item as="li">
+              <Nav.Link href="/articles">Articles</Nav.Link>
+            </Nav.Item>
           </Nav>
-          {children && children.middle && (
-            <>
-              { children.middle }
-            </>
-          )}
+          <Nav>
+            {children?.middle && (
+              <>
+                { children.middle }
+              </>
+            )}
+          </Nav>
         </Navbar.Collapse>
-        {children && children.end && (
+        {children?.end && (
           <div className="ml-auto">
           { children.end }
           </div>
