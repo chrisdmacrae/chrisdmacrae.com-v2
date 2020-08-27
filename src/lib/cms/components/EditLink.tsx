@@ -9,7 +9,7 @@ export const EditLink = ({ editMode }: EditLinkProps) => {
 
   return (
     <span onClick={editMode ? github.exitEditMode : github.enterEditMode}>
-      {editMode ? 'Exit Edit Mode' : 'Edit This Site'}
+      {editMode ? 'Exit edit mode' : 'Edit this site'}
     </span>
   )
 }
