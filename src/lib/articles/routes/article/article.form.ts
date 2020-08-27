@@ -5,7 +5,8 @@ export const ArticleFormOptions = (name: string) => Object.create({
   label: `Article: ${name}`,
   fields: [
     { name: 'title', component: 'text' },
-    { name: 'description', component: 'textarea' }
+    { name: 'description', component: 'textarea' },
+    { name: "heading", component: () => null }
   ]
 });
 
