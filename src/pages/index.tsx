@@ -1,7 +1,7 @@
 import React from 'react';
 import { GetStaticProps } from 'next'
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
-import { HomeRoute, useHomeData } from '../lib/core/routes/home';
+import { homeRelativePath, HomeRoute, useHomeData } from '../lib/core/routes/home';
 import { footerRelativePath, useFooterData } from '../lib/core/components/Footer';
 
 export const HomePage = (props) => (
@@ -12,13 +12,12 @@ export const getStaticProps: GetStaticProps = async function ({
   preview,
   previewData,
 }) {
-  const fileRelativePath = './lib/core/routes/home/home.json';
   let props = {
     isEditing: preview ?? false,
     page: {
       error: null,
       file: {
-        fileRelativePath: fileRelativePath,
+        fileRelativePath: homeRelativePath,
         data: (await useHomeData()).default,
       }
     },
@@ -34,13 +33,13 @@ export const getStaticProps: GetStaticProps = async function ({
   if (preview) {
     const fileProps = await getGithubPreviewProps({
       ...previewData,
-      fileRelativePath: fileRelativePath,
-      parse: parseJson,
+      fileRelativePath: homeRelativePath,
+      parse: parseJson
     });
     const footerProps = await getGithubPreviewProps({
       ...previewData,
       fileRelativePath: footerRelativePath,
-      parse: parseJson,
+      parse: parseJson
     });
 
     props = {

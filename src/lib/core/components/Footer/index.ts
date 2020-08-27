@@ -1,4 +1,4 @@
-export * from './Footer';
+export * from './footer';
 
-export const useFooterData = async () => await import("./footer.json");
-export const footerRelativePath = "src/lib/core/components/footer/footer.json";
+export const useFooterData = async () => await import("../../content/footer.json");
+export const footerRelativePath = "./lib/core/content/footer.json";
