@@ -5,11 +5,16 @@ import { Field, usePlugin } from "tinacms";
 import MainLayout from "../../../core/layouts/Main";
 import RichTextBlock from "../../blocks/RichText";
 import { ArticleHero } from "../../components/Hero";
-import { useArticlesForm } from "../articles/articles.form";
+import { useArticleForm } from "./article.form";
 
-export function ArticleRoute({ file }) {
-  const [data, form] = useArticlesForm(file);
-  const page = {
+export interface ArticleRouteProps {
+  page: any;
+  footer: any;
+}
+
+export function ArticleRoute({ page, footer }: ArticleRouteProps) {
+  const [data, form] = useArticleForm(page.file);
+  const seo = {
     title: data.title,
     description: data.description
   }
@@ -18,14 +23,11 @@ export function ArticleRoute({ file }) {
 
   return (
     <InlineForm form={form}>
-      <MainLayout page={page}>
+      <MainLayout seo={seo} page={page} footer={footer}>
         <Container>
           <Row>
             <Col>
-              <InlineGroup name="" fields={[
-                { name: "title", component: "text" },
-                { name: "hero.variant", component: "select", options: ["featured-right", "featured-left"] } as Field<any>
-              ]}>
+              <InlineGroup name="" insetControls={true} fields={form.fields}>
                 <ArticleHero article={data} variant={data.hero.variant} />
               </InlineGroup>
             </Col>

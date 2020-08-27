@@ -34,17 +34,18 @@ export const getStaticProps: GetStaticProps = async function ({
     const fileProps = await getGithubPreviewProps({
       ...previewData,
       fileRelativePath: homeRelativePath,
-      parse: parseJson
+      parse: parseJson,
+      head_branch: process.env.BASE_BRANCH
     });
     const footerProps = await getGithubPreviewProps({
       ...previewData,
       fileRelativePath: footerRelativePath,
-      parse: parseJson
+      parse: parseJson,
+      head_branch: process.env.BASE_BRANCH
     });
 
     props = {
       ...props,
-      ...fileProps.props,
       page: fileProps.props,
       footer: footerProps.props
     }

@@ -11,22 +11,23 @@ import { ReferenceCard } from '../../../core/components/Reference/Card';
 import { Heading } from '../../../core/components/Typography/Heading';
 
 export interface ArticlesProps {
-  file: any;
+  page: any;
+  footer: any;
   isEditing?: boolean;
   children?: React.ReactChild;
 }
 
-export function ArticlesRoute({ file }: ArticlesProps) {
-  const [data, form] = useArticlesForm(file);
+export function ArticlesRoute({ page, footer, isEditing, children }: ArticlesProps) {
+  const [data, form] = useArticlesForm(page.file);
   const repo_path = [
     "https://github.com",
     process.env.REPO_FULL_NAME,
     "blob",
     process.env.BASE_BRANCH,
     "src",
-    (file as GitFile).fileRelativePath
+    (page.file as GitFile).fileRelativePath
   ].join("/");
-  const page = {
+  const seo = {
     title: data.title,
     description: data.description
   }
@@ -35,7 +36,7 @@ export function ArticlesRoute({ file }: ArticlesProps) {
 
   return (
     <InlineForm form={form}>
-      <MainLayout page={page}>
+      <MainLayout seo={seo} page={page.file} footer={footer.file}>
         <Container>
           <Row>
             <Col>

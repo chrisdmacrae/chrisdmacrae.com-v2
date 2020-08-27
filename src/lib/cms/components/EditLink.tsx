@@ -10,13 +10,15 @@ export const EditLink = ({ children }: EditLinkProps) => {
   const cms = useCMS();
   const isEditing = cms.enabled;
   const github = useGithubEditing();
-  const defaultMessage = children !== "undefined" && isEditing ? ('Exit edit mode') : ('Edit this site')
+  let message: React.ReactChild = isEditing ? 'Exit edit modedsafdsdasf' : 'Edit this site'
 
-  console.log(children);
+  if (children) {
+    message = children;
+  }
 
   return (
     <span onClick={isEditing ? github.exitEditMode : github.enterEditMode}>
-      {defaultMessage ?? children}
+      {message}
     </span>
   )
 }

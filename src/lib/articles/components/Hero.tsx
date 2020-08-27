@@ -40,8 +40,8 @@ function ArticleHeroFeaturedSide({ article, alignment, className, variant }: Art
         {article.featured_image && alignment === "left" && featuredImage}
           <Col md={article.featured_image ? "6" : "12"} className="pt-6 pb-6 pr-6 align-self-center">
             <Paragraph className="text-uppercase font-weight-bold">
-              {article?.categories?.map(category => (
-                <a href={article.href} className="text-primary">
+              {article?.categories?.map((category, i) => (
+                <a href={article.href} className="text-primary" key={i}>
                   {category.title}
                 </a>
               ))}

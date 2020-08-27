@@ -15,8 +15,6 @@ export function ReferenceCallout({ title, body, reference, variant, className }:
   const { colorScheme } = useContext(AppStateContext);
   const v = variant || (colorScheme === "dark" ? "light" : "dark");
 
-  console.log({ variant, v });
-
   return (
     <Jumbotron fluid className={`container mb-3 pt-0 pb-0 b-0 position-relative${className ? " " + className : ""}`}>
       <div className="pl-4 pr-0 h-100">

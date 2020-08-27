@@ -15,8 +15,6 @@ export default function CoverLayout({ seo, children }: CoverLayoutProps) {
   const c = children as ReactSlots;
   const d = c.default ? c.default : children as React.ReactChild;
 
-  console.log(seo);
-
   return (
     <>
       <BaseLayout seo={seo}>

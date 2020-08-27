@@ -3,7 +3,7 @@ import slugify from 'slugify';
 
 export * from "./article";
 
-export const useArticleData = async (filePathFromContent: string) => JSON.parse(readFileSync(`${process.cwd()}/src/lib/articles/content/${filePathFromContent}`, { encoding: "utf-8" }));
+export const useArticleData = async (filePathFromContent: string) => JSON.parse(readFileSync(`${process.cwd()}/src/lib/articles/content/articles/${filePathFromContent}`, { encoding: "utf-8" }));
 
 export async function getArticleMetaByName (name: string) {
   const fileName = `${name}.json`;

@@ -27,9 +27,8 @@ export function RichTextBlock({ index, data }: RichTextBlockProps) {
       .use(guide)
       .use(html)
       .process(data.content, (err, file) => {
+        if (err) console.error(err);
         if (file) setContent(file.contents as string);
-
-        console.error(err);
       });
   }, [data.content]);
 
