@@ -1,7 +1,7 @@
 import React from 'react';
 import { GetStaticProps } from 'next';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
-import { ArticleRoute, useArticleData } from '../../lib/articles/routes/article';
+import { ArticleRoute, getArticleMetaByName, useArticleData } from '../../lib/articles/routes/article';
 import { getAllArticlePaths } from '../../lib/articles/routes/article';
 
 export const ArticlePage = ({ file, isEditing }) => (
@@ -22,14 +22,14 @@ export const getStaticProps: GetStaticProps = async function ({
   preview,
   previewData,
 }) {
-  const fileRelativePath = params.articleRelPath;
+  const fileMeta = await getArticleMetaByName(params.article as string);
   let props = {
     sourceProvider: null,
     error: null,
     isEditing: preview ?? false,
     file: {
-      fileRelativePath: fileRelativePath,
-      data: (await useArticleData(params.articlePathFromContent as string)).default,
+      fileRelativePath: fileMeta.articleRelPath,
+      data: (await useArticleData(fileMeta.fileName)),
     }
   }
 
@@ -38,7 +38,7 @@ export const getStaticProps: GetStaticProps = async function ({
       ...props,
       ...await getGithubPreviewProps({
         ...previewData,
-        fileRelativePath: fileRelativePath,
+        fileRelativePath: fileMeta.articleRelPath,
         parse: parseJson,
       })
     }
