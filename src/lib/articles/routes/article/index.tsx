@@ -7,11 +7,13 @@ export const useArticleData = async (filePathFromContent: string) => JSON.parse(
 
 export async function getArticleMetaByName (name: string) {
   const fileName = `${name}.json`;
-  const articleRelPath = `${process.cwd()}/src/lib/articles/content/${fileName}`;
+  const articleRelPath = `src/lib/articles/content/${fileName}`;
+  const articleAbsolutePath = `${process.cwd()}${articleRelPath}`
 
   return {
     fileName,
-    articleRelPath
+    articleRelPath,
+    articleAbsolutePath
   }
 }
 

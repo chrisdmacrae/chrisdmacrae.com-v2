@@ -35,11 +35,9 @@ export function RichTextBlock({ index, data }: RichTextBlockProps) {
 
   return (
     <BlocksControls index={index}>
-        <article>
-          <InlineWysiwyg name="content" format="markdown">
-            <div dangerouslySetInnerHTML={{__html: content ?? "<p></p>"}} />
-          </InlineWysiwyg>
-        </article>
+      <InlineWysiwyg name="content" format="markdown">
+        <div dangerouslySetInnerHTML={{__html: content ?? "<p></p>"}} />
+      </InlineWysiwyg>
     </BlocksControls>
   )
 }

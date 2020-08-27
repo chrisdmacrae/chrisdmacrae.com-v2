@@ -31,10 +31,15 @@ export function ArticleRoute({ file }) {
             </Col>
           </Row>
           <Row>
-            <Col>
-              <InlineBlocks name="body" blocks={{
-                richText: RichTextBlock
-              }} />
+            <Col md="12" lg={{
+              span: "8",
+              offset: "2"
+            }}>
+              <article className="article-post">
+                  <InlineBlocks name="body" blocks={{
+                    richText: RichTextBlock
+                  }} />
+                </article>
             </Col>
           </Row>
         </Container>

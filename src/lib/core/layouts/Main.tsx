@@ -5,7 +5,7 @@ import BaseLayout, { BaseLayoutProps } from './Base';
 
 export interface MainLayoutProps extends BaseLayoutProps {}
 
-export default function MainLayout({ page, children }: MainLayoutProps) {
+export default function MainLayout({ seo, children }: MainLayoutProps) {
   return (
     <>
       <NavBar>
@@ -13,7 +13,7 @@ export default function MainLayout({ page, children }: MainLayoutProps) {
           middle: <ColorSchemeToggle />
         }}
       </NavBar>
-      <BaseLayout page={page}>
+      <BaseLayout seo={seo}>
         {children}
       </BaseLayout>
     </>

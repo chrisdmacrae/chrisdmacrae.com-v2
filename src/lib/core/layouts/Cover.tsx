@@ -11,13 +11,15 @@ export interface CoverLayoutProps extends BaseLayoutProps {
   children: React.ReactChild | ReactSlots
 }
 
-export default function CoverLayout({ page, children }: CoverLayoutProps) {
+export default function CoverLayout({ seo, children }: CoverLayoutProps) {
   const c = children as ReactSlots;
   const d = c.default ? c.default : children as React.ReactChild;
 
+  console.log(seo);
+
   return (
     <>
-      <BaseLayout page={page}>
+      <BaseLayout seo={seo}>
         <div className="cover-container d-flex h-100 p-3 mx-auto flex-column">
           <div className="mb-auto">
           <NavBar>

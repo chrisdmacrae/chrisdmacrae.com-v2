@@ -34,13 +34,15 @@ export const getStaticProps: GetStaticProps = async function ({
   }
 
   if (preview) {
+    const githubPreviewProps = await getGithubPreviewProps({
+      ...previewData,
+      fileRelativePath: fileMeta.articleRelPath,
+      parse: parseJson,
+    });
+
     props = {
       ...props,
-      ...await getGithubPreviewProps({
-        ...previewData,
-        fileRelativePath: fileMeta.articleRelPath,
-        parse: parseJson,
-      })
+      ...githubPreviewProps.props,
     }
   }
 
