@@ -17,5 +17,10 @@
   "hero": {
     "variant": "featured-right"
   },
-  "body": []
+  "body": [
+    {
+      "_template": "richText",
+      "content": "Test"
+    }
+  ]
 }
