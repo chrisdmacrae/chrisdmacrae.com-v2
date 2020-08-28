@@ -91,6 +91,12 @@ export function WaveBg() {
           mix-blend-mode: overlay;
         }
 
+        @media (prefers-reduced-motion) {
+          .waves, .gradient-overlay {
+            animation: none;
+          }
+        }
+
         @keyframes gradient {
           0% {
             background-position: 0% 50%;
