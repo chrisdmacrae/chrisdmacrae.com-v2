@@ -10,7 +10,6 @@ export const ArticlePage = ({ page, footer }) => (
 )
 
 export async function getStaticPaths() {
-  console.log(process.cwd());
   const paths = await getAllArticlePaths();
 
   return {

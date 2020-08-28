@@ -1,5 +1,6 @@
 import { readdirSync, readFileSync } from 'fs';
 import slugify from 'slugify';
+import { articlesRelPath } from '../articles';
 
 // @ts-expect-error
 const path = __non_webpack_require__('path');
@@ -10,8 +11,8 @@ export const useArticleData = async (filePathFromContent: string) => JSON.parse(
 
 export function getArticleMetaByName (name: string) {
   const fileName = `${name}.json`;
-  const articleRelPath = `src/lib/articles/content/articles/${fileName}`;
-  const articleAbsolutePath = path.resolve(process.cwd(), `src/lib/articles/content/articles/${fileName}`);
+  const articleRelPath = `./src/lib/articles/content/articles/${fileName}`;
+  const articleAbsolutePath = path.resolve(process.cwd(), articlesRelPath);
 
   return {
     slug: name,
@@ -22,7 +23,7 @@ export function getArticleMetaByName (name: string) {
 }
 
 export async function getAllArticlePaths() {
-  const articlesDir = path.resolve(process.cwd(), "/src/lib/articles/content/articles")
+  const articlesDir = path.resolve(process.cwd(), "./src/lib/articles/content/articles")
   const fileNames = readdirSync(articlesDir);
 
   return fileNames.map(fileName => {
