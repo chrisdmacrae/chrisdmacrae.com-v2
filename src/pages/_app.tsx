@@ -1,16 +1,26 @@
+import React, { useEffect } from 'react';
 import { CmsProvider } from '../lib/cms/providers/cms';
 import { useCMS } from 'tinacms';
 import "Mundana/assets/css/main.css";
 import "./_app.css";
 import { useColorScheme } from '../lib/core/hooks/useColorScheme';
-import { AppStateProvider } from '../lib/core/state/app';
-import { useEffect } from 'react';
+import { AppStateProvider, ColorSchemes } from '../lib/core/state/app';
+import { useIsomorphicLayoutEffect } from '../lib/core/hooks/useIsomorphicLayoutEffect';
 
 export default function App({ Component, pageProps }) {
   const isEditing = pageProps.isEditing ?? pageProps.preview ?? false;
   const cmsError = pageProps.error;
-  let [scheme, setScheme] = useColorScheme("light");
+  const [scheme, setScheme] = useColorScheme("light");
+  const setColorScheme = (scheme: ColorSchemes) => {
+    if (global && global.localStorage) {
+      global.localStorage.setItem("cdm-color-scheme", JSON.stringify({
+        value: scheme,
+        time: new Date().getTime()
+      }));
 
+      setScheme(scheme);
+    }
+  }
   const WrapperClasses = ({children}) => {
     const cms = useCMS();
     const isEditing = cms.enabled;
@@ -24,6 +34,22 @@ export default function App({ Component, pageProps }) {
       </div>
     )
   }
+
+  // We set scheme from persisted localstorage value if present
+  useIsomorphicLayoutEffect(() => {
+    if (global && global.localStorage) {
+      try {
+        const scheme = JSON.parse(global.localStorage.getItem("cdm-color-scheme"));
+        const time = new Date().getTime() - (1000 * 60 * 60); // 1 hour
+
+        if (scheme && scheme.value && scheme.time && scheme.time > time) {
+          setScheme(scheme.value);
+        }
+      } catch (error) {
+        global.localStorage.removeItem("cdm-color-scheme");
+      }
+    }
+  })
 
   // We set scheme classes on html, in order to get full styling control...
   useEffect(() => {
@@ -42,7 +68,7 @@ export default function App({ Component, pageProps }) {
     <CmsProvider isEditing={isEditing} error={cmsError}>
       <AppStateProvider value={{
         colorScheme: scheme,
-        setColorScheme: setScheme
+        setColorScheme: setColorScheme
       }}>
         <WrapperClasses>
           <Component {...pageProps} />
