@@ -11,7 +11,7 @@ export interface ReferenceCalloutProps {
   className?: string;
 }
 
-export function ReferenceCallout({ title, body, reference, variant, className }: ReferenceCalloutProps) {
+export function ReferenceCallout({ title, body, image, reference, variant, className }: ReferenceCalloutProps) {
   const { colorScheme } = useContext(AppStateContext);
   const v = variant || (colorScheme === "dark" ? "light" : "dark");
 
