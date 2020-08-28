@@ -5,13 +5,14 @@ import { GitFile } from 'react-tinacms-github/dist/form/useGitFileSha';
 import { Container, Row, Col } from 'react-bootstrap';
 import MainLayout from '../../../core/layouts/Main';
 import { useArticlesForm } from './articles.form';
-import styles from "./articles.module.css";
 import { ReferenceCallout } from '../../../core/components/Reference/Callout';
 import { ReferenceCard } from '../../../core/components/Reference/Card';
 import { Heading } from '../../../core/components/Typography/Heading';
+import styles from "./articles.module.css";
 
 export interface ArticlesProps {
   page: any;
+  articles?: any;
   footer: any;
   isEditing?: boolean;
   children?: React.ReactChild;
