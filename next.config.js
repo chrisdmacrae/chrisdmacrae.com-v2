@@ -13,7 +13,7 @@ module.exports = {
     GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
     REPO_FULL_NAME: process.env.REPO_FULL_NAME,
     BASE_BRANCH: BRANCH ? BRANCH : process.env.BASE_BRANCH,
-    USE_REMOTE: process.env.USE_REMOTE,
+    USE_REMOTE: false
   },
   webpack: (config, options) => {
     config.node = {
