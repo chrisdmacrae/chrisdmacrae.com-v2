@@ -30,8 +30,6 @@ export function CmsProvider({isEditing, error, children}: CmsProviderProps) {
       baseBranch: process.env.BASE_BRANCH
     }));
 
-    console.log(process.env.BASE_BRANCH);
-
     return cms;
   }, [isEditing]);
 

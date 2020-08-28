@@ -1,8 +1,9 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { InlineBlocks, InlineForm, InlineGroup } from "react-tinacms-inline";
-import { Field, usePlugin } from "tinacms";
+import { usePlugin } from "tinacms";
 import MainLayout from "../../../core/layouts/Main";
+import FigureBlock from "../../blocks/Figure";
 import RichTextBlock from "../../blocks/RichText";
 import { ArticleHero } from "../../components/Hero";
 import { useArticleForm } from "./article.form";
@@ -25,7 +26,7 @@ export function ArticleRoute({ page, footer }: ArticleRouteProps) {
     <InlineForm form={form}>
       <MainLayout seo={seo} page={page} footer={footer}>
         <Container>
-          <Row>
+          <Row className="mb-5">
             <Col>
               <InlineGroup name="" insetControls={true} fields={form.fields}>
                 <ArticleHero article={data} variant={data.hero.variant} />
@@ -39,7 +40,8 @@ export function ArticleRoute({ page, footer }: ArticleRouteProps) {
             }}>
               <article className="article-post">
                   <InlineBlocks name="body" blocks={{
-                    richText: RichTextBlock
+                    richText: RichTextBlock,
+                    figure: FigureBlock
                   }} />
                 </article>
             </Col>

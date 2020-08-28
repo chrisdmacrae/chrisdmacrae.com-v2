@@ -17,16 +17,8 @@ export interface ArticlesProps {
   children?: React.ReactChild;
 }
 
-export function ArticlesRoute({ page, footer, isEditing, children }: ArticlesProps) {
+export function ArticlesRoute({ page, footer }: ArticlesProps) {
   const [data, form] = useArticlesForm(page.file);
-  const repo_path = [
-    "https://github.com",
-    process.env.REPO_FULL_NAME,
-    "blob",
-    process.env.BASE_BRANCH,
-    "src",
-    (page.file as GitFile).fileRelativePath
-  ].join("/");
   const seo = {
     title: data.title,
     description: data.description
@@ -36,20 +28,20 @@ export function ArticlesRoute({ page, footer, isEditing, children }: ArticlesPro
 
   return (
     <InlineForm form={form}>
-      <MainLayout seo={seo} page={page.file} footer={footer.file}>
+      <MainLayout seo={seo} page={page} footer={footer}>
         <Container>
           <Row>
             <Col>
-            <ReferenceCallout
-              title={data.title}
-              body={data.description}
-              variant="dark"
-              reference={{
-                url: "/",
-                text: "Go home!"
-              }}
-              className="bg-lightblue"
-            />
+              <ReferenceCallout
+                title={data.title}
+                body={data.description}
+                variant="dark"
+                reference={{
+                  url: "/",
+                  text: "Go home!"
+                }}
+                className="bg-lightblue"
+              />
             </Col>
           </Row>
           <Row className="pt-4 pb-4">

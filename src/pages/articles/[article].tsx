@@ -42,14 +42,18 @@ export const getStaticProps: GetStaticProps = async function ({
     }
   }
 
-  if (preview) {
+  if (preview || process.env.USE_REMOTE) {
     const fileProps = await getGithubPreviewProps({
+      working_repo_full_name: process.env.REPO_FULL_NAME,
+      github_access_token: process.env.GITHUB_ACCESS_TOKEN,
       ...previewData,
       fileRelativePath: fileMeta.articleRelPath,
       parse: parseJson,
       head_branch: process.env.BASE_BRANCH
     });
     const footerProps = await getGithubPreviewProps({
+      working_repo_full_name: process.env.REPO_FULL_NAME,
+      github_access_token: process.env.GITHUB_ACCESS_TOKEN,
       ...previewData,
       fileRelativePath: footerRelativePath,
       parse: parseJson,

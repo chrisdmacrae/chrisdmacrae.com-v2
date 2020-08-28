@@ -13,6 +13,7 @@ import styles from "./home.module.css";
 import { GitFile } from 'react-tinacms-github/dist/form/useGitFileSha';
 import { createGithubLink } from '../../utils/createGithubLink';
 import { Footer } from '../../components/Footer/footer';
+import { WaveBg } from '../../components/WaveBg';
 
 export interface HomeProps {
   page: any;
@@ -34,6 +35,7 @@ export function HomeRoute(props: HomeProps) {
 
   return (
     <InlineForm form={form}>
+      <WaveBg />
       <CoverLayout seo={seo}>
         {{
           cover: (
