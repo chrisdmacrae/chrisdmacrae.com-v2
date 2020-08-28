@@ -17,7 +17,7 @@ export default function CoverLayout({ seo, children }: CoverLayoutProps) {
 
   return (
     <BaseLayout seo={seo}>
-      <div className="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <div className="cover-container d-flex h-100 mx-auto flex-column">
         <div className="mb-auto">
         <NavBar>
         {{
