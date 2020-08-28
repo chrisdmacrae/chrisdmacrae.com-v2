@@ -10,6 +10,7 @@ export const ArticlePage = ({ page, footer }) => (
 )
 
 export async function getStaticPaths() {
+  console.log(process.cwd());
   const paths = await getAllArticlePaths();
 
   return {
@@ -23,7 +24,6 @@ export const getStaticProps: GetStaticProps = async function ({
   preview,
   previewData,
 }) {
-  const articlesRelPath  = 'src/lib/articles/content/articles.json';
   const fileMeta = await getArticleMetaByName(params.article as string);
   let props = {
     isEditing: preview ?? false,

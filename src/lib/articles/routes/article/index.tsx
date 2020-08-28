@@ -29,7 +29,7 @@ export async function getAllArticlePaths() {
     const slug = slugify(
       fileName
         .replace(/\.json$/, '')
-    ) 
+    );
  
     return {
       params: {
