@@ -5,7 +5,7 @@ const SYSTEM_BRANCH = require("child_process")
   .execSync("git rev-parse --abbrev-ref HEAD")
   .toString()
   .trim();
-const BRANCH = VERCEL_BRANCH ?? SYSTEM_BRANCH;
+const BRANCH = VERCEL_BRANCH ? VERCEL_BRANCH : SYSTEM_BRANCH;
 
 module.exports = {
   env: {
