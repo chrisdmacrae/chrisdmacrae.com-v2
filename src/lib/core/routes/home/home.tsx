@@ -6,6 +6,7 @@ import { EditableHeading, Heading } from '../../components/Typography/Heading';
 import { EditableTimeOfDay } from '../../components/TimeOfDay';
 import CoverLayout from '../../layouts/Cover';
 import { EditableParagraph } from '../../components/Typography/Paragraph';
+import { EditLink } from '../../../cms/components/EditLink';
 import { EditableButton } from '../../components/Button';
 import { HomeFormOptions, useHomeForm } from './home.form';
 import styles from "./home.module.css";

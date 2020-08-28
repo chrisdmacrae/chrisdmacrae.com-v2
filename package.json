@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "Mundana": "github:wowthemesnet/template-mundana-bootstrap-html",
-    "antd": "^4.6.1",
+    "antd": "^4.3.4",
     "bootstrap": "^4.5.2",
     "dotenv": "^8.2.0",
     "next": "9.4.4",
@@ -28,18 +28,18 @@
     "remark-preset-lint-markdown-style-guide": "^3.0.1",
     "slugify": "^1.4.5",
     "styled-components": "^5.1.1",
-    "tinacms": "^0.21.3",
+    "tinacms": "^0.21.2",
     "use-color-scheme": "^1.1.1",
     "use-dark-mode": "^2.3.1",
-    "vercel": "^19.2.0"
+    "vercel": "^19.1.1"
   },
   "devDependencies": {
-    "@types/node": "^14.6.1",
-    "@types/react": "^16.9.48",
-    "hygen-next-tinacms-github": "git+https://github.com/dwalkr/hygen-next-tinacms-github.git",
+    "@types/node": "^14.0.13",
+    "@types/react": "^16.9.36",
+    "hygen-next-tinacms-github": "https://github.com/dwalkr/hygen-next-tinacms-github",
     "next-tinacms-json": "^0.3.20",
-    "next-tinacms-markdown": "^0.2.23",
+    "next-tinacms-markdown": "^0.2.20",
     "sass": "^1.26.10",
-    "typescript": "^3.9.7"
+    "typescript": "^3.9.5"
   }
 }
