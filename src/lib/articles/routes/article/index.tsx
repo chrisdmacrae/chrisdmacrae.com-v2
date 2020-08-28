@@ -1,6 +1,8 @@
 import { readdirSync, readFileSync } from 'fs';
-import path from "path";
 import slugify from 'slugify';
+
+// @ts-expect-error
+const path = __non_webpack_require__('path');
 
 export * from "./article";
 
