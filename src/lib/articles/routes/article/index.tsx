@@ -11,7 +11,7 @@ export const useArticleData = async (filePathFromContent: string) => JSON.parse(
 export function getArticleMetaByName (name: string) {
   const fileName = `${name}.json`;
   const articleRelPath = `src/lib/articles/content/articles/${fileName}`;
-  const articleAbsolutePath = path.resolve(process.cwd(), articleRelPath);
+  const articleAbsolutePath = path.resolve(process.cwd(), `src/lib/articles/content/articles/${fileName}`);
 
   return {
     slug: name,
@@ -22,7 +22,8 @@ export function getArticleMetaByName (name: string) {
 }
 
 export async function getAllArticlePaths() {
-  const fileNames = readdirSync(path.resolve(process.cwd(), "/src/lib/articles/content/articles"));
+  const articlesDir = path.resolve(process.cwd(), "/src/lib/articles/content/articles")
+  const fileNames = readdirSync(articlesDir);
 
   return fileNames.map(fileName => {
     const slug = slugify(
