@@ -8,9 +8,9 @@ export interface PopupLayout {
 
 export interface PopupLayoutProps extends BaseLayoutProps { }
 
-export function PopupLayout({ page, children }: PopupLayoutProps) {
+export function PopupLayout({ seo, children }: PopupLayoutProps) {
   return (
-    <BaseLayout page={page}>
+    <BaseLayout seo={seo}>
       <Container>
         <Row>
           <Col>

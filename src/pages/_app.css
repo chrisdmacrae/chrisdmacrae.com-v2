@@ -4,10 +4,6 @@
   PLEASE USE SCOPED (*.module.css or *.module.scss) related to 
   a specific component unless absolutely necessary
 **/
-:root {
-  --stored-dark: var(--dark);
-  --stored-light: var(--light);
-}
 
 /**
   MUNDANA GLOBAL OVERRIDES
@@ -21,43 +17,48 @@ body {
     background: var(--dark);
   }
   
-  html, body, h1, h2, h3, h4 h5, h6, p {
+  main, 
+  main h1, 
+  main h2, 
+  main h3, 
+  main h4,
+  main h5, 
+  main h6, 
+  main p {
     color: var(--light);
   }
 }
 
 html.is-light body 
 {
-  background: var(--light) !important;
+  background: var(--light);
 }
-  
-html.is-light html, 
-html.is-light body, 
-html.is-light h1, 
-html.is-light h2, 
-html.is-light h3, 
-html.is-light h4,
-html.is-light h5, 
-html.is-light h6, 
-html.is-light p {
-  color: var(--dark) !important;
+   
+html.is-light main, 
+html.is-light main h1, 
+html.is-light main h2, 
+html.is-light main h3, 
+html.is-light main h4,
+html.is-light main h5, 
+html.is-light main h6, 
+html.is-light main p {
+  color: var(--dark);
 }
 
 html.is-dark body 
 {
-  background: var(--dark) !important;
+  background: var(--dark);
 }
-  
-html.is-dark html, 
-html.is-dark body, 
-html.is-dark h1, 
-html.is-dark h2, 
-html.is-dark h3, 
-html.is-dark h4,
-html.is-dark h5, 
-html.is-dark h6, 
-html.is-dark p {
-  color: var(--light) !important;
+
+html.is-dark main, 
+html.is-dark main h1, 
+html.is-dark main h2, 
+html.is-dark main h3, 
+html.is-dark main h4,
+html.is-dark main h5, 
+html.is-dark main h6, 
+html.is-dark main p {
+  color: var(--light);
 }
 
 /**
@@ -68,13 +69,32 @@ body,
 #__next, 
 /* Handle prod */
 #__next > .is-not-editing,
+#__next > .is-not-editing > main,
 #__next > .is-not-editing > div,
 #__next > .is-not-editing > div > div,
 /* Handle editing */
 #__next > div[class^="SiteWrapper"],
 #__next > div[class^="SiteWrapper"] > .is-editing,
 #__next > div[class^="SiteWrapper"] > .is-editing > div,
-#__next > div[class^="SiteWrapper"] > .is-editing > div > div {
+#__next > div[class^="SiteWrapper"] > .is-editing > div > div,
+main {
   height: 100%;
-  max-height: 100%;
+  min-height: 100%;
+}
+
+/* 
+  TODO: do a better job of this, based on using
+        the cover layout.
+*/
+body:not([class="homepage"]) main {
+  height: initial;
+}
+
+#modal-root h1,
+#modal-root h2,
+#modal-root h3,
+#modal-root h4,
+#modal-root h5,
+#modal-root p {
+  color: var(--gray-dark) !important;
 }

@@ -1,0 +1,26 @@
+{
+  "title": "My First Post In The New Digs",
+  "description": "A total re-design of my website, focusing on a modern, versatile, and open authoring and design experience using Next.js, TinaCMS, and Git.",
+  "featured_image": "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80",
+  "created_date": "2020-08-24 23:00:06 -4",
+  "edited_date": "2020-08-24 23:00:06 -4",
+  "categories": [
+    {
+      "title": "General",
+      "href": "#"
+    }
+  ],
+  "author": {
+    "fullName": "Chris D. Macrae",
+    "photo": "https://pbs.twimg.com/profile_images/1146823526130868224/-PDsGM6m_400x400.png"
+  },
+  "hero": {
+    "variant": "featured-right"
+  },
+  "body": [
+    {
+      "_template": "richText",
+      "content": "Hello and welcome to my new website. This website will serve as the home for my thoughts, and an open forum for discussion about them.\n\nI look forward to sharing a little bit about:\n\n* My thoughts on systems thinking, design, software development. 👨‍💻\n* My thoughts on the JAMStack, Static Web Applications, and serverless. 🤓\n* My personal thinking of philosophy, and what makes the world tick. 🤔\n\nI'll also be covering just how this site works, including:\n\n* Setting up Next.js with a [Medium.com](https://medium.com)-like theme.\n* Setting up Next.js with TinaCMS, an open source editing toolkit.\n* Deploying Next.js to Vercel, to get [isomorphic rendering](https://en.wikipedia.org/wiki/Isomorphic_JavaScript).\n* Setting up Web Mentions to get access to social networking features.\n\nStay tuned, as this nerd is looking forward to sharing his thoughts with you.\n\nUntil next time,\n\nChris Macrae"
+    }
+  ]
+}

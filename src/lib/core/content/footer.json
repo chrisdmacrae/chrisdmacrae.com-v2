@@ -1,0 +1,13 @@
+{
+  "editing": {
+    "enabled": {
+      "text": "Exit edit mode"
+    },
+    "disabled": {
+      "text": "Edit this site"
+    }
+  },
+  "github": {
+    "text": "View on Github"
+  }
+}

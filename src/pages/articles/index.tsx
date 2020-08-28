@@ -1,24 +1,24 @@
-import React from 'react';
-import { GetStaticProps } from 'next'
+import { GetStaticProps } from 'next';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
-import { homeRelativePath, HomeRoute, useHomeData } from '../lib/core/routes/home';
-import { footerRelativePath, useFooterData } from '../lib/core/components/Footer';
+import { ArticlesRoute, useArticlesData } from '../../lib/articles/routes/articles';
+import { footerRelativePath, useFooterData } from '../../lib/core/components/Footer';
 
-export const HomePage = (props) => (
-  <HomeRoute {...props} />
+export const ArticlesPage = ({ page, footer }) => (
+ <ArticlesRoute page={page} footer={footer} />
 );
 
 export const getStaticProps: GetStaticProps = async function ({
   preview,
   previewData,
 }) {
+  const fileRelativePath = './lib/articles/routes/articles/articles.json';
   let props = {
     isEditing: preview ?? false,
     page: {
       error: null,
       file: {
-        fileRelativePath: homeRelativePath,
-        data: (await useHomeData()).default,
+        fileRelativePath: fileRelativePath,
+        data: (await useArticlesData()).default,
       }
     },
     footer: {
@@ -35,7 +35,7 @@ export const getStaticProps: GetStaticProps = async function ({
       working_repo_full_name: process.env.REPO_FULL_NAME,
       github_access_token: process.env.GITHUB_ACCESS_TOKEN,
       ...previewData,
-      fileRelativePath: homeRelativePath,
+      fileRelativePath: fileRelativePath,
       parse: parseJson,
       head_branch: process.env.BASE_BRANCH
     });
@@ -60,4 +60,4 @@ export const getStaticProps: GetStaticProps = async function ({
   }
 }
 
-export default HomePage;
+export default ArticlesPage;

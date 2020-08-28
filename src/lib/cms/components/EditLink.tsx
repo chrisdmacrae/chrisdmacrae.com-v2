@@ -1,15 +1,24 @@
+import React from 'react';
 import { useGithubEditing } from "react-tinacms-github"
+import { useCMS } from 'tinacms';
 
 export interface EditLinkProps {
-  editMode: boolean
+  children: React.ReactChild
 }
 
-export const EditLink = ({ editMode }: EditLinkProps) => {
-  const github = useGithubEditing()
+export const EditLink = ({ children }: EditLinkProps) => {
+  const cms = useCMS();
+  const isEditing = cms.enabled;
+  const github = useGithubEditing();
+  let message: React.ReactChild = isEditing ? 'Exit edit modedsafdsdasf' : 'Edit this site'
+
+  if (children) {
+    message = children;
+  }
 
   return (
-    <span onClick={editMode ? github.exitEditMode : github.enterEditMode}>
-      {editMode ? 'Exit Edit Mode' : 'Edit This Site'}
+    <span onClick={isEditing ? github.exitEditMode : github.enterEditMode}>
+      {message}
     </span>
   )
 }

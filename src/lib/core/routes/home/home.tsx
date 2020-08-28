@@ -12,17 +12,21 @@ import { HomeFormOptions, useHomeForm } from './home.form';
 import styles from "./home.module.css";
 import { GitFile } from 'react-tinacms-github/dist/form/useGitFileSha';
 import { createGithubLink } from '../../utils/createGithubLink';
+import { Footer } from '../../components/Footer/footer';
+import { WaveBg } from '../../components/WaveBg';
 
 export interface HomeProps {
-  file: any;
+  page: any;
+  footer: any;
   isEditing?: boolean;
   children?: React.ReactChild;
 }
 
-export default function HomeRoute({ file, isEditing = false }: HomeProps) {
-  const [data, form] = useHomeForm(file);
-  const repo_path = createGithubLink((file as GitFile).fileRelativePath);
-  const page = {
+export function HomeRoute(props: HomeProps) {
+  const { page, isEditing = false, footer } = props;
+  const [data, form] = useHomeForm(page.file);
+  const repo_path = createGithubLink((page.file as GitFile).fileRelativePath);
+  const seo = {
     title: data.title,
     description: data.description
   }
@@ -31,7 +35,8 @@ export default function HomeRoute({ file, isEditing = false }: HomeProps) {
 
   return (
     <InlineForm form={form}>
-      <CoverLayout page={page}>
+      <WaveBg />
+      <CoverLayout seo={seo}>
         {{
           cover: (
             <Container>
@@ -103,22 +108,12 @@ export default function HomeRoute({ file, isEditing = false }: HomeProps) {
               </Row>
             </Container>
           ),
-          coverFooter: (
-            <Container>
-              <Row>
-                <Col>
-                  <SafeAnchor href="#" className="text-gray mr-3">
-                    <EditLink editMode={isEditing} />
-                  </SafeAnchor>
-                  <SafeAnchor href={repo_path} className="text-gray">
-                    View on GitHub
-                  </SafeAnchor>
-                </Col>
-              </Row>
-            </Container>),
+          coverFooter: <Footer file={footer.file} repoPath={repo_path} />,
           default: (<></>)
         }}
       </CoverLayout>
     </InlineForm>
   );
 }
+
+export default HomeRoute;

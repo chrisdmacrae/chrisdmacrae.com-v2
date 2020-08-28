@@ -1,10 +1,10 @@
 import React from 'react';
 import { useForm, usePlugin } from 'tinacms';
-import MainLayout from '../../lib/core/layouts/Main';
 import { ReferenceCallout } from '../../lib/core/components/Reference/Callout';
 import { Col, Container, Row } from 'react-bootstrap';
 import { ReferenceCard } from '../../lib/core/components/Reference/Card';
 import { Heading } from '../../lib/core/components/Typography/Heading';
+import BaseLayout from '../../lib/core/layouts/Base';
 
 export default function HomePage({file, preview}) {
   const formOptions = {
@@ -24,7 +24,7 @@ export default function HomePage({file, preview}) {
     onSubmit: (data) => console.log(data)
   }
   const [data, form] = useForm(formOptions);
-  const page = {
+  const seo = {
     title: data.title,
     description: data.description
   }
@@ -32,7 +32,7 @@ export default function HomePage({file, preview}) {
   usePlugin(form)
 
   return (
-    <MainLayout page={page}>
+    <BaseLayout seo={seo}>
       <ReferenceCallout
         title={data.title}
         body={data.body}
@@ -146,7 +146,7 @@ export default function HomePage({file, preview}) {
           </Col>
         </Row>
       </Container>
-    </MainLayout>
+    </BaseLayout>
   );
 }
 
