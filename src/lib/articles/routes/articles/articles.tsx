@@ -8,8 +8,6 @@ import { ReferenceCallout } from '../../../core/components/Reference/Callout';
 import { ReferenceCard } from '../../../core/components/Reference/Card';
 import { Heading } from '../../../core/components/Typography/Heading';
 import AppStateContext from '../../../core/state/app';
-import { getArticleMetaByName } from '../article';
-import styles from "./articles.module.css";
 
 export interface ArticlesProps {
   page: any;
