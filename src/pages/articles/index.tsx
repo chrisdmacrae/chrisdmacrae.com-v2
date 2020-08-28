@@ -36,11 +36,11 @@ export const getStaticProps: GetStaticProps = async function ({
 
     if (!preview && !process.env.USE_REMOTE) {
       article = {
-        slug: articlePath.params.article,
+        slug: articlePath.slug,
         error: null,
         file: {
-          fileRelativePath: articlePath.params.articleRelPath,
-          data: (await import(`../../lib/articles/content/articles/${articlePath.params.article}.json`)).default
+          fileRelativePath: articlePath.articleRelPath,
+          data: (await import(`../../lib/articles/content/articles/${articlePath.fileName}`)).default
         }
       }
     }

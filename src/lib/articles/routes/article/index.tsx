@@ -40,5 +40,5 @@ export async function getAllArticlePaths() {
       articleRelPath,
       articleAbsolutePath
     }
-  })
+  });
 }
