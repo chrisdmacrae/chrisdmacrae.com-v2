@@ -9,7 +9,7 @@ export const useArticleData = async (filePathFromContent: string) => JSON.parse(
 export function getArticleMetaByName (name: string) {
   const fileName = `${name}.json`;
   const articleRelPath = `src/lib/articles/content/articles/${fileName}`;
-  const articleAbsolutePath = path.join(process.cwd(), articleRelPath);
+  const articleAbsolutePath = path.resolve(process.cwd(), articleRelPath);
 
   return {
     slug: name,
