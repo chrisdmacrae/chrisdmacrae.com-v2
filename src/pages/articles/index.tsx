@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
 import { getAllArticlePaths } from '../../lib/articles/routes/article';
-import { articlesRelPath, ArticlesRoute, useArticlesData } from '../../lib/articles/routes/articles';
+import {  ArticlesRoute, useArticlesData } from '../../lib/articles/routes/articles';
 import { footerRelativePath, useFooterData } from '../../lib/core/components/Footer';
 
 export const ArticlesPage = ({ page, articles, footer }) => (
@@ -12,6 +12,7 @@ export const getStaticProps: GetStaticProps = async function ({
   preview,
   previewData,
 }) {
+  const articlesRelPath  = 'src/lib/articles/content/articles.json';
   let props = {
     isEditing: preview ?? false,
     page: {
