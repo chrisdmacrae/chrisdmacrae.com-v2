@@ -46,7 +46,7 @@ export function LargeReferenceCard({ reference, variant, className }: Omit<Refer
           )}
           {reference.createdDate || reference.editedDate && (
             <small className="text-muted">
-              {reference.editedDate ?? reference.createdDate}
+              {reference.edited_date ?? reference.created_date}
               {reference.readingTime}
             </small>
           )}
@@ -61,19 +61,25 @@ export function MediumReferenceCard({ reference, variant, className }: Omit<Refe
     <div className={`mb-3 d-flex justify-content-between${className ? " " + className : ""}`}>
       <div className="pr-3">
         <h2 className="mb-1 h4 font-weight-bold">
-          <a className={`${variant === "dark" ? "text-dark " : "text-light "}`} href="./article.html">
-            Nearly 200 Great Barrier Reef coral species also live in the deep sea
+          <a className={`${variant === "dark" ? "text-dark " : "text-light "}`} href={reference.href}>
+            {reference.title}
           </a>
         </h2>
         <p className={`${variant === "dark" ? "text-dark " : "text-light "}`}>
-          There are more coral species lurking in the deep ocean that previously thought.
+          {reference.description}
         </p>
-        <div className="card-text text-muted small">
-            Jake Bittle in SCIENCE
-        </div>
-        <small className="text-muted">Dec 12 &middot; 5 min read</small>
+        {reference.author && (
+          <div className="card-text text-muted small">
+            <a className="text-muted" href={reference.author.href}>
+              {reference.author.fullName}
+            </a>
+          </div>
+        )}
+        <small className="text-muted">
+          {reference.edited_date ?? reference.created_date} &middot; {reference.readingTime}
+        </small>
       </div>
-      <img height="120" src="./assets/img/demo/blog8.jpg" />
+      <img height="120" width="120" src={reference.image} style={{objectFit: "cover"}} />
     </div>
   );
 }
@@ -86,14 +92,16 @@ export function SmallReferenceCard({ reference, variant, className }: Omit<Refer
           <img height="80" src="./assets/img/demo/blog4.jpg" />
           <div className="pl-3">
             <h2 className="mb-2 h6 font-weight-bold">
-              <a className={`${variant === "dark" ? "text-dark " : "text-light "}`} href="./article.html">
-                Nasa's IceSat space laser makes height maps of Earth
+              <a className={`${variant === "dark" ? "text-dark " : "text-light "}`} href={reference.href}>
+                {reference.title}
               </a>
             </h2>
             <div className="card-text text-muted small">
-                Jake Bittle in LOVE/HATE
+              {reference.description}
             </div>
-            <small className="text-muted">Dec 12 &middot; 5 min read</small>
+            <small className="text-muted">
+              {reference.edited_date ?? reference.created_date} &middot; {reference.readingTime}
+            </small>
           </div>
         </div>
       </div>

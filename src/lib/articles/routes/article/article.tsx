@@ -39,11 +39,11 @@ export function ArticleRoute({ page, footer }: ArticleRouteProps) {
               offset: "2"
             }}>
               <article className="article-post">
-                  <InlineBlocks name="body" blocks={{
-                    richText: RichTextBlock,
-                    figure: FigureBlock
-                  }} />
-                </article>
+                <InlineBlocks name="body" blocks={{
+                  richText: RichTextBlock,
+                  figure: FigureBlock
+                }} />
+              </article>
             </Col>
           </Row>
         </Container>
