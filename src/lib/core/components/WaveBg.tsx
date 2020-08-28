@@ -3,7 +3,7 @@ export function WaveBg() {
     <>
       <div className="waves">
         <div className="gradient-overlay" />
-        <svg viewBox="0 0 350 350" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio>
+        <svg viewBox="0 0 350 350" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="true">
           <path d="M665.865 557.387C438.684 718.23 224.423 2.39558 493.23 216.126" stroke="black" strokeWidth="0.443167" strokeMiterlimit={10} />
           <path d="M662.633 557.168C567.062 624.793 441.451 497.061 394.254 380.632C373.851 329.884 354.289 270.7 362.661 232.919C373.786 182.707 413.239 154.509 491.592 221.323" stroke="black" strokeWidth="0.443167" strokeMiterlimit={10} />
           <path d="M659.396 556.949C576.615 615.489 430.424 482.896 387.883 376.059C371.037 333.752 344.337 275.095 356.252 240.115C372.046 193.758 413.765 156.913 489.955 226.515" stroke="black" strokeWidth="0.443167" strokeMiterlimit={10} />

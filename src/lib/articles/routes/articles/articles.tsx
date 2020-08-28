@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useContext, useMemo } from 'react';
 import { usePlugin } from 'tinacms';
 import { InlineForm } from 'react-tinacms-inline';
-import { GitFile } from 'react-tinacms-github/dist/form/useGitFileSha';
 import { Container, Row, Col } from 'react-bootstrap';
 import MainLayout from '../../../core/layouts/Main';
 import { useArticlesForm } from './articles.form';
 import { ReferenceCallout } from '../../../core/components/Reference/Callout';
 import { ReferenceCard } from '../../../core/components/Reference/Card';
 import { Heading } from '../../../core/components/Typography/Heading';
+import AppStateContext from '../../../core/state/app';
+import { getArticleMetaByName } from '../article';
 import styles from "./articles.module.css";
 
 export interface ArticlesProps {
@@ -18,8 +19,10 @@ export interface ArticlesProps {
   children?: React.ReactChild;
 }
 
-export function ArticlesRoute({ page, footer }: ArticlesProps) {
+export function ArticlesRoute({ page, articles, footer }: ArticlesProps) {
   const [data, form] = useArticlesForm(page.file);
+  const { colorScheme } = useContext(AppStateContext);
+  const featuredArticles = useMemo(() => articles?.filter(article => article.featured === true), [articles]);
   const seo = {
     title: data.title,
     description: data.description
@@ -36,39 +39,22 @@ export function ArticlesRoute({ page, footer }: ArticlesProps) {
               <ReferenceCallout
                 title={data.title}
                 body={data.description}
-                variant="dark"
-                reference={{
-                  url: "/",
-                  text: "Go home!"
-                }}
+                image={data.image}
+                variant={colorScheme}
                 className="bg-lightblue"
               />
             </Col>
           </Row>
-          <Row className="pt-4 pb-4">
-            <Col xs={12}>
-              <Heading as="h5" border={true} bold={true}>
-                Featured Stories
-              </Heading>
-            </Col>
-            <Col md="6">
-              <ReferenceCard
-                size="lg"
-                reference={{
-                  title: "Hello world",
-                  description: "I am alive",
-                  href: "#",
-                  author: {
-                    name: "Chris D. Macrae",
-                    readingTime: 1000 * 60 * 60 * 5
-                  }
-                }}
-              />
-            </Col>
-            <Col md="6">
-              {[0, 1, 2].map((n, index) => (
+          {featuredArticles.length > 0 && (
+            <Row className="pt-4 pb-4">
+              <Col xs={12}>
+                <Heading as="h5" border={true} bold={true}>
+                  Featured Stories
+                </Heading>
+              </Col>
+              <Col md="6">
                 <ReferenceCard
-                  size="sm"
+                  size="lg"
                   reference={{
                     title: "Hello world",
                     description: "I am alive",
@@ -78,27 +64,40 @@ export function ArticlesRoute({ page, footer }: ArticlesProps) {
                       readingTime: 1000 * 60 * 60 * 5
                     }
                   }}
-                  key={index}
                 />
-              ))}
-            </Col>
-          </Row>
+              </Col>
+              <Col md="6">
+                {[0, 1, 2].map((n, index) => (
+                  <ReferenceCard
+                    size="sm"
+                    reference={{
+                      title: "Hello world",
+                      description: "I am alive",
+                      href: "#",
+                      author: {
+                        name: "Chris D. Macrae",
+                        readingTime: 1000 * 60 * 60 * 5
+                      }
+                    }}
+                    key={index}
+                  />
+                ))}
+              </Col>
+            </Row>
+          )}
           <Row className="pt-4 pb-4">
             <Col>
               <Heading as="h5" border={true} bold={true}>
                 All Stories
               </Heading>
-              {[0, 1, 2].map((n, index) => (
+              {articles.map((article, index) => (
                 <ReferenceCard
                   size="md"
                   reference={{
-                    title: "Hello world",
-                    description: "I am alive",
-                    href: "#",
-                    author: {
-                      name: "Chris D. Macrae",
-                      readingTime: 1000 * 60 * 60 * 5
-                    }
+                    ...article.file.data,
+                    href: `/articles/${article.slug}`,
+                    image: article.file.data.featured_image,
+                    readingTime: 1000 * 60 * 60 * 5
                   }}
                   key={index}
                 />

@@ -5,12 +5,13 @@ export * from "./article";
 
 export const useArticleData = async (filePathFromContent: string) => JSON.parse(readFileSync(`${process.cwd()}/src/lib/articles/content/articles/${filePathFromContent}`, { encoding: "utf-8" }));
 
-export async function getArticleMetaByName (name: string) {
+export function getArticleMetaByName (name: string) {
   const fileName = `${name}.json`;
   const articleRelPath = `src/lib/articles/content/articles/${fileName}`;
   const articleAbsolutePath = `${process.cwd()}${articleRelPath}`
 
   return {
+    slug: name,
     fileName,
     articleRelPath,
     articleAbsolutePath
