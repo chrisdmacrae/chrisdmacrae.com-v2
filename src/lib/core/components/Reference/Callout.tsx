@@ -1,10 +1,5 @@
 import React, { useContext } from "react";
-<<<<<<< HEAD
-import { Button, Col, Container, Jumbotron, Row } from "react-bootstrap";
-import { useColorScheme } from "../../hooks/useColorScheme";
-=======
 import { Button, Col, Jumbotron, Row } from "react-bootstrap";
->>>>>>> origin/master
 import AppStateContext from "../../state/app";
 
 export interface ReferenceCalloutProps {
