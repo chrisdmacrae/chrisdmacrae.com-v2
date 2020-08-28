@@ -10,13 +10,13 @@ export const ArticlePage = ({ page, footer }) => (
 )
 
 export async function getStaticPaths() {
-  const articles = (await getAllArticlePaths())
+  const paths = (await getAllArticlePaths())
     .map(article => Object.create({
       params: article
     }));
 
   return {
-    articles,
+    paths,
     fallback: false
   }
 }
