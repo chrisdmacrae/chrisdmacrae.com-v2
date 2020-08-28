@@ -1,4 +1,5 @@
 import { readdirSync, readFileSync } from 'fs';
+import { join } from "path";
 import slugify from 'slugify';
 
 export * from "./article";
@@ -8,7 +9,7 @@ export const useArticleData = async (filePathFromContent: string) => JSON.parse(
 export function getArticleMetaByName (name: string) {
   const fileName = `${name}.json`;
   const articleRelPath = `src/lib/articles/content/articles/${fileName}`;
-  const articleAbsolutePath = `${process.cwd()}${articleRelPath}`
+  const articleAbsolutePath = join(process.cwd(), articleRelPath);
 
   return {
     slug: name,
@@ -19,7 +20,7 @@ export function getArticleMetaByName (name: string) {
 }
 
 export async function getAllArticlePaths() {
-  const fileNames = readdirSync(`${process.cwd()}/src/lib/articles/content/articles`);
+  const fileNames = readdirSync(join(process.cwd(), "/src/lib/articles/content/articles"));
 
   return fileNames.map(fileName => {
     const slug = slugify(
