@@ -38,7 +38,7 @@ export function ArticlesRoute({ page, articles, footer }: ArticlesProps) {
                 title={data.title}
                 body={data.description}
                 image={data.image}
-                variant={colorScheme}
+                variant="dark"
                 className="bg-lightblue"
               />
             </Col>
