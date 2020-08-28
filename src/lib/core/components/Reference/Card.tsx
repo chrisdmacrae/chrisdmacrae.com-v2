@@ -57,7 +57,6 @@ export function LargeReferenceCard({ reference, variant, className }: Omit<Refer
 }
 
 export function MediumReferenceCard({ reference, variant, className }: Omit<ReferenceCardProps, "size">) {
-  console.log(reference);
   return (
     <div className={`mb-3 d-flex justify-content-between${className ? " " + className : ""}`}>
       <div className="pr-3">

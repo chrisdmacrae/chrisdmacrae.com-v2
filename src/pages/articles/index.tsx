@@ -31,7 +31,6 @@ export const getStaticProps: GetStaticProps = async function ({
     }
   }
 
-
   for (let articlePath of await getAllArticlePaths()) {
     let article;
 
