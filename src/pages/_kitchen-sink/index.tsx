@@ -36,6 +36,7 @@ export default function HomePage({file, preview}) {
       <ReferenceCallout
         title={data.title}
         body={data.body}
+        image={data.image}
         reference={{
           url: "/",
           text: "Go home!"
