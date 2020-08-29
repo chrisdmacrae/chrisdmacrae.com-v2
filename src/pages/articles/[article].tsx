@@ -35,7 +35,7 @@ export const getStaticProps: GetStaticProps = async function ({
       error: null,
       file: {
         fileRelativePath: fileMeta.articleRelPath,
-        data: (await useArticleData(fileMeta.fileName)),
+        data: (await useArticleData(filemeta.articleRelPath)),
       }
     },
     footer: {
