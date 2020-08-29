@@ -31,13 +31,14 @@ export async function getAllArticlePaths() {
       fileName
         .replace(/\.json$/, '')
     );
+    const articleRelPath = `./src/lib/articles/content/articles/${fileName}`;
+    const articleAbsolutePath = path.resolve(process.cwd(), articlesRelPath);
  
     return {
-      params: {
-        article: slug,
-        articleRelPath: `${process.cwd()}/src/lib/articles/content/${fileName}`,
-        articlePathFromContent: fileName
-      }
+      slug,
+      fileName,
+      articleRelPath,
+      articleAbsolutePath
     }
-  })
+  });
 }
