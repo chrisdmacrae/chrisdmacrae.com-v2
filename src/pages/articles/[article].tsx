@@ -74,7 +74,7 @@ export const getStaticProps: GetStaticProps = async function ({
     }
   }
 
-  console.log({ props });
+  console.log(props.page.file.data, props.footer.file.data);
 
   return {
     props: props
