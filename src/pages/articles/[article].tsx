@@ -72,6 +72,8 @@ export const getStaticProps: GetStaticProps = async function ({
     }
   }
 
+  console.log({ props });
+
   return {
     props: props
   }
