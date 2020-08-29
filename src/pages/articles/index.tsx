@@ -5,7 +5,7 @@ import {  articlesRelPath, ArticlesRoute, useArticlesData } from '../../lib/arti
 import { footerRelativePath, useFooterData } from '../../lib/core/components/Footer';
 
 export const ArticlesPage = ({ page, articles, footer }) => (
- <ArticlesRoute page={page} articles={articles} footer={footer} />
+ <ArticlesRoute {...pages} />
 );
 
 export const getStaticProps: GetStaticProps = async function ({
