@@ -6,7 +6,6 @@ import { getAllArticlePaths } from '../../lib/articles/routes/article';
 import { footerRelativePath, useFooterData } from '../../lib/core/components/Footer';
 
 export const ArticlePage = (props) => {
-console.log(props);
   return (
     <ArticleRoute {...props} />
   );
@@ -22,7 +21,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: true
+    fallback: 'unstable_blocking'
   }
 }
 
@@ -74,8 +73,6 @@ export const getStaticProps: GetStaticProps = async function ({
       footer: footerProps.props
     }
   }
-
-  console.log(props.page.file.data, props.footer.file.data);
 
   return {
     props: props
