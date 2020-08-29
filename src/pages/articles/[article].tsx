@@ -11,7 +11,7 @@ export const ArticlePage = ({ page, footer }) => (
 
 export async function getStaticPaths() {
   const paths = (await getAllArticlePaths())
-    .map(article => Object.create({
+    .map(article => ({
       params: {
         article: article.slug
       }
