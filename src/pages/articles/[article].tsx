@@ -6,6 +6,7 @@ import { getAllArticlePaths } from '../../lib/articles/routes/article';
 import { footerRelativePath, useFooterData } from '../../lib/core/components/Footer';
 
 export const ArticlePage = (props) => {
+console.log(props);
   return (
     <ArticleRoute {...props} />
   );
