@@ -7,11 +7,11 @@ const path = __non_webpack_require__('path');
 
 export * from "./article";
 
-export const useArticleData = async (filePathFromContent: string) => JSON.parse(readFileSync(`${process.cwd()}/src/lib/articles/content/articles/${filePathFromContent}`, { encoding: "utf-8" }));
+export const useArticleData = async (articleRelPath: string) => JSON.parse(readFileSync(path.resolve(process.cwd(), articleRelPath), { encoding: "utf-8" }));
 
 export function getArticleMetaByName (name: string) {
   const fileName = `${name}.json`;
-  const articleRelPath = `./src/lib/articles/content/articles/${fileName}`;
+  const articleRelPath = `src/lib/articles/content/articles/${fileName}`;
   const articleAbsolutePath = path.resolve(process.cwd(), articlesRelPath);
 
   return {
@@ -31,7 +31,7 @@ export async function getAllArticlePaths() {
       fileName
         .replace(/\.json$/, '')
     );
-    const articleRelPath = `./src/lib/articles/content/articles/${fileName}`;
+    const articleRelPath = `src/lib/articles/content/articles/${fileName}`;
     const articleAbsolutePath = path.resolve(process.cwd(), articlesRelPath);
  
     return {
