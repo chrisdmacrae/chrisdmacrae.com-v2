@@ -1,11 +1,11 @@
 import { GetStaticProps } from 'next';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
 import { getAllArticlePaths } from '../../lib/articles/routes/article';
-import { articlesRelPath, ArticlesRoute, useArticlesData } from '../../lib/articles/routes/articles';
+import {  articlesRelPath, ArticlesRoute, useArticlesData } from '../../lib/articles/routes/articles';
 import { footerRelativePath, useFooterData } from '../../lib/core/components/Footer';
 
-export const ArticlesPage = ({ page, articles, footer }) => (
- <ArticlesRoute page={page} articles={articles} footer={footer} />
+export const ArticlesPage = (props) => (
+ <ArticlesRoute {...props} />
 );
 
 export const getStaticProps: GetStaticProps = async function ({
@@ -36,11 +36,11 @@ export const getStaticProps: GetStaticProps = async function ({
 
     if (!preview && !process.env.USE_REMOTE) {
       article = {
-        slug: articlePath.params.article,
+        slug: articlePath.slug,
         error: null,
         file: {
-          fileRelativePath: articlePath.params.articleRelPath,
-          data: (await import(`../../lib/articles/content/articles/${articlePath.params.article}.json`)).default
+          fileRelativePath: articlePath.articleRelPath,
+          data: (await import(`../../lib/articles/content/articles/${articlePath.fileName}`)).default
         }
       }
     }

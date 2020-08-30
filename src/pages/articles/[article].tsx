@@ -5,12 +5,19 @@ import { ArticleRoute, getArticleMetaByName, useArticleData } from '../../lib/ar
 import { getAllArticlePaths } from '../../lib/articles/routes/article';
 import { footerRelativePath, useFooterData } from '../../lib/core/components/Footer';
 
-export const ArticlePage = ({ page, footer }) => (
-  <ArticleRoute page={page} footer={footer} />
-)
+export const ArticlePage = (props) => {
+  return (
+    <ArticleRoute {...props} />
+  );
+}
 
 export async function getStaticPaths() {
-  const paths = await getAllArticlePaths();
+  const paths = (await getAllArticlePaths())
+    .map(article => ({
+      params: {
+        article: article.slug
+      }
+    }));
 
   return {
     paths,
@@ -30,7 +37,7 @@ export const getStaticProps: GetStaticProps = async function ({
       error: null,
       file: {
         fileRelativePath: fileMeta.articleRelPath,
-        data: (await useArticleData(fileMeta.fileName)),
+        data: (await useArticleData(fileMeta.articleRelPath)),
       }
     },
     footer: {
