@@ -5,11 +5,16 @@
   },
   "categories": [],
   "hero": {
-    "variant": "regular"
+    "variant": "Featured Image Left"
   },
   "created_date": "Mon, 31 Aug 2020 22:20:42 GMT",
   "edited_date": "Mon, 31 Aug 2020 22:20:42 GMT",
-  "body": [],
+  "body": [
+    {
+      "_template": "richText",
+      "content": "Hello my friends.\n\nI would love to discuss this in more detail, but..."
+    }
+  ],
   "title": "test-2",
   "description": "test-2"
 }
