@@ -8,5 +8,5 @@ export function getReadingTime(content: string) {
 }
 
 export function getWordCount(content: string){
-  return content?.match(/\w+/g).length;
+  return content?.match(/\w+/g)?.length;
 }
