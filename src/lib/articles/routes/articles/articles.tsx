@@ -7,7 +7,6 @@ import { useArticlesForm } from './articles.form';
 import { ReferenceCallout } from '../../../core/components/Reference/Callout';
 import { ReferenceCard } from '../../../core/components/Reference/Card';
 import { Heading } from '../../../core/components/Typography/Heading';
-import AppStateContext from '../../../core/state/app';
 
 export interface ArticlesProps {
   page: any;
@@ -72,8 +71,7 @@ export function ArticlesRoute({ page, articles, footer }: ArticlesProps) {
                       description: "I am alive",
                       href: "#",
                       author: {
-                        name: "Chris D. Macrae",
-                        readingTime: 1000 * 60 * 60 * 5
+                        name: "Chris D. Macrae"
                       }
                     }}
                     key={index}
@@ -87,25 +85,20 @@ export function ArticlesRoute({ page, articles, footer }: ArticlesProps) {
               <Heading as="h5" border={true} bold={true}>
                 All Stories
               </Heading>
-              {articles.map((article, index) => {
-                console.log(article);
-                
-                return (
-                  <Fragment key={index}>
-                    {article.file && (
-                      <ReferenceCard
-                        size="md"
-                        reference={{
-                          ...article.file.data,
-                          href: `/articles/${article.slug}`,
-                          image: article.file.data.featured_image,
-                          readingTime: 1000 * 60 * 60 * 5
-                        }}
-                      />
-                    )}
-                  </Fragment>
-                )
-              })}
+              {articles.map((article, index) => (
+                <Fragment key={index}>
+                  {article.file && (
+                    <ReferenceCard
+                      size="md"
+                      reference={{
+                        ...article.file.data,
+                        href: `/articles/${article.slug}`,
+                        image: article.file.data.featured_image
+                      }}
+                    />
+                  )}
+                </Fragment>
+              ))}
             </Col>
           </Row>
         </Container>

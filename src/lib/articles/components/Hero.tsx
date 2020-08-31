@@ -4,6 +4,7 @@ import { Heading } from "../../core/components/Typography/Heading";
 import { Paragraph } from "../../core/components/Typography/Paragraph";
 import { getReadingTime } from "../utils/readingTime";
 import { getPostTime } from "../utils/postTime";
+import { getArticleContent } from "../utils/getArticleContent";
 
 export interface ArticleHeroProps {
   article: any;
@@ -62,7 +63,7 @@ function ArticleHeroFeaturedSide({ article, alignment, className, variant }: Art
                   <small className="ml-3">
                     {article.author.fullName}
                     <span className="text-muted d-block">
-                      {getPostTime(article.created_date)} · {getReadingTime(JSON.stringify(article.body))}
+                      {getPostTime(article.created_date)} · {getReadingTime(getArticleContent(article.body))}
                     </span>
                   </small>
               </div>
@@ -100,7 +101,7 @@ function ArticleHeroRegular({ article, className }: ArticleHeroProps) {
                   <small className="ml-3">
                     {article.author.fullName}
                     <span className="text-muted d-block">
-                      {getPostTime(article.created_date)} · {getReadingTime(JSON.stringify(article.body))}
+                      {getPostTime(article.created_date)} · {getReadingTime(getArticleContent(article.body))}
                     </span>
                   </small>
               </div>

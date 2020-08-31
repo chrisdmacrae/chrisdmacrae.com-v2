@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Card } from "react-bootstrap";
+import { getArticleContent } from "../../../articles/utils/getArticleContent";
 import { getPostTime } from "../../../articles/utils/postTime";
 import { getReadingTime } from "../../../articles/utils/readingTime";
 import AppStateContext from "../../state/app";
@@ -48,7 +49,7 @@ export function LargeReferenceCard({ reference, variant, className }: Omit<Refer
           )}
           {reference.createdDate || reference.editedDate && (
             <small className="text-muted">
-              {getPostTime(reference.created_date)} · {getReadingTime(JSON.stringify(reference.body))}
+              {getPostTime(reference.created_date)} · {getReadingTime(getArticleContent(reference.body))}
             </small>
           )}
         </div>
@@ -77,7 +78,7 @@ export function MediumReferenceCard({ reference, variant, className }: Omit<Refe
           </div>
         )}
         <small className="text-muted">
-          {getPostTime(reference.created_date)} · {getReadingTime(JSON.stringify(reference.body))}
+          {getPostTime(reference.created_date)} · {getReadingTime(getArticleContent(reference.body))}
         </small>
       </div>
       <img height="120" width="120" src={reference.image} style={{objectFit: "cover"}} />
@@ -101,7 +102,7 @@ export function SmallReferenceCard({ reference, variant, className }: Omit<Refer
               {reference.description}
             </div>
             <small className="text-muted">
-              {getPostTime(reference.created_date)} · {getReadingTime(JSON.stringify(reference.body))}
+              {getPostTime(reference.created_date)} · {getReadingTime(getArticleContent(reference.body))}
             </small>
           </div>
         </div>

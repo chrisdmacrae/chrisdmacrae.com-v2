@@ -18,13 +18,13 @@ export function getPostTime(date: string | Date) {
     return "A few minutes ago"
   }
   else if (difference < 60) {
-    return `${difference} minutes ago`
+    return `${Math.ceil(difference)} minutes ago`
   }
   else if (difference / 60 < 10) {
     return "A few hours ago"
   }
   else if (difference / 60 < 24) {
-    return `${difference / 60} hours ago`
+    return `${Math.ceil(difference / 60)} hours ago`
   }
   else if (difference / 60 / 24 < 10) {
     return `A few days ago`
