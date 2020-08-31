@@ -39,8 +39,8 @@ function ArticleHeroFeaturedSide({ article, alignment, className, variant }: Art
     <Jumbotron className="container mb-3 pl-0 pt-0 pb-0 bg-transparent position-relative" fluid>
       <div className="h-100 tofront">
         <Row className="justify-content-between">
-        {article.featured_image && alignment === "left" && featuredImage}
-          <Col md={article.featured_image ? "6" : "12"} className={alignment === "right" ? "pr-6 " : "pl-6 " + "pb-6 pr-6 align-self-center"}>
+          {article.featured_image && alignment === "left" && featuredImage}
+          <Col xs="12" md={article.featured_image ? "6" : "12"} className={(alignment === "right" ? "pr-6 " : "pl-6 ") + "pb-6 pr-6 align-self-center"}>
             <Paragraph className="text-uppercase font-weight-bold">
               {article?.categories?.map((category, i) => (
                 <a href={article.href} className="text-primary" key={i}>
