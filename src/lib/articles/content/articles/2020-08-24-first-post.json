@@ -2,8 +2,8 @@
   "title": "My First Post In The New Digs",
   "description": "A total re-design of my website, focusing on a modern, versatile, and open authoring and design experience using Next.js, TinaCMS, and Git.",
   "featured_image": "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80",
-  "created_date": "Mon, 24 Aug 2020 23:00:06 AST",
-  "edited_date": "Mon, 24 Aug 2020 23:00:06 AST",
+  "created_date": "Mon, 24 Aug 2020 23:00:06 -4",
+  "edited_date": "Mon, 24 Aug 2020 23:00:06 -4",
   "categories": [
     {
       "title": "General",
