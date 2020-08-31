@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { Fragment, useContext, useMemo } from 'react';
 import { usePlugin } from 'tinacms';
 import { InlineForm } from 'react-tinacms-inline';
 import { Container, Row, Col } from 'react-bootstrap';
@@ -19,7 +19,6 @@ export interface ArticlesProps {
 
 export function ArticlesRoute({ page, articles, footer }: ArticlesProps) {
   const [data, form] = useArticlesForm(page.file);
-  const { colorScheme } = useContext(AppStateContext);
   const featuredArticles = useMemo(() => articles?.filter(article => article.featured === true), [articles]);
   const seo = {
     title: data.title,
@@ -89,7 +88,7 @@ export function ArticlesRoute({ page, articles, footer }: ArticlesProps) {
                 All Stories
               </Heading>
               {articles.map((article, index) => (
-                <>
+                <Fragment key={index}>
                   {article.file && (
                     <ReferenceCard
                       size="md"
@@ -99,10 +98,9 @@ export function ArticlesRoute({ page, articles, footer }: ArticlesProps) {
                         image: article.file.data.featured_image,
                         readingTime: 1000 * 60 * 60 * 5
                       }}
-                      key={index}
                   />
                   )}
-                </>
+                </Fragment>
               ))}
             </Col>
           </Row>

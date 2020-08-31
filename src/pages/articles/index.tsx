@@ -12,6 +12,7 @@ export const getStaticProps: GetStaticProps = async function ({
   preview,
   previewData,
 }) {
+  const articlePaths = await getAllArticlePaths();
   let props = {
     isEditing: preview ?? false,
     page: {
@@ -31,47 +32,46 @@ export const getStaticProps: GetStaticProps = async function ({
     }
   }
 
-  for (let articlePath of await getAllArticlePaths()) {
+  for (let a of articlePaths) {
     let article;
 
     if (!preview && !process.env.USE_REMOTE) {
       article = {
-        slug: articlePath.slug,
+        slug: a.slug,
         error: null,
         file: {
-          fileRelativePath: articlePath.articleRelPath,
-          data: (await import(`../../lib/articles/content/articles/${articlePath.fileName}`)).default
+          fileRelativePath: a.articleRelPath,
+          data: (await import(`../../lib/articles/content/articles/${a.fileName}`)).default
         }
       }
-    }
-    else {
-      article = {}
-    }
 
-    props.articles.push(article);
+      props.articles.push(article);
+    }
   }
 
   if (preview || process.env.USE_REMOTE) {
-    const fileProps = await getGithubPreviewProps({
-      working_repo_full_name: process.env.REPO_FULL_NAME,
-      github_access_token: process.env.GITHUB_ACCESS_TOKEN,
-      ...previewData,
-      fileRelativePath: articlesRelPath,
-      parse: parseJson,
-      head_branch: process.env.BASE_BRANCH
-    });
-    const footerProps = await getGithubPreviewProps({
-      working_repo_full_name: process.env.REPO_FULL_NAME,
-      github_access_token: process.env.GITHUB_ACCESS_TOKEN,
-      ...previewData,
-      fileRelativePath: footerRelativePath,
-      parse: parseJson,
-      head_branch: process.env.BASE_BRANCH
-    });
+    const getGithubPreviewPropsUtil = async (fileRelativePath) => {
+      return await getGithubPreviewProps({
+        working_repo_full_name: process.env.REPO_FULL_NAME,
+        github_access_token: process.env.GITHUB_ACCESS_TOKEN,
+        ...previewData,
+        fileRelativePath: fileRelativePath,
+        parse: parseJson,
+        head_branch: process.env.BASE_BRANCH
+      });      
+    }
+    const fileProps = await getGithubPreviewPropsUtil(articlesRelPath);
+    const articlesProps = await Promise.all(articlePaths.map(async (a) => {
+      const article = await getGithubPreviewPropsUtil(a.articleRelPath);
+
+      return article.props;
+    }));
+    const footerProps = await getGithubPreviewPropsUtil(footerRelativePath);
 
     props = {
       ...props,
       page: fileProps.props,
+      articles: articlesProps,
       footer: footerProps.props
     }
   }

@@ -5,10 +5,11 @@
   },
   "categories": [],
   "hero": {
-    "variant": "regular"
+    "variant": "Regular"
   },
   "created_date": "Mon, 31 Aug 2020 22:20:42 GMT",
   "edited_date": "Mon, 31 Aug 2020 22:20:42 GMT",
+  "featured_image": "/uploads/image.png",
   "body": [],
   "title": "test-2",
   "description": "test-2"

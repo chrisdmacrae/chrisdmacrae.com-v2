@@ -6,16 +6,18 @@ import { Paragraph } from "../../core/components/Typography/Paragraph";
 export interface ArticleHeroProps {
   article: any;
   className?: string;
-  variant: "featured-right" | "featured-left"
+  variant: "Regular" | "Featured Image Right" | "Featured Image Left"
 }
 
 export function ArticleHero(props: ArticleHeroProps) {
   if (props.article) {
     switch (props.variant) {
-      case "featured-right":
+      case "Featured Image Right":
         return <ArticleHeroFeaturedSide alignment="right" {...props} />;
-        case "featured-left":
+        case "Featured Image Left":
           return <ArticleHeroFeaturedSide alignment="left" {...props} />
+        default:
+          return <ArticleHeroRegular {...props} />
     }
   }
 
@@ -65,6 +67,43 @@ function ArticleHeroFeaturedSide({ article, alignment, className, variant }: Art
             )}
           </Col>
           {article.featured_image && alignment === "right" && featuredImage}
+        </Row>
+      </div>
+    </Jumbotron>
+  );
+}
+
+function ArticleHeroRegular({ article, className }: ArticleHeroProps) {
+  return (
+    <Jumbotron className="container mb-3 pl-0 pt-0 pb-0 bg-transparent position-relative" fluid>
+      <div className="h-100 tofront">
+        <Row className="justify-content-between">
+          <Col md="12" className="pt-6 pb-6 pr-6 align-self-center">
+            <Paragraph className="text-uppercase font-weight-bold">
+              {article?.categories?.map((category, i) => (
+                <a href={article.href} className="text-primary" key={i}>
+                  {category.title}
+                </a>
+              ))}
+            </Paragraph>
+            <Heading as="h1" bold={true} className="display-4 secondfont mb-3">
+              {article.title}
+            </Heading>
+            <Paragraph className="mb-3">
+              {article.description}
+            </Paragraph>
+            {article.author && (
+              <div className="d-flex align-items-center">
+                <img src={article.author.photo} className="rounded-circle" width="70" />
+                  <small className="ml-3">
+                    {article.author.fullName}
+                    <span className="text-muted d-block">
+                      A few hours ago · 5 min read
+                    </span>
+                  </small>
+              </div>
+            )}
+          </Col>
         </Row>
       </div>
     </Jumbotron>
