@@ -2,6 +2,8 @@ import React from "react";
 import { Col, Jumbotron, Row } from "react-bootstrap";
 import { Heading } from "../../core/components/Typography/Heading";
 import { Paragraph } from "../../core/components/Typography/Paragraph";
+import { getReadingTime } from "../utils/readingTime";
+import { getPostTime } from "../utils/postTime";
 
 export interface ArticleHeroProps {
   article: any;
@@ -60,7 +62,7 @@ function ArticleHeroFeaturedSide({ article, alignment, className, variant }: Art
                   <small className="ml-3">
                     {article.author.fullName}
                     <span className="text-muted d-block">
-                      A few hours ago · 5 min read
+                      {getPostTime(article.created_date)} · {getReadingTime(JSON.stringify(article.body))}
                     </span>
                   </small>
               </div>
@@ -98,7 +100,7 @@ function ArticleHeroRegular({ article, className }: ArticleHeroProps) {
                   <small className="ml-3">
                     {article.author.fullName}
                     <span className="text-muted d-block">
-                      A few hours ago · 5 min read
+                      {getPostTime(article.created_date)} · {getReadingTime(JSON.stringify(article.body))}
                     </span>
                   </small>
               </div>
