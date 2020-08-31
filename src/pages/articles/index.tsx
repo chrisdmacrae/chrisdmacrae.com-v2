@@ -64,7 +64,10 @@ export const getStaticProps: GetStaticProps = async function ({
     const articlesProps = await Promise.all(articlePaths.map(async (a) => {
       const article = await getGithubPreviewPropsUtil(a.articleRelPath);
 
-      return article.props;
+      return {
+        slug: a.slug,
+        ...article.props
+      };
     }));
     const footerProps = await getGithubPreviewPropsUtil(footerRelativePath);
 
