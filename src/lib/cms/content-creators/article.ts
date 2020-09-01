@@ -49,6 +49,12 @@ export const ArticleContentCreator: ContentCreatorPlugin<Article> = {
       if (values["new-branch"] == true) {
         await github.createBranch(branch);
         await github.setWorkingBranch(branch);
+        await fetch("/api/preview", {
+          method: "POST",
+          body: JSON.stringify({
+            cdm_head_branch: branch
+          })
+        })
       }
 
       await github
