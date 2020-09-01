@@ -39,7 +39,8 @@ export default function HomePage({file, preview}) {
         image={data.image}
         reference={{
           url: "/",
-          text: "Go home!"
+          text: "Go home!",
+          created_date: ""
         }}
       />
       <Container>
@@ -53,9 +54,9 @@ export default function HomePage({file, preview}) {
                 description: "I am alive",
                 href: "#",
                 author: {
-                  name: "Chris D. Macrae",
-                  readingTime: 1000 * 60 * 60 * 5
-                }
+                  name: "Chris D. Macrae"
+                },
+                created_date: ""
               }}
             />
           </Col>
@@ -67,9 +68,9 @@ export default function HomePage({file, preview}) {
                 description: "I am alive",
                 href: "#",
                 author: {
-                  name: "Chris D. Macrae",
-                  readingTime: 1000 * 60 * 60 * 5
-                }
+                  name: "Chris D. Macrae"
+                },
+                created_date: ""
               }}
             />
             <ReferenceCard
@@ -79,9 +80,9 @@ export default function HomePage({file, preview}) {
                 description: "I am alive",
                 href: "#",
                 author: {
-                  name: "Chris D. Macrae",
-                  readingTime: 1000 * 60 * 60 * 5
-                }
+                  name: "Chris D. Macrae"
+                },
+                created_date: ""
               }}
             />
             <ReferenceCard
@@ -91,9 +92,9 @@ export default function HomePage({file, preview}) {
                 description: "I am alive",
                 href: "#",
                 author: {
-                  name: "Chris D. Macrae",
-                  readingTime: 1000 * 60 * 60 * 5
-                }
+                  name: "Chris D. Macrae"
+                },
+                created_date: ""
               }}
             />
           </Col>
@@ -110,9 +111,9 @@ export default function HomePage({file, preview}) {
                 description: "I am alive",
                 href: "#",
                 author: {
-                  name: "Chris D. Macrae",
-                  readingTime: 1000 * 60 * 60 * 5
-                }
+                  name: "Chris D. Macrae"
+                },
+                created_date: ""
               }}
             />
             <ReferenceCard
@@ -122,9 +123,9 @@ export default function HomePage({file, preview}) {
                 description: "I am alive",
                 href: "#",
                 author: {
-                  name: "Chris D. Macrae",
-                  readingTime: 1000 * 60 * 60 * 5
-                }
+                  name: "Chris D. Macrae"
+                },
+                created_date: ""
               }}
             />
             <ReferenceCard
@@ -134,9 +135,9 @@ export default function HomePage({file, preview}) {
                 description: "I am alive",
                 href: "#",
                 author: {
-                  name: "Chris D. Macrae",
-                  readingTime: 1000 * 60 * 60 * 5
-                }
+                  name: "Chris D. Macrae"
+                },
+                created_date: ""
               }}
             />
           </Col>

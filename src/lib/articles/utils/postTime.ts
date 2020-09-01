@@ -3,7 +3,6 @@ export function getPostTime(date: string | Date) {
   let d = date as Date;
 
   if (typeof date === "string") {
-    console.log(date);
     d = new Date(date);
   }
 
