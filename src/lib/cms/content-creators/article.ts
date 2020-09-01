@@ -32,7 +32,7 @@ export const ArticleContentCreator: ContentCreatorPlugin<Article> = {
         },
         categories: [],
         hero: {
-          variant: "regular"
+          variant: "Regular"
         },
         created_date: now.toUTCString(),
         edited_date: now.toUTCString(),
@@ -42,6 +42,8 @@ export const ArticleContentCreator: ContentCreatorPlugin<Article> = {
         ...defaultData,
         ...values
       }
+
+      delete data["new-branch"];
 
       // loose coercision on purpose!
       if (values["new-branch"] == true) {

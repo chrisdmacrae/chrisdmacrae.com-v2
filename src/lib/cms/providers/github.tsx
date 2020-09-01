@@ -9,8 +9,6 @@ export interface GithubProviderProps {
 export function GithubProvider({ children }: GithubProviderProps) {
   const cms = useCMS();
 
-  useGithubToolbarPlugins();
-
   useEffect(() => {
     const github = new GithubClient({
       proxy: '/api/proxy-github',
@@ -24,7 +22,9 @@ export function GithubProvider({ children }: GithubProviderProps) {
     cms.registerApi('github', github);
 
     cms.media.store = githubMediaStore;
-  })
+  });
+
+  useGithubToolbarPlugins();
   
   return children;
 }
