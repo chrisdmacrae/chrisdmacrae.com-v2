@@ -12,7 +12,7 @@ export const getStaticProps: GetStaticProps = async function ({
   preview,
   previewData,
 }) {
-  const articlePaths = await getAllArticlePaths();
+  const articlePaths = await getAllArticlePaths(preview);
   let props = {
     isEditing: preview ?? false,
     page: {},
