@@ -1,5 +1,7 @@
 import { readdirSync, readFileSync } from 'fs';
+import { getFiles } from 'next-tinacms-github';
 import path from "path";
+import { GitFile } from 'react-tinacms-github/dist/form/useGitFileSha';
 import slugify from 'slugify';
 import { articlesRelPath } from '../articles';
 
@@ -20,9 +22,17 @@ export function getArticleMetaByName (name: string) {
   }
 }
 
-export async function getAllArticlePaths() {
-  const articlesDir = path.resolve(process.cwd(), "./src/lib/articles/content/articles")
-  const fileNames = readdirSync(articlesDir);
+export async function getAllArticlePaths(isEditing?: boolean, branch?: string, accessToken?: string) {
+  const articlesDir = path.resolve(process.cwd(), articlesRelPath)
+  let fileNames = readdirSync(articlesDir);
+
+  if (isEditing) {
+    const branchName = branch ?? process.env.BASE_BRANCH;
+    const currentAccessToken = accessToken ?? process.env.GITHUB_ACCESS_TOKEN;
+    
+    fileNames = (await getFiles(articlesRelPath, process.env.REPO_FULL_NAME, branchName, currentAccessToken) as GitFile[])
+      .map(file => file.fileRelativePath);
+  }
 
   return fileNames.map(fileName => {
     const slug = slugify(

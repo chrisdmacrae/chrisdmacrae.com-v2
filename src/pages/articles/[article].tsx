@@ -1,5 +1,5 @@
 import React from 'react';
-import { GetStaticProps } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
 import { ArticleRoute, getArticleMetaByName, useArticleData } from '../../lib/articles/routes/article';
 import { getAllArticlePaths } from '../../lib/articles/routes/article';
@@ -11,17 +11,17 @@ export const ArticlePage = (props) => {
   );
 }
 
-export async function getStaticPaths() {
-  const paths = (await getAllArticlePaths())
-    .map(article => ({
-      params: {
-        article: article.slug
-      }
-    }));
+export const getStaticPaths: GetStaticPaths = async () => {
+  const allArticles = (await getAllArticlePaths());
+  const paths = allArticles.map(article => ({
+    params: {
+      article: article.slug
+    }
+  }));
 
   return {
     paths,
-    fallback: false
+    fallback: true
   }
 }
 
