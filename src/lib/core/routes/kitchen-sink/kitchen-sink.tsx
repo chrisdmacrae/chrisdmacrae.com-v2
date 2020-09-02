@@ -14,8 +14,6 @@ export function KitchenSinkRoute({ page }) {
     description: data.description
   }
 
-  console.log(data);
-
   usePlugin(form)
 
   return (
