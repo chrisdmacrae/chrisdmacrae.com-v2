@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { Fragment, useContext, useMemo } from 'react';
 import { usePlugin } from 'tinacms';
 import { InlineForm } from 'react-tinacms-inline';
 import { Container, Row, Col } from 'react-bootstrap';
@@ -7,7 +7,6 @@ import { useArticlesForm } from './articles.form';
 import { ReferenceCallout } from '../../../core/components/Reference/Callout';
 import { ReferenceCard } from '../../../core/components/Reference/Card';
 import { Heading } from '../../../core/components/Typography/Heading';
-import AppStateContext from '../../../core/state/app';
 
 export interface ArticlesProps {
   page: any;
@@ -19,7 +18,6 @@ export interface ArticlesProps {
 
 export function ArticlesRoute({ page, articles, footer }: ArticlesProps) {
   const [data, form] = useArticlesForm(page.file);
-  const { colorScheme } = useContext(AppStateContext);
   const featuredArticles = useMemo(() => articles?.filter(article => article.featured === true), [articles]);
   const seo = {
     title: data.title,
@@ -73,8 +71,7 @@ export function ArticlesRoute({ page, articles, footer }: ArticlesProps) {
                       description: "I am alive",
                       href: "#",
                       author: {
-                        name: "Chris D. Macrae",
-                        readingTime: 1000 * 60 * 60 * 5
+                        name: "Chris D. Macrae"
                       }
                     }}
                     key={index}
@@ -89,20 +86,18 @@ export function ArticlesRoute({ page, articles, footer }: ArticlesProps) {
                 All Stories
               </Heading>
               {articles.map((article, index) => (
-                <>
+                <Fragment key={index}>
                   {article.file && (
                     <ReferenceCard
                       size="md"
                       reference={{
                         ...article.file.data,
                         href: `/articles/${article.slug}`,
-                        image: article.file.data.featured_image,
-                        readingTime: 1000 * 60 * 60 * 5
+                        image: article.file.data.featured_image
                       }}
-                      key={index}
-                  />
+                    />
                   )}
-                </>
+                </Fragment>
               ))}
             </Col>
           </Row>
