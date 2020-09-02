@@ -1,8 +1,9 @@
 import React, { useMemo } from "react";
-import { GithubClient, TinacmsGithubProvider } from "react-tinacms-github";
+import { GithubClient, GithubMediaStore, TinacmsGithubProvider } from "react-tinacms-github";
 import { TinaCMS, TinaProvider } from "tinacms";
+import { ArticleContentCreator } from "../content-creators/article";
 import { enterEditMode, exitEditMode } from "../utils/editMode";
-import { GithubProvider } from "./github";
+import { GithubToolbarProvider } from "./github";
 
 export interface CmsProviderProps {
   isEditing: boolean;
@@ -10,8 +11,16 @@ export interface CmsProviderProps {
   children: React.ReactElement;
 }
 
-export function CmsProvider({isEditing, error, children}: CmsProviderProps) {
+export function CmsProvider({ isEditing, error, children }: CmsProviderProps) {
   const cms = useMemo(() => {
+    const github = new GithubClient({
+      proxy: '/api/proxy-github',
+      authCallbackRoute: '/api/create-github-access-token',
+      clientId: process.env.GITHUB_CLIENT_ID,
+      baseRepoFullName: process.env.REPO_FULL_NAME,
+      baseBranch: process.env.BASE_BRANCH
+    });
+    const githubMediaStore = new GithubMediaStore(github);
     const cms = new TinaCMS({
       enabled: isEditing,
       sidebar: {
@@ -19,19 +28,17 @@ export function CmsProvider({isEditing, error, children}: CmsProviderProps) {
       },
       toolbar: {
         hidden: !isEditing
+      },
+      media: {
+        store: githubMediaStore
       }
     });
 
-    cms.registerApi('github', new GithubClient({
-      proxy: '/api/proxy-github',
-      authCallbackRoute: '/api/create-github-access-token',
-      clientId: process.env.GITHUB_CLIENT_ID,
-      baseRepoFullName: process.env.REPO_FULL_NAME,
-      baseBranch: process.env.BASE_BRANCH
-    }));
+    cms.registerApi('github', github);
+    cms.plugins.add(ArticleContentCreator);
 
     return cms;
-  }, [isEditing]);
+  }, []);
 
   return (
     <TinaProvider cms={cms}>
@@ -39,11 +46,10 @@ export function CmsProvider({isEditing, error, children}: CmsProviderProps) {
         editMode={isEditing}
         enterEditMode={enterEditMode}
         exitEditMode={exitEditMode}
-        error={error}
       >
-        <GithubProvider>
+        <GithubToolbarProvider>
           {children}
-        </GithubProvider>
+        </GithubToolbarProvider>
       </TinacmsGithubProvider>
     </TinaProvider>
   )

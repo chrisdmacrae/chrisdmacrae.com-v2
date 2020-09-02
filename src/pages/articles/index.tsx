@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
-import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
 import { getAllArticlePaths } from '../../lib/articles/routes/article';
-import {  articlesRelPath, ArticlesRoute, useArticlesData } from '../../lib/articles/routes/articles';
+import { articlesRelPath, ArticlesRoute, useArticlesData } from '../../lib/articles/routes/articles';
+import { getGithubPreviewData } from '../../lib/cms/utils/getGithubPreviewProps';
 import { footerRelativePath, useFooterData } from '../../lib/core/components/Footer';
 
 export const ArticlesPage = (props) => (
@@ -12,67 +12,66 @@ export const getStaticProps: GetStaticProps = async function ({
   preview,
   previewData,
 }) {
+  const articlePaths = await getAllArticlePaths();
   let props = {
     isEditing: preview ?? false,
-    page: {
-      error: null,
-      file: {
-        fileRelativePath: articlesRelPath,
-        data: (await useArticlesData()).default,
-      }
-    },
+    page: {},
     articles: [],
-    footer: {
-      error: null,
-      file: {
-        fileRelativePath: footerRelativePath,
-        data: (await useFooterData()).default
-      }
-    }
-  }
-
-  for (let articlePath of await getAllArticlePaths()) {
-    let article;
-
-    if (!preview && !process.env.USE_REMOTE) {
-      article = {
-        slug: articlePath.slug,
-        error: null,
-        file: {
-          fileRelativePath: articlePath.articleRelPath,
-          data: (await import(`../../lib/articles/content/articles/${articlePath.fileName}`)).default
-        }
-      }
-    }
-    else {
-      article = {}
-    }
-
-    props.articles.push(article);
+    footer: {}
   }
 
   if (preview || process.env.USE_REMOTE) {
-    const fileProps = await getGithubPreviewProps({
-      working_repo_full_name: process.env.REPO_FULL_NAME,
-      github_access_token: process.env.GITHUB_ACCESS_TOKEN,
-      ...previewData,
-      fileRelativePath: articlesRelPath,
-      parse: parseJson,
-      head_branch: process.env.BASE_BRANCH
-    });
-    const footerProps = await getGithubPreviewProps({
-      working_repo_full_name: process.env.REPO_FULL_NAME,
-      github_access_token: process.env.GITHUB_ACCESS_TOKEN,
-      ...previewData,
-      fileRelativePath: footerRelativePath,
-      parse: parseJson,
-      head_branch: process.env.BASE_BRANCH
-    });
+    const fileProps = await getGithubPreviewData(articlesRelPath, previewData);
+    const articlesProps = await Promise.all(articlePaths.map(async (a) => {
+      const article = await getGithubPreviewData(a.articleRelPath, previewData);
+
+      return {
+        slug: a.slug,
+        ...article.props
+      };
+    }));
+    const footerProps = await getGithubPreviewData(footerRelativePath, previewData);
 
     props = {
       ...props,
       page: fileProps.props,
+      articles: articlesProps,
       footer: footerProps.props
+    }
+  }
+  else {
+    props = {
+      ...props,
+      page: {
+        error: null,
+        file: {
+          fileRelativePath: articlesRelPath,
+          data: (await useArticlesData()).default,
+        }
+      },
+      articles: await Promise.all(articlePaths.map(async (a) => {
+        let article;
+
+        if (!preview && !process.env.USE_REMOTE) {
+          article = {
+            slug: a.slug,
+            error: null,
+            file: {
+              fileRelativePath: a.articleRelPath,
+              data: (await import(`../../lib/articles/content/articles/${a.fileName}`)).default
+            }
+          }
+        }
+
+        return article;
+      })),
+      footer: {
+        error: null,
+        file: {
+          fileRelativePath: footerRelativePath,
+          data: (await useFooterData()).default
+        }
+      }
     }
   }
 
