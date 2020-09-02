@@ -3,7 +3,7 @@ import { GithubClient, GithubMediaStore, TinacmsGithubProvider } from "react-tin
 import { TinaCMS, TinaProvider } from "tinacms";
 import { ArticleContentCreator } from "../content-creators/article";
 import { enterEditMode, exitEditMode } from "../utils/editMode";
-import { GithubProvider, GithubToolbarProvider } from "./github";
+import { GithubToolbarProvider } from "./github";
 
 export interface CmsProviderProps {
   isEditing: boolean;
