@@ -9,7 +9,12 @@
   },
   "created_date": "Wed, 02 Sep 2020 14:36:59 GMT",
   "edited_date": "Wed, 02 Sep 2020 14:36:59 GMT",
-  "body": [],
+  "body": [
+    {
+      "_template": "richText",
+      "content": "We live in a world where management is ubiquitous. The Industrial Age brought upon the corporation, and the corporation the manager. But somewhere along the way, we forgot what the management was truly about.\n\n## The Control Conundrum\n\nWhat _is **control**_? According to the definition from Oxford dictionary, it is:\n\n> The power to influence or direct people's behavior or the course of events\n\nas well as,\n\n> to determine the behaviour or supervise the running of.\n\nSo control is to deciding how people behave, or how life will unfold, and supervising them to ensure that happens?\n\nControl is deterministic, you assert your will, and get the behaviour you want out. But this is not true for human beings, or even when we try to make progress in life.\n\nHow many times have you tried to have a well-planned conversation with someone, or tried to finish a project, to have everything go wrong and not end up anything like you expected? I don't know about you, but I do not believe I can snap my fingers and make people behave the way I want, or have life go the way I want. Anyone who thinks like this is surely setting themselves up for sadness and failure.\n\nBut, lets take a moment, and look at the definition of _**management**_ from the top result, Oxford Dictionary, on Google on September 1, 2020:\n\n> the process of dealing with or controlling things or people.\n\nHow can management be the control of people or things? Isn't this an oxymoron? Isn't this what we revolted against through democracy, the kings who dictated our every action and move?\n\nThat's the _control conundrum_. We live in a world that has forgotten what management is, and instead seeks to control through <abbr title=\"The practice of analyzing and describing a complex phenomenon in terms of phenomena that are held to represent a simpler or more fundamental level, especially when this is said to provide a sufficient explanation.\">reductionism</abbr> and scientific rigour. I mean, if we understand and control the parts, we control the sum, right?\n\n## What is Management?\n\nSo then, what _is, or was,_ management? To understand this, we must move back in time, to the start of the twentieth century, the dawn of the Industrial Age."
+    }
+  ],
   "title": "Management vs Control, A Story",
   "description": "A brief look into the illusion of control, and the misappropriation of control as management in business."
 }
