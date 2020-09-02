@@ -1,0 +1,13 @@
+.richText dfn {
+  color: var(--purple);
+  border-bottom: 1px dotted var(--purple);
+}
+
+.richText h1,
+.richText h2,
+.richText h3,
+.richText h4,
+.richText h5,
+.richText h6 {
+  font-family: var(--font-family-sans-serif) !important;
+}
