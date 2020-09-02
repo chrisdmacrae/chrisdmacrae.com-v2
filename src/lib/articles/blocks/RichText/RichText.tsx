@@ -5,6 +5,7 @@ import html from 'remark-html';
 import { BlocksControls } from "react-tinacms-inline";
 import { useCMS } from "tinacms";
 import { InlineWysiwyg } from "react-tinacms-editor";
+import styles from "./RichText.module.css";
 
 export interface RichTextBlockProps {
   index: number;
@@ -35,7 +36,9 @@ export function RichTextBlock({ index, data }: RichTextBlockProps) {
   return (
     <BlocksControls index={index}>
       <InlineWysiwyg name="content" format="markdown">
-        <div dangerouslySetInnerHTML={{__html: content ?? "<p></p>"}} />
+        <div
+          className={styles["richText"]}
+          dangerouslySetInnerHTML={{ __html: content ?? "<p></p>" }} />
       </InlineWysiwyg>
     </BlocksControls>
   )
