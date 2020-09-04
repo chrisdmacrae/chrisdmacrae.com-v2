@@ -5,11 +5,9 @@ import { ArticleRoute, getArticleMetaByName, useArticleData } from '../../lib/ar
 import { getAllArticlePaths } from '../../lib/articles/routes/article';
 import { footerRelativePath, useFooterData } from '../../lib/core/components/Footer';
 
-export const ArticlePage = (props) => {
-  return (
-    <ArticleRoute {...props} />
-  );
-}
+export const ArticlePage = (props) => (
+  <ArticleRoute {...props} />
+);
 
 export async function getStaticPaths() {
   const paths = (await getAllArticlePaths())

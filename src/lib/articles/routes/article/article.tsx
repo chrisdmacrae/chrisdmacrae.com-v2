@@ -4,7 +4,7 @@ import { InlineBlocks, InlineForm, InlineGroup } from "react-tinacms-inline";
 import { usePlugin } from "tinacms";
 import MainLayout from "../../../core/layouts/Main";
 import FigureBlock from "../../blocks/Figure";
-import RichTextBlock from "../../blocks/RichText";
+import RichTextBlock from "../../blocks/RichText/RichText";
 import { ArticleHero } from "../../components/Hero";
 import { useArticleForm } from "./article.form";
 
@@ -14,6 +14,7 @@ export interface ArticleRouteProps {
 }
 
 export function ArticleRoute({ page, footer }: ArticleRouteProps) {
+  console.log(page);
   const [data, form] = useArticleForm(page.file);
   const seo = {
     title: data.title,
