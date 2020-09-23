@@ -19,7 +19,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false
+    fallback: true
   }
 }
 
@@ -80,7 +80,8 @@ export const getStaticProps: GetStaticProps = async function ({
   }
 
   return {
-    props: props
+    props: props,
+    unstable_revalidate: 10
   }
 }
 
