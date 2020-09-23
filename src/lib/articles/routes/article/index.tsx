@@ -7,7 +7,9 @@ import { articlesRelPath } from '../articles';
 
 export * from "./article";
 
-export const useArticleData = async (articleRelPath: string) => JSON.parse(readFileSync(path.resolve(process.cwd(), articleRelPath), { encoding: "utf-8" }));
+export const useArticleData = async (articleRelPath: string) => {
+  return JSON.parse(readFileSync(path.resolve(process.cwd(), articleRelPath), { encoding: "utf-8" }))
+};
 export const articlesRelDir = 'src/lib/articles/content/articles';
 
 export function getArticleMetaByName (name: string) {

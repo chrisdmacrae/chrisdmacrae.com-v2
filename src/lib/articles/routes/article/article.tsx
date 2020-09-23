@@ -13,9 +13,9 @@ export interface ArticleRouteProps {
   footer: any;
 }
 
-export function ArticleRoute({ page, footer }: ArticleRouteProps) {
-  console.log(page);
-  const [data, form] = useArticleForm(page.file);
+export function ArticleRoute(props: ArticleRouteProps) {
+  const { page, footer } = props;
+  const [data, form] = useArticleForm(page?.file);
   const seo = {
     title: data.title,
     description: data.description

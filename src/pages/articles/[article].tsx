@@ -1,13 +1,22 @@
 import React from 'react';
 import { GetStaticProps } from 'next';
+import { useRouter } from 'next/router'
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
 import { ArticleRoute, getArticleMetaByName, useArticleData } from '../../lib/articles/routes/article';
 import { getAllArticlePaths } from '../../lib/articles/routes/article';
 import { footerRelativePath, useFooterData } from '../../lib/core/components/Footer';
 
-export const ArticlePage = (props) => (
-  <ArticleRoute {...props} />
-);
+export const ArticlePage = (props) => {
+  const route = useRouter();
+
+  if (route.isFallback) {
+    return <>Loading...</>
+  }
+  
+  return (
+    <ArticleRoute {...props} />
+  );
+}
 
 export async function getStaticPaths() {
   const paths = (await getAllArticlePaths())
@@ -31,8 +40,8 @@ export const getStaticProps: GetStaticProps = async function ({
   const fileMeta = await getArticleMetaByName(params.article as string);
   let props = {
     isEditing: preview ?? false,
-    page: {},
-    footer: {}
+    page: {} as any,
+    footer: {} as any
   }
 
   if (preview || process.env.USE_REMOTE) {
@@ -60,11 +69,13 @@ export const getStaticProps: GetStaticProps = async function ({
     }
   }
   else {
+    console.log('works');
     props = {
       ...props,
       page: {
         error: null,
         file: {
+          sha: null,
           fileRelativePath: fileMeta.articleRelPath,
           data: (await useArticleData(fileMeta.articleRelPath)),
         }
@@ -72,6 +83,7 @@ export const getStaticProps: GetStaticProps = async function ({
       footer: {
         error: null,
         file: {
+          sha: null,
           fileRelativePath: footerRelativePath,
           data: (await useFooterData()).default
         }
@@ -81,7 +93,7 @@ export const getStaticProps: GetStaticProps = async function ({
 
   return {
     props: props,
-    unstable_revalidate: 10
+    unstable_revalidate: 60
   }
 }
 
