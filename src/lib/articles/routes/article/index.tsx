@@ -1,8 +1,8 @@
 import { readdirSync, readFileSync } from 'fs';
-import { getFiles } from 'next-tinacms-github';
 import path from "path";
-import { GitFile } from 'react-tinacms-github/dist/form/useGitFileSha';
 import slugify from 'slugify';
+import { getFiles } from 'next-tinacms-github';
+import { GitFile } from 'react-tinacms-github/dist/form/useGitFileSha';
 import { articlesRelPath } from '../articles';
 
 export * from "./article";
