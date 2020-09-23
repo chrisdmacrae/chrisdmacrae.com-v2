@@ -1,0 +1,15 @@
+{
+  "author": {
+    "fullName": "Chris D. Macrae",
+    "photo": "/uploads/photo_chris.png"
+  },
+  "categories": [],
+  "hero": {
+    "variant": "Regular"
+  },
+  "created_date": "Wed, 23 Sep 2020 23:03:43 GMT",
+  "edited_date": "Wed, 23 Sep 2020 23:03:43 GMT",
+  "body": [],
+  "title": "Building Medium with Next.js and TinaCMS",
+  "description": "A tutorial series explaining how I used Next.js, TinaCMS, React Bootstrap, and the Mundana Bootstrap theme to create a Medium-like open source editing experience."
+}
