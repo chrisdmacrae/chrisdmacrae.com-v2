@@ -27,7 +27,7 @@ export function getArticleMetaByName (name: string) {
 
 export async function getAllArticlePaths(isEditing?: boolean, branch?: string, accessToken?: string) {
   const articlesDir = path.resolve(process.cwd(), articlesRelDir);
-  let fileNames = readdirSync(articlesDir);
+  let fileNames;
 
   if (isEditing) {
     const branchName = branch ?? process.env.BASE_BRANCH;
@@ -35,6 +35,9 @@ export async function getAllArticlePaths(isEditing?: boolean, branch?: string, a
     
     fileNames = (await getFiles(articlesRelDir, process.env.REPO_FULL_NAME, branchName, currentAccessToken) as GitFile[])
       .map(file => file.fileRelativePath);
+  }
+  else {
+    fileNames = readdirSync(articlesDir);
   }
 
   return fileNames.map(fileName => {
