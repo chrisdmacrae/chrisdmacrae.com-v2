@@ -12,11 +12,10 @@ export const getStaticProps: GetStaticProps = async function ({
   preview,
   previewData,
 }) {
-  console.log(previewData);
   const articlePaths = await getAllArticlePaths(
     preview,
-    previewData.head_branch,
-    previewData.github_access_token
+    previewData?.head_branch,
+    previewData?.github_access_token
   );
   let props = {
     isEditing: preview ?? false,
