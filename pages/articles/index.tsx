@@ -1,10 +1,6 @@
 import { GetStaticProps } from 'next';
 import { getAllArticlePaths, articlesRelPath, ArticlesRoute, useArticlesData, getGithubPreviewData, footerRelativePath, useFooterData } from 'cdm-ui';
 
-export const ArticlesPage = (props) => (
-  <ArticlesRoute {...props} />
-);
-
 export const getStaticProps: GetStaticProps = async function ({
   preview,
   previewData,
@@ -82,4 +78,4 @@ export const getStaticProps: GetStaticProps = async function ({
   }
 }
 
-export default ArticlesPage;
+export default ArticlesRoute;

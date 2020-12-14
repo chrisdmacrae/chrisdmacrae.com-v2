@@ -1,10 +1,5 @@
 import { GetStaticProps } from 'next';
-import React from 'react';
 import { getGithubPreviewData, kitchenSinkRelativePath, useKitchenSinkData, KitchenSinkRoute } from 'cdm-ui';
-
-export const KitchenSink = (props) => (
-  <KitchenSinkRoute {...props} />
-);
 
 export const getStaticProps: GetStaticProps = async function ({
   preview,
@@ -41,4 +36,4 @@ export const getStaticProps: GetStaticProps = async function ({
   }
 }
 
-export default KitchenSink;
+export default KitchenSinkRoute;

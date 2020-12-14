@@ -1,22 +1,8 @@
-import React from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { useRouter } from 'next/router'
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github';
 import { ArticleRoute, getArticleMetaBySlug, useArticleData } from 'cdm-ui';
 import { getAllArticlePaths } from 'cdm-ui';
 import { footerRelativePath, useFooterData } from 'cdm-ui';
-
-export const ArticlePage = (props) => {
-  const route = useRouter();
-
-  if (route.isFallback) {
-    return <>Loading...</>
-  }
-  
-  return (
-    <ArticleRoute {...props} />
-  );
-}
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = (await getAllArticlePaths())
@@ -112,4 +98,4 @@ export const getStaticProps: GetStaticProps = async function ({
   }
 }
 
-export default ArticlePage;
+export default ArticleRoute;

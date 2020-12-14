@@ -1,12 +1,7 @@
-import React from 'react';
 import { GetStaticProps } from 'next'
 import { homeRelativePath, HomeRoute, useHomeData } from 'cdm-ui';
 import { footerRelativePath, useFooterData } from 'cdm-ui';
 import { getGithubPreviewData } from 'cdm-ui';
-
-export const HomePage = (props) => (
-  <HomeRoute {...props} />
-);
 
 export const getStaticProps: GetStaticProps = async function ({
   preview,
@@ -54,4 +49,4 @@ export const getStaticProps: GetStaticProps = async function ({
   }
 }
 
-export default HomePage;
+export default HomeRoute;
