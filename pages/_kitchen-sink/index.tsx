@@ -1,8 +1,6 @@
 import { GetStaticProps } from 'next';
 import React from 'react';
-import { getGithubPreviewData } from '../../lib/cms/utils/getGithubPreviewProps';
-import { kitchenSinkRelativePath, useKitchenSinkData } from '../../lib/core/routes/kitchen-sink';
-import { KitchenSinkRoute } from '../../lib/core/routes/kitchen-sink/kitchen-sink';
+import { getGithubPreviewData, kitchenSinkRelativePath, useKitchenSinkData, KitchenSinkRoute } from 'cdm-ui';
 
 export const KitchenSink = (props) => (
   <KitchenSinkRoute {...props} />
@@ -32,7 +30,7 @@ export const getStaticProps: GetStaticProps = async function ({
         error: null,
         file: {
           fileRelativePath: kitchenSinkRelativePath,
-          data: (await useKitchenSinkData()).default,
+          data: (await useKitchenSinkData()),
         }
       }
     }

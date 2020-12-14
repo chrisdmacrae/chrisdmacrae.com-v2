@@ -2,7 +2,6 @@ import { readdirSync, readFileSync } from 'fs';
 import path from "path";
 import slugify from 'slugify';
 import { getFiles } from 'next-tinacms-github';
-import { GitFile } from 'react-tinacms-github/dist/form/useGitFileSha';
 import { articlesRelPath } from '../articles';
 
 export * from "./article";
@@ -12,13 +11,13 @@ export const useArticleData = async (articleRelPath: string) => {
 };
 export const articlesRelDir = 'packages/cdm-content/articles/content/articles';
 
-export function getArticleMetaByName (name: string) {
-  const fileName = `${name}.json`;
+export function getArticleMetaBySlug (slug: string) {
+  const fileName = `${slug}.json`;
   const articleRelPath = `${articlesRelDir}/${fileName}`;
   const articleAbsolutePath = path.resolve(process.cwd(), articlesRelPath);
 
   return {
-    slug: name,
+    slug: slug,
     fileName,
     articleRelPath,
     articleAbsolutePath
@@ -27,26 +26,27 @@ export function getArticleMetaByName (name: string) {
 
 export async function getAllArticlePaths(isEditing?: boolean, branch?: string, accessToken?: string) {
   const articlesDir = path.resolve(process.cwd(), articlesRelDir);
-  let fileNames;
+  let filePaths;
 
   if (isEditing) {
+    const repoName = process.env.REPO_FULL_NAME;
     const branchName = branch ?? process.env.BASE_BRANCH;
     const currentAccessToken = accessToken ?? process.env.GITHUB_ACCESS_TOKEN;
-    
-    fileNames = (await getFiles(articlesRelDir, process.env.REPO_FULL_NAME, branchName, currentAccessToken) as GitFile[])
-      .map(file => file.fileRelativePath);
+
+    filePaths = (await getFiles(articlesRelDir, repoName, branchName, currentAccessToken))
+      .map(file => file.replace(articlesRelDir + "/", ""));
   }
   else {
-    fileNames = readdirSync(articlesDir);
+    filePaths = readdirSync(articlesDir);
   }
 
-  return fileNames.map(fileName => {
+  return filePaths.map(fileName => {
     const slug = slugify(
       fileName
         .replace(/\.json$/, '')
     );
     const articleRelPath = `${articlesRelDir}/${fileName}`;
-    const articleAbsolutePath = path.resolve(process.cwd(), articlesRelPath);
+    const articleAbsolutePath = path.resolve(process.cwd(), articleRelPath);
  
     return {
       slug,

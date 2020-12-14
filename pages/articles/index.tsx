@@ -25,9 +25,7 @@ export const getStaticProps: GetStaticProps = async function ({
   if (editing) {
     const fileProps = await getGithubPreviewData(articlesRelPath, previewData);
     const articlesProps = await Promise.all(articlePaths.map(async (a) => {
-      console.log({ a });
       const article = await getGithubPreviewData(a.articleRelPath, previewData);
-      console.log({ article });
 
       return {
         slug: a.slug,
@@ -42,8 +40,6 @@ export const getStaticProps: GetStaticProps = async function ({
       articles: articlesProps,
       footer: footerProps.props
     }
-
-    console.log(props);
   }
   else {
     props = {
@@ -64,7 +60,7 @@ export const getStaticProps: GetStaticProps = async function ({
             error: null,
             file: {
               fileRelativePath: a.articleRelPath,
-              data: (await import(`../../lib/articles/content/articles/${a.fileName}`)).default
+              data: (await import(a.articleRelPath)).default
             }
           }
         }
