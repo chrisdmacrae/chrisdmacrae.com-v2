@@ -7,8 +7,8 @@ import { GithubToolbarProvider } from "./github";
 
 export interface CmsProviderProps {
   isEditing: boolean;
-  sidebar: boolean;
-  toolbar: boolean
+  sidebar?: boolean;
+  toolbar?: boolean
   error: Error,
   children: React.ReactElement;
 }
