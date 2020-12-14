@@ -56,7 +56,7 @@ export const getStaticProps: GetStaticProps = async function ({
             error: null,
             file: {
               fileRelativePath: a.articleRelPath,
-              data: (await import(a.articleRelPath)).default
+              data: (await import(`${process.cwd()}/${a.articleRelPath}`)).default
             }
           }
         }
