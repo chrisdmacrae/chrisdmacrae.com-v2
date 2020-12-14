@@ -8,7 +8,7 @@ import "Mundana/assets/css/main.css";
 import "./_app.css";
 
 export default function App({ Component, pageProps }) {
-  const isEditing = pageProps.isEditing ?? pageProps.preview || false;
+  const isEditing = pageProps.isEditing || pageProps.preview || false;
   const cmsError = pageProps.error;
   const [scheme, setScheme] = useColorScheme("light");
   const setColorScheme = (scheme: ColorSchemes) => {
