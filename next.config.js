@@ -1,4 +1,5 @@
 require('dotenv').config()
+const { resolve } = require("path")
 
 const VERCEL_BRANCH = process.env.VERCEL_GITHUB_COMMIT_REF;
 const SYSTEM_BRANCH = require("child_process")
@@ -13,11 +14,17 @@ module.exports = {
     GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
     REPO_FULL_NAME: process.env.REPO_FULL_NAME,
     BASE_BRANCH: BRANCH ? BRANCH : process.env.BASE_BRANCH,
-    USE_REMOTE: false
+    USE_REMOTE: process.env.USE_REMOTE == "true"
   },
   webpack: (config, options) => {
     config.node = {
       fs: 'empty'
+    }
+
+    config.resolve.alias = {
+      ...(config.resolve.alias || {}),
+      "cdm-content": resolve(__dirname, "./packages/cdm-content"),
+      "cdm-ui": resolve(__dirname, "./packages/cdm-ui"),
     }
 
     return config;
