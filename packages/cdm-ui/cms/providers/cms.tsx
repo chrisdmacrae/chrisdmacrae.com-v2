@@ -23,15 +23,9 @@ export function CmsProvider({ isEditing, error, children }: CmsProviderProps) {
     const githubMediaStore = new GithubMediaStore(github);
     const cms = new TinaCMS({
       enabled: isEditing,
-      sidebar: {
-        hidden: !isEditing
-      },
-      toolbar: {
-        hidden: !isEditing
-      },
-      media: {
-        store: githubMediaStore
-      }
+      sidebar: !isEditing,
+      toolbar: !isEditing,
+      media: githubMediaStore
     });
 
     cms.registerApi('github', github);
@@ -43,9 +37,8 @@ export function CmsProvider({ isEditing, error, children }: CmsProviderProps) {
   return (
     <TinaProvider cms={cms}>
       <TinacmsGithubProvider
-        editMode={isEditing}
-        enterEditMode={enterEditMode}
-        exitEditMode={exitEditMode}
+        onLogin={enterEditMode}
+        onLogout={exitEditMode}
       >
         <GithubToolbarProvider>
           {children}

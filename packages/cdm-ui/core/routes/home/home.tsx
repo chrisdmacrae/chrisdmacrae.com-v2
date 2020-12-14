@@ -6,14 +6,13 @@ import { EditableHeading, Heading } from '../../components/Typography/Heading';
 import { EditableTimeOfDay } from '../../components/TimeOfDay';
 import CoverLayout from '../../layouts/Cover';
 import { EditableParagraph } from '../../components/Typography/Paragraph';
-import { EditLink } from '../../../cms/components/EditLink';
 import { EditableButton } from '../../components/Button';
 import { HomeFormOptions, useHomeForm } from './home.form';
 import styles from "./home.module.css";
-import { GitFile } from 'react-tinacms-github/dist/form/useGitFileSha';
 import { createGithubLink } from '../../utils/createGithubLink';
 import { Footer } from '../../components/Footer/footer';
 import { WaveBg } from '../../components/WaveBg';
+import { GitFile } from 'react-tinacms-github/dist/src/form/useGitFileSha';
 
 export interface HomeProps {
   page: any;

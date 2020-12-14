@@ -1,5 +1,5 @@
 import { useGithubJsonForm } from "react-tinacms-github";
-import { GitFile } from "react-tinacms-github/dist/form/useGitFileSha";
+import { GitFile } from "react-tinacms-github/dist/src/form/useGitFileSha";
 
 export const FooterFormOptions = {
   label: 'Footer',

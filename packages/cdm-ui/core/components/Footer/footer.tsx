@@ -1,8 +1,7 @@
 import React from "react";
 import { Container, Row, Col, SafeAnchor } from "react-bootstrap";
-import { GitFile } from "react-tinacms-github/dist/form/useGitFileSha";
-import { InlineForm, InlineGroup, InlineText } from "react-tinacms-inline";
-import { Form, useCMS, usePlugin } from "tinacms";
+import { GitFile } from "react-tinacms-github/dist/src/form/useGitFileSha";
+import { useCMS, usePlugin } from "tinacms";
 import { EditLink } from "../../../cms/components/EditLink";
 import { useFooterForm } from "./footer.form";
 

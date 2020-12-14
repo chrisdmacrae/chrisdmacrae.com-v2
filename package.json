@@ -21,7 +21,7 @@
     "react-dom": "16.13.1",
     "react-three-fiber": "^4.2.20",
     "react-tinacms-editor": "^0.34.0",
-    "react-tinacms-github": "^0.4.3",
+    "react-tinacms-github": "^0.34.0",
     "react-tinacms-inline": "^0.34.0",
     "remark": "^12.0.1",
     "remark-html": "^12.0.0",

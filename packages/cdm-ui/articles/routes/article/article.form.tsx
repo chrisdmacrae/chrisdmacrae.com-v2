@@ -1,7 +1,7 @@
 import { GithubClient, useGithubJsonForm } from "react-tinacms-github";
-import { GitFile } from "react-tinacms-github/dist/form/useGitFileSha";
 import { useCMS, FormOptions } from "tinacms";
 import { Article } from "cdm-content/articles/models/article";
+import { GitFile } from "react-tinacms-github/dist/src/form/useGitFileSha";
 
 type ArticleFormOptions = (...args: any) => Omit<FormOptions<Article>, "onSubmit">;
 

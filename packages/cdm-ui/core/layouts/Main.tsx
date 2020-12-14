@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { GitFile } from 'react-tinacms-github/dist/form/useGitFileSha';
+import { GitFile } from 'react-tinacms-github/dist/src/form/useGitFileSha';
 import { ColorSchemeToggle } from '../components';
 import { Footer } from '../components';
 import { NavBar } from '../components';
