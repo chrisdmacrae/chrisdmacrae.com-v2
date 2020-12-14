@@ -30,7 +30,7 @@ export const getStaticProps: GetStaticProps = async function ({
     const editing = preview || process.env.USE_REMOTE as unknown as boolean;
     const fileMeta = await getArticleMetaBySlug(slug);
     let props = {
-      isEditing: preview ?? false,
+      isEditing: preview || false,
       page: {} as any,
       footer: {} as any
     }

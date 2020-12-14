@@ -6,7 +6,7 @@ export const getStaticProps: GetStaticProps = async function ({
   previewData,
 }) {
   let props = {
-    isEditing: preview ?? false,
+    isEditing: preview || false,
     page: {}
   }
 

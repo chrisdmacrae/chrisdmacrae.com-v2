@@ -37,6 +37,7 @@ export function CmsProvider({ isEditing, error, children }: CmsProviderProps) {
   return (
     <TinaProvider cms={cms}>
       <TinacmsGithubProvider
+        error={error}
         onLogin={enterEditMode}
         onLogout={exitEditMode}
       >

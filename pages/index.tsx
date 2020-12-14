@@ -9,7 +9,7 @@ export const getStaticProps: GetStaticProps = async function ({
 }) {
   const editing = preview || process.env.USE_REMOTE as unknown as boolean;
   let props = {
-    isEditing: preview ?? false,
+    isEditing: preview || false,
     page: {},
     footer: {}
   }

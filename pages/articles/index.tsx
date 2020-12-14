@@ -12,7 +12,7 @@ export const getStaticProps: GetStaticProps = async function ({
     previewData?.github_access_token
   );
   let props = {
-    isEditing: preview ?? false,
+    isEditing: preview || false,
     page: {},
     articles: [],
     footer: {}
