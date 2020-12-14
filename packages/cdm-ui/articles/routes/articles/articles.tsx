@@ -97,20 +97,19 @@ export function ArticlesRoute({ page, articles, footer }: ArticlesProps) {
                 All Stories
               </Heading>
               {articles.map((article, index) => (
-                  <Fragment key={index}>
-                    {article.file && (
-                      <ReferenceCard
-                        size="md"
-                        reference={{
-                          ...article.file.data,
-                          href: `/articles/${article.slug}`,
-                          image: article.file.data.featured_image
-                        }}
-                      />
-                    )}
-                  </Fragment>
-                )
-              })}
+                <Fragment key={index}>
+                  {article.file && (
+                    <ReferenceCard
+                      size="md"
+                      reference={{
+                        ...article.file.data,
+                        href: `/articles/${article.slug}`,
+                        image: article.file.data.featured_image
+                      }}
+                    />
+                  )}
+                </Fragment>
+              ))}
             </Col>
           </Row>
         </Container>
