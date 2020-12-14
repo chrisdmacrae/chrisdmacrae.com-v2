@@ -25,13 +25,8 @@ export function CmsProvider({ isEditing, sidebar = true, toolbar = true, error, 
     const githubMediaStore = new GithubMediaStore(github);
     const cms = new TinaCMS({
       enabled: isEditing,
-<<<<<<< HEAD:packages/cdm-ui/cms/providers/cms.tsx
-      sidebar: !isEditing,
-      toolbar: !isEditing,
-=======
       sidebar,
       toolbar,
->>>>>>> main:src/lib/cms/providers/cms.tsx
       media: githubMediaStore
     });
 
