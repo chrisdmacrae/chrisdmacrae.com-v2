@@ -69,6 +69,7 @@ export function WaveBg() {
           overflow: hidden;
           animation: scale 10s ease infinite;
           mix-blend-mode: overlay;
+          opacity: 0.25;
         }
 
         .gradient-overlay {

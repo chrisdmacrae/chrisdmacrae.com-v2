@@ -33,85 +33,87 @@ export function HomeRoute(props: HomeProps) {
   usePlugin(form);
 
   return (
-    <InlineForm form={form}>
-      <WaveBg />
-      <CoverLayout seo={seo}>
-        {{
-          cover: (
-            <Container>
-              <Row>
-                <Col>
-                  <Heading>
-                    <EditableTimeOfDay
-                      name="cover.subline"
-                      morning={data.cover.subline.morning}
-                      afternoon={data.cover.subline.afternoon}
-                      evening={data.cover.subline.evening}
-                    />
-                  </Heading>
-                  <EditableHeading
-                    name="cover.headline"
-                    as="h1"
-                    bold={true}
-                    className="secondfont">
-                    {data.cover.headline}
-                  </EditableHeading>
-                  <EditableParagraph name="cover.body" className="lead">
-                    {data.cover.body}
-                  </EditableParagraph>
-                  <Row className={`${styles.coverCta} align-items-center pt-3`}>
-                    {data.cover.ctas.map((cta, i) => {
-                      const fields = (() => {
-                        let coverFields = HomeFormOptions.fields
-                          .filter(field => field.name === "cover")[0];
+    <div id={styles.home}>
+      <InlineForm form={form}>
+        <WaveBg />
+        <CoverLayout seo={seo}>
+          {{
+            cover: (
+              <Container>
+                <Row>
+                  <Col>
+                    <Heading>
+                      <EditableTimeOfDay
+                        name="cover.subline"
+                        morning={data.cover.subline.morning}
+                        afternoon={data.cover.subline.afternoon}
+                        evening={data.cover.subline.evening}
+                      />
+                    </Heading>
+                    <EditableHeading
+                      name="cover.headline"
+                      as="h1"
+                      bold={true}
+                      className="secondfont">
+                      {data.cover.headline}
+                    </EditableHeading>
+                    <EditableParagraph name="cover.body" className="lead">
+                      {data.cover.body}
+                    </EditableParagraph>
+                    <Row className={`${styles.coverCta} align-items-center pt-3`}>
+                      {data.cover.ctas.map((cta, i) => {
+                        const fields = (() => {
+                          let coverFields = HomeFormOptions.fields
+                            .filter(field => field.name === "cover")[0];
 
-                        let ctasFields = coverFields.fields
-                          .filter(field => field.name === "ctas")[0];
+                          let ctasFields = coverFields.fields
+                            .filter(field => field.name === "ctas")[0];
 
-                        return ctasFields.fields;
-                      })();
-                      let children;
+                          return ctasFields.fields;
+                        })();
+                        let children;
 
-                      switch (cta.type) {
-                        case "button":
-                          children = (
-                            <EditableButton name="text" className="d-inline-block">
-                              {cta.text}
-                            </EditableButton>
-                          );
-                          break;
-                        default:
-                          children = (
-                            <EditableParagraph name="text" className="mb-0">
-                              {cta.text}
-                            </EditableParagraph>
-                          );
-                      }
+                        switch (cta.type) {
+                          case "button":
+                            children = (
+                              <EditableButton name="text" className="d-inline-block">
+                                {cta.text}
+                              </EditableButton>
+                            );
+                            break;
+                          default:
+                            children = (
+                              <EditableParagraph name="text" className="mb-0">
+                                {cta.text}
+                              </EditableParagraph>
+                            );
+                        }
 
-                      return (
-                        <Col xs="auto" key={i}>
-                          <InlineGroup
-                            name={`cover.ctas.${i}`}
-                            fields={fields}>
-                            <SafeAnchor
-                              href={isEditing ? "#" : cta.href}
-                              key={i}>
-                              {children}
-                            </SafeAnchor>
-                          </InlineGroup>
-                        </Col>
-                      );
-                    })}
-                  </Row>
-                </Col>
-              </Row>
-            </Container>
-          ),
-          coverFooter: <Footer file={footer.file} repoPath={repo_path} />,
-          default: (<></>)
-        }}
-      </CoverLayout>
-    </InlineForm>
+                        return (
+                          <Col xs="auto" key={i}>
+                            <InlineGroup
+                              name={`cover.ctas.${i}`}
+                              fields={fields}>
+                              <SafeAnchor
+                                href={isEditing ? "#" : cta.href}
+                                key={i}>
+                                {children}
+                              </SafeAnchor>
+                            </InlineGroup>
+                          </Col>
+                        );
+                      })}
+                    </Row>
+                  </Col>
+                </Row>
+              </Container>
+            ),
+            coverFooter: <Footer file={footer.file} repoPath={repo_path} />,
+            default: (<></>)
+          }}
+        </CoverLayout>
+      </InlineForm>
+    </div>
   );
 }
 

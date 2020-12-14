@@ -24,7 +24,7 @@ export default function App({ Component, pageProps }) {
   const WrapperClasses = ({children}) => {
     const cms = useCMS();
     const isEditing = cms.enabled;
-    const classNames = [];
+    const classNames = ['h-100'];
 
     classNames.push(isEditing ? "is-editing" : "is-not-editing");
 

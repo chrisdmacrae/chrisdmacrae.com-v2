@@ -1,6 +1,4 @@
-import { useState } from "react";
 import { BlocksControls } from "react-tinacms-inline";
-import { useCMS } from "tinacms";
 import { Figure, FigureVariants } from "../components/Figure";
 
 export interface RichTextBlockProps {

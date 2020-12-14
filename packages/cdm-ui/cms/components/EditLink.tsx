@@ -8,15 +8,15 @@ export interface EditLinkProps {
 export const EditLink = ({ children }: EditLinkProps) => {
   const cms = useCMS();
   const isEditing = cms.enabled;
-  let message: React.ReactChild = isEditing ? 'Exit edit modedsafdsdasf' : 'Edit this site'
+  let message: React.ReactChild = isEditing ? 'Exit edit mode' : 'Edit this site'
 
   if (children) {
     message = children;
   }
 
   return (
-    <span onClick={isEditing ? cms.enable : cms.disable}>
+    <a href="#" onClick={() => cms.toggle()}>
       {message}
-    </span>
+    </a>
   )
 }

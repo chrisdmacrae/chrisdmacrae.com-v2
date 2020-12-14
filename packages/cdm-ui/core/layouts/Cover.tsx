@@ -20,10 +20,10 @@ export default function CoverLayout({ seo, children }: CoverLayoutProps) {
       <div className="cover-container d-flex h-100 mx-auto flex-column">
         <div className="mb-auto">
         <NavBar>
-        {{
-          middle: <ColorSchemeToggle />
-        }}
-      </NavBar>
+          {{
+            middle: <ColorSchemeToggle />
+          }}
+        </NavBar>
         </div>
         <div className="inner cover">
           {c.cover ? c.cover : null}
