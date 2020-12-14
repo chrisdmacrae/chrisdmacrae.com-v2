@@ -7,11 +7,13 @@ import { GithubToolbarProvider } from "./github";
 
 export interface CmsProviderProps {
   isEditing: boolean;
+  sidebar?: boolean;
+  toolbar?: boolean
   error: Error,
   children: React.ReactElement;
 }
 
-export function CmsProvider({ isEditing, error, children }: CmsProviderProps) {
+export function CmsProvider({ isEditing, sidebar = true, toolbar = true, error, children }: CmsProviderProps) {
   const cms = useMemo(() => {
     const github = new GithubClient({
       proxy: '/api/proxy-github',
@@ -23,8 +25,8 @@ export function CmsProvider({ isEditing, error, children }: CmsProviderProps) {
     const githubMediaStore = new GithubMediaStore(github);
     const cms = new TinaCMS({
       enabled: isEditing,
-      sidebar: !isEditing,
-      toolbar: !isEditing,
+      sidebar,
+      toolbar,
       media: githubMediaStore
     });
 

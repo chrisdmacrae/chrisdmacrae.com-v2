@@ -2,7 +2,7 @@ import { createHash } from "crypto";
 import { ContentCreatorPlugin, TinaCMS } from "tinacms";
 import { GithubClient } from "react-tinacms-github";
 import slugify from "slugify";
-import { Article } from "../../articles";
+import { Article, articlesRelDir } from "../../articles";
 
 export const ArticleContentCreator: ContentCreatorPlugin<Article> = {
   __type: "content-creator",
@@ -18,7 +18,7 @@ export const ArticleContentCreator: ContentCreatorPlugin<Article> = {
       const now = new Date();
       const dateString = now.toISOString().slice(0,10);
       const slug = `${dateString}-${slugify(values.title)}`.toLowerCase();
-      const filePath = `src/lib/articles/content/articles/${slug}.json`;
+      const filePath = `${articlesRelDir}/${slug}.json`;
       const SHA = createHash("sha256");
       const sha = SHA.update(filePath).digest().toString();
       const branch = `article/${slug}`;
