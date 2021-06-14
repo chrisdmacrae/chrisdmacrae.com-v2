@@ -1,6 +1,0 @@
-#articles,
-#articles > div,
-#articles > div > div {
-  min-height: 100%;
-  height: 100%;
-}
