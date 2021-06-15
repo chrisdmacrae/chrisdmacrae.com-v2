@@ -22,7 +22,7 @@ export const Link: React.FC<LinkProps> = ({
 
   return (
     <Box className={classNames.join(' ')}>
-      <NextLink href={href} as={href} prefetch={true}>
+      <NextLink href={href} prefetch={true}>
         {children}
       </NextLink>
     </Box>

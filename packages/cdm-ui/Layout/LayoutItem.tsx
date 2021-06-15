@@ -42,7 +42,7 @@ export const LayoutItem: React.FC<LayoutItemProps> = ({ as = 'div', align, id, s
   if (props.twoFifths) classNames.push(styles.LayoutTwoFifths);
   if (props.threeFifths) classNames.push(styles.LayoutThreeFifths);
   if (props.fourFifths) classNames.push(styles.LayoutFourFifths);
-  if (span) vars['--layout-item-width'] = `${span}%`;
+  if (span) vars['--layout-item-width'] = span;
 
   return (
     <Element 

@@ -1,0 +1,6 @@
+.BasicLayout {
+  --layout-copy-size: 1rem;
+  --layout-heading-size: 1.33rem;
+
+  font-size: var(--layout-copy-size);
+}
