@@ -1,5 +1,5 @@
 .Box {
-  --box-background: transparent;
+  --box-background: rgba(0, 0, 0, 0);
   --box-padding: 0rem;
   --box-padding-vertical: var(--box-padding);
   --box-padding-horizontal: var(--box-padding);
@@ -8,6 +8,7 @@
   --box-padding-top: var(--box-padding-vertical);
   --box-padding-bottom: var(--box-padding-vertical);
 
+  background: transparent;
   background: var(--box-background);
   padding-left: var(--box-padding-left);
   padding-right: var(--box-padding-right);

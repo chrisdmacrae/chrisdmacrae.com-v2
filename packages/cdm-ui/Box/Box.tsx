@@ -1,11 +1,12 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import styles from './Box.module.css';
 
 export type BoxProps = {
-  as?: keyof JSX.IntrinsicElements | ReactNode;
+  as?: keyof JSX.IntrinsicElements;
   className?: string;
   padding?: number | string;
   style?: React.CSSProperties;
+  inline?: boolean;
 } & {
   [key: string]: any;
 }

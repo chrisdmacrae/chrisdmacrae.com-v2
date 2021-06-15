@@ -1,5 +1,16 @@
-.Layout {}
+.Layout {
+  --layout-copy-size: 1rem;
+  --layout-heading-size: 1.33rem;
+
+  font-size: var(--layout-copy-size);
+}
 
 .Layout [id=posts] {
-  font-size: 1.33rem;
+  font-size: var(--layout-heading-size);
+}
+
+@media screen and (max-width: 767px) {
+  .Layout [id=posts] > * > * {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
 }

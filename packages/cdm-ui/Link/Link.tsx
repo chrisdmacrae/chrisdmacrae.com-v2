@@ -1,5 +1,4 @@
 import NextLink from 'next/link';
-import { BoxProps } from 'cdm-ui';
 import { Box } from 'cdm-ui/Box';
 import styles from './Link.module.css';
 

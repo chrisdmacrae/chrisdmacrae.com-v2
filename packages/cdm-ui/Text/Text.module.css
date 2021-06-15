@@ -1,4 +1,9 @@
 .Text {
+  --text-color: inherit;
+  --text-line-height: 1.66rem;
+
   font-family: sans-serif;
   font-size: 1em;
+  color: var(--text-color);
+  line-height: var(--text-line-height);
 }
