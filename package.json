@@ -11,13 +11,14 @@
   "dependencies": {
     "bootstrap": "^4.5.2",
     "dotenv": "^8.2.0",
+    "gray-matter": "^4.0.3",
     "next": "^10.0.3",
     "react": "16.13.1",
     "react-aria": "^0.9.5",
     "react-dom": "16.13.1",
     "react-three-fiber": "^4.2.20",
-    "remark": "^12.0.1",
-    "remark-html": "^12.0.0",
+    "remark": "^13.0.0",
+    "remark-html": "^13.0.1",
     "remark-preset-lint-markdown-style-guide": "^3.0.1",
     "slugify": "^1.4.5",
     "vercel": "^19.1.1"

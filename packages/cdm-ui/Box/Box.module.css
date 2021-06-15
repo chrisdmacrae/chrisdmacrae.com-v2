@@ -1,0 +1,16 @@
+.Box {
+  --box-background: transparent;
+  --box-padding: 0rem;
+  --box-padding-vertical: var(--box-padding);
+  --box-padding-horizontal: var(--box-padding);
+  --box-padding-left: var(--box-padding-horizontal);
+  --box-padding-right: var(--box-padding-horizontal);
+  --box-padding-top: var(--box-padding-vertical);
+  --box-padding-bottom: var(--box-padding-vertical);
+
+  background: var(--box-background);
+  padding-left: var(--box-padding-left);
+  padding-right: var(--box-padding-right);
+  padding-top: var(--box-padding-top);
+  padding-bottom: var(--box-padding-bottom);
+}

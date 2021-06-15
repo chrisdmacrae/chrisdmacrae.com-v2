@@ -1,0 +1,71 @@
+.Layout {
+  --layout-width: 1200px;
+  --layout-direction: column;
+  --layout-height: auto;
+  --layout-wrap: wrap;
+  --layout-gap: space-between;
+  --layout-gutter: 0px;
+
+  display: flex;
+  flex-wrap: wrap-reverse;
+  align-content: center;
+  justify-content: var(--layout-gap);
+  flex-wrap: var(--layout-wrap);
+  flex-direction: var(--layout-direction);
+  width: auto;
+  max-width: var(--layout-width);
+  height: auto;
+  max-height: var(--layout-height);
+  padding-right: var(--layout-gutter);
+}
+
+.LayoutItem {
+  --layout-item-width: 100;
+
+  flex-basis: calc((var(--layout-width) * var(--layout-item-width)) - var(--layout-gutter));
+  padding-top: var(--layout-gutter);
+  padding-left: var(--layout-gutter);
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: calc(100% - 200px);
+}
+
+.LayoutOneHalf {
+  --layout-item-width: 0.5;
+}
+
+.LayoutOneThird {
+  --layout-item-width: 0.333;
+}
+
+.LayoutTwoThirds {
+  --layout-item-width: 0.666;
+}
+
+.LayoutOneFourth {
+  --layout-item-width: 0.25;
+}
+
+.LayoutTwoFourths {
+  --layout-item-width: 0.5;
+}
+
+.LayoutThreeFourths {
+  --layout-item-width: 0.75;
+}
+
+.LayoutOneFifth {
+  --layout-item-width: 0.2;
+}
+
+.LayoutTwoFifths {
+  --layout-item-width: 0.4;
+}
+
+.LayoutThreeFifths {
+  --layout-item-width: 0.6;
+}
+
+.LayoutFourFifths {
+  --layout-item-width: 0.8;
+}

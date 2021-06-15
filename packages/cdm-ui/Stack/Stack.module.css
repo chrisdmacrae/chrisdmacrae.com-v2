@@ -1,0 +1,74 @@
+.Stack {
+  --stack-direction: column;
+  --stack-width: auto;
+  --stack-height: auto;
+
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: var(--stack-direction);
+  width: var(--stack-width);
+  height: var(--stack-height);
+}
+
+.StackItem {
+  --stack-size: 1;
+  --stack-order: 0;
+
+  order: var(--stack-order);
+  flex-basis: var(--stack-size);
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.InlineStack {
+  display: inline-flex;
+}
+
+.AlignStart {
+  align-self: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  justify-content: flex-start;
+}
+
+.AlignMiddle {
+  align-self: center;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.AlignEnd {
+  align-self: flex-end;
+  align-items: flex-end;
+  align-content: flex-end;
+}
+
+.PositionStart {
+  margin-right: auto;
+}
+
+.PositionMiddle {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.PositionEnd {
+  margin-left: auto;
+}
+
+.Stretch {
+  align-items: stretch;
+}
+
+.GapApart {
+  justify-content: space-between;
+}
+
+.GapEvenly {
+  justify-content: space-evenly;
+}
+
+.GapAround {
+  justify-content: space-around;
+}

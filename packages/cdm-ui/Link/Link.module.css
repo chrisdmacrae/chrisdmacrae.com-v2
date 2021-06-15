@@ -1,0 +1,27 @@
+.Link {
+  color: inherit;
+}
+
+.Link h1,
+.Link h2,
+.Link h3,
+.Link h4,
+.Link h5,
+.Link h6 {
+  display: inline;
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  transition: background-size .3s;
+}
+
+.Link:hover h1,
+.Link:hover h2,
+.Link:hover h3,
+.Link:hover h4,
+.Link:hover h5,
+.Link:hover h6 {
+  background-size: 100% 2px;
+}
