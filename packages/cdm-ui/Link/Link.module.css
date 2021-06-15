@@ -1,6 +1,7 @@
 .Link {
   color: inherit;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .Link h1,
@@ -11,10 +12,10 @@
 .Link h6 {
   display: inline;
   text-decoration: none;
-  background-image: linear-gradient(currentColor, currentColor);
+  background-image: linear-gradient(to right, #EB5454, #DF8383);
   background-position: 0% 100%;
   background-repeat: no-repeat;
-  background-size: 0% 2px;
+  background-size: 0% 5px;
   transition: background-size .3s;
 }
 
@@ -24,5 +25,5 @@
 .Link:hover h4,
 .Link:hover h5,
 .Link:hover h6 {
-  background-size: 100% 2px;
+  background-size: 100% 5px;
 }

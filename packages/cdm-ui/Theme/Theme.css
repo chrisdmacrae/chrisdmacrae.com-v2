@@ -1,6 +1,9 @@
 :root {
+  --cdm-color-white-0: white;
+  --cdm-color-white-1: rgb(241, 238, 229);
   --cdm-color-primary: black;
   --cdm-color-secondary: white;
+  --cdm-background: var(--cdm-color-white-1);
 }
 
 html,
@@ -10,4 +13,5 @@ body,
   padding: 0;
   min-width: 100%;
   min-height: 100%;
+  background: var(--cdm-background);
 }

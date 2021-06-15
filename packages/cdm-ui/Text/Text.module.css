@@ -1,9 +1,28 @@
 .Text {
+  --text-size: 1em;
   --text-color: inherit;
-  --text-line-height: 1.66rem;
+  --text-line-height: 1.66em;
 
   font-family: sans-serif;
-  font-size: 1em;
+  font-size: var(--text-size);
   color: var(--text-color);
   line-height: var(--text-line-height);
+}
+
+.Highlight {
+  margin: 0 -0.4em;
+  padding: 0.1em 0.4em;
+  box-decoration-break: clone;
+  border-radius: 2em 0.8em;
+  background: transparent;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 225, 0, 0.1),
+    rgba(255, 225, 0, 0.7) 4%,
+    rgba(255, 225, 0, 0.3)
+  );
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  transition: background-size .3s;
 }

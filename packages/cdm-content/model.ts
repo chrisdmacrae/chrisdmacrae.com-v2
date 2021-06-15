@@ -1,6 +1,6 @@
 export type BaseModel = {
-  created: Date;
-  updated: Date;
+  created: string | Date;
+  updated: string | Date;
   createdBy: Author
 }
 

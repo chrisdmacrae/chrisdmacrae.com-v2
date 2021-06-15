@@ -26,6 +26,14 @@ export async function getPostBySlug(slug, fields = []): Promise<PostModel> {
 
   // Ensure only the minimal needed data is exposed
   fields.forEach((field) => {
+    if (data[field]) {
+      post[field] = data[field]
+    }
+
+    if (field === 'created' || field === 'updated') {
+      post[field] = new Date(data[field]).toDateString()
+    }
+
     if (field === 'slug') {
       post[field] = realSlug
     }
@@ -37,14 +45,10 @@ export async function getPostBySlug(slug, fields = []): Promise<PostModel> {
     if (field === 'rawContent') {
       post[field] = content
     }
-
-    if (data[field]) {
-      post[field] = data[field]
-    }
   })
 
   if (fields.length === 0) {
-    post = { ...data, rawContent: content, content } as PostModel
+    post = { ...data, rawContent: content, content, updated: new Date(data.updated).toDateString(), created: new Date(data.created).toDateString() } as PostModel
   }
 
   if (post.content) {

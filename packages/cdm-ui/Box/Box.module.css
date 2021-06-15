@@ -1,5 +1,6 @@
 .Box {
   --box-background: rgba(0, 0, 0, 0);
+
   --box-padding: 0rem;
   --box-padding-vertical: var(--box-padding);
   --box-padding-horizontal: var(--box-padding);
@@ -8,10 +9,24 @@
   --box-padding-top: var(--box-padding-vertical);
   --box-padding-bottom: var(--box-padding-vertical);
 
+  --box-radius: 0rem;
+  --box-radius-top-right: var(--box-radius);
+  --box-radius-top-left: var(--box-radius);
+  --box-radius-bottom-right: var(--box-radius);
+  --box-radius-bottom-left: var(--box-radius);
+
   background: transparent;
   background: var(--box-background);
   padding-left: var(--box-padding-left);
   padding-right: var(--box-padding-right);
   padding-top: var(--box-padding-top);
   padding-bottom: var(--box-padding-bottom);
+  border-top-right-radius: var(--box-radius-top-right);
+  border-top-left-radius: var(--box-radius-top-left);
+  border-bottom-right-radius: var(--box-radius-bottom-right);
+  border-bottom-left-radius: var(--box-radius-bottom-left);
+}
+
+.InlineBox {
+  display: inline-block;
 }

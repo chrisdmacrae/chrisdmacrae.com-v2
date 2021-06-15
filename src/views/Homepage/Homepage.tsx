@@ -36,13 +36,19 @@ export const Homepage: React.FC<HomepageProps> = ({ posts }) => {
         <Layout.Item id="posts">
           <Stack stretch>
             {posts?.map((post, i) => (
-              <Box padding={16}>
+              <Box padding={16} className='post'>
                 <Link href="https://example.com">
-                  <>
-                    <Text>#{i + 1}</Text>
-                    <Heading as='h2'>{post.title}</Heading>
-                    <Text>{post.description}</Text>
-                  </>
+                  <Stack align="start" direction={breakpoints.md ? 'horizontal' : 'vertical'}>
+                    <Text highlight>#{i + 1}</Text>
+                    <Stack.Item>
+                      <Heading as='h2'>{post.title}</Heading>
+                      <Text>{post.description}</Text>
+                      <Text size={breakpoints.md ? 'xs' : 'sm'} muted>
+                        Posted on {new Date(post.created).toLocaleDateString()} · 
+                        Last updated {new Date(post.updated).toLocaleDateString()}
+                      </Text>
+                    </Stack.Item>
+                  </Stack>
                 </Link>
               </Box>
             ))}
