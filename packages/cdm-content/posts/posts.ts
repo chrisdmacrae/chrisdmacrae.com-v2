@@ -17,20 +17,17 @@ const postsDirectory = join(process.cwd(), 'packages/cdm-content/posts')
 export function getPostPaths() {
   return fs.readdirSync(postsDirectory)
     .filter(f => f.endsWith('md'))
-    .map(slug => slug.replace(/\.md$/, ''))
+    .map(path => path.replace(/\.md$/, ''))
 }
 
-export async function getPostSlugs() {
-  const paths = getPostPaths();
-  const posts = await Promise.all(paths.map(p => getPostBySlug(p)));
-  const slugs = posts
-    .filter(p => p !== null)
-    .map(p => p.slug);
+export function getPostSlugs() {
+  const slugs = getPostPaths()
+    .map(p => `/articles/${p}`);
 
   return slugs;
 }
 
-export async function getPostBySlug(slug, fields = []): Promise<PostModel> {
+export async function getPostBySlug(slug: string, fields = []): Promise<PostModel> {
   const realPath = slug.replace('/articles/', '')
   const fullPath = join(postsDirectory, `${realPath}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
