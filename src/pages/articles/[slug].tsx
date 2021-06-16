@@ -16,6 +16,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const slug = context.params.slug;
   const posts = await getAllPosts();
   const post = await getPostBySlug(slug);
+
+  if (post === null) {
+    return {
+      notFound: true
+    }
+  }
+
   const postIndex = posts?.findIndex(p => p.slug === `/articles/${post.slug}`);
   const prev = postIndex > -1 ? posts[postIndex + 1] : null;
   const next = postIndex > -1 ? posts[postIndex - 1] : null;

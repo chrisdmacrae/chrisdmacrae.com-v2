@@ -20,9 +20,13 @@ export function getPostPaths() {
     .map(slug => slug.replace(/\.md$/, ''))
 }
 
-export function getPostSlugs() {
-  return getPostPaths()
-    .map(slug => `/articles/${slug}`)
+export async function getPostSlugs() {
+  const paths = getPostPaths();
+  const slugs = await paths.map(p => getPostBySlug(p))
+    .filter(p => p !== null)
+    .map(async p => (await p).slug);
+
+  return slugs;
 }
 
 export async function getPostBySlug(slug, fields = []): Promise<PostModel> {
