@@ -6,7 +6,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getAllPosts();
 
   return {
-    paths: posts.map(p => ({ params: { path: p.slug.replace('/article/', '') }})),
+    paths: posts.map(p => ({ params: { path: p.slug.replace('/articles/', '') }})),
     fallback: 'blocking'
   }
 }
