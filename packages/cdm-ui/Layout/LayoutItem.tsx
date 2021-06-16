@@ -2,9 +2,9 @@ import React from "react";
 import styles from './Layout.module.css';
 import stackStyles from '../Stack/Stack.module.css';
 const {
-  AlignSelfStart,
-  AlignSelfMiddle,
-  AlignSelfEnd
+  AlignStart,
+  AlignMiddle,
+  AlignEnd
 } = stackStyles;
 
 export type LayoutItemProps = {
@@ -29,9 +29,9 @@ export const LayoutItem: React.FC<LayoutItemProps> = ({ as = 'div', align, id, s
   const classNames = [styles.LayoutItem];
   const vars = {};
 
-  if (align === 'start') classNames.push(AlignSelfStart);
-  if (align === 'middle') classNames.push(AlignSelfMiddle);
-  if (align === 'end') classNames.push(AlignSelfEnd);
+  if (align === 'start') classNames.push(AlignStart);
+  if (align === 'middle') classNames.push(AlignMiddle);
+  if (align === 'end') classNames.push(AlignEnd);
   if (props.oneHalf) classNames.push(styles.LayoutOneHalf);
   if (props.oneThird) classNames.push(styles.LayoutOneThird);
   if (props.twoThirds) classNames.push(styles.LayoutTwoThirds);

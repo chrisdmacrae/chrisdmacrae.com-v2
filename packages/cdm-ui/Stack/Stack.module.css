@@ -2,10 +2,12 @@
   --stack-direction: column;
   --stack-width: auto;
   --stack-height: auto;
+  --stack-gap: 0;
 
   display: flex;
   flex-wrap: nowrap;
   flex-direction: var(--stack-direction);
+  gap: var(--stack-gap);
   width: var(--stack-width);
   height: var(--stack-height);
 }

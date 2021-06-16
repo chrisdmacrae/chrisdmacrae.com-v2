@@ -14,7 +14,7 @@ export type BuiltInBreakpoints = Breakpoints & {
   xxl: number
 }
 
-export const useBreakpoints = <BreakpointsShape = Breakpoints>(scopedBreakpoints?: BreakpointsShape) => {
+export const useBreakpoints = <BreakpointsShape = Breakpoints>(scopedBreakpoints?: BreakpointsShape, local?: boolean) => {
   const theme = useContext(ThemeContext);
   const breakpoints = { ...theme.breakpoints, ...(scopedBreakpoints || {}) };
   const [currentViewport, setCurrentViewport] = useState(0);
@@ -38,7 +38,7 @@ export const useBreakpoints = <BreakpointsShape = Breakpoints>(scopedBreakpoints
     else bpState[name] = false;
 
     return bpState;
-  }, {}) as BuiltInBreakpoints & BreakpointsShape;
+  }, {}) as Record<keyof BuiltInBreakpoints & keyof BreakpointsShape, boolean>;
 }
 
 const getViewport = () => {

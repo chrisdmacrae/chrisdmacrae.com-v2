@@ -21,6 +21,7 @@
   padding-right: var(--box-padding-right);
   padding-top: var(--box-padding-top);
   padding-bottom: var(--box-padding-bottom);
+  border: none;
   border-top-right-radius: var(--box-radius-top-right);
   border-top-left-radius: var(--box-radius-top-left);
   border-bottom-right-radius: var(--box-radius-bottom-right);
@@ -29,4 +30,17 @@
 
 .InlineBox {
   display: inline-block;
+}
+
+.AlignLeft {
+  margin-right: auto;
+}
+
+.AlignRight {
+  margin-left: auto;
+}
+
+.AlignCenter {
+  margin-left: auto;
+  margin-right: auto;
 }

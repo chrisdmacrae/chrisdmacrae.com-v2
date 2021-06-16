@@ -1,15 +1,15 @@
-.Homepage [id=posts] {
+.Homepage [id=articles] {
   font-size: var(--layout-heading-size);
 }
 
 @media screen and (max-width: 767px) {
-  .Homepage [id=posts] > * > * {
+  .Homepage [id=articles] > * > * {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
 }
 
 @media screen and (min-width: 768px) {
-  .Homepage [class*=post] [class*=StackItem]:first-child {
+  .Homepage [class*=articles] [class*=StackItem]:first-child {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.3em;
     font-weight: lighter;

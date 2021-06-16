@@ -5,6 +5,7 @@ import { BaseModel } from "../model";
 import markdownToHtml from "cdm-content/markdownToHtml";
 
 export type PostModel = BaseModel & {
+  slug: string;
   title: string;
   description: string;
   content: string;
@@ -13,13 +14,20 @@ export type PostModel = BaseModel & {
 
 const postsDirectory = join(process.cwd(), 'packages/cdm-content/posts')
 
+export function getPostPaths() {
+  return fs.readdirSync(postsDirectory)
+    .filter(f => f.endsWith('md'))
+    .map(slug => slug.replace(/\.md$/, ''))
+}
+
 export function getPostSlugs() {
-  return fs.readdirSync(postsDirectory).filter(f => f.endsWith('md'))
+  return getPostPaths()
+    .map(slug => `/articles/${slug}`)
 }
 
 export async function getPostBySlug(slug, fields = []): Promise<PostModel> {
-  const realSlug = slug.replace(/\.md$/, '')
-  const fullPath = join(postsDirectory, `${realSlug}.md`)
+  const realPath = slug.replace('/articles/', '')
+  const fullPath = join(postsDirectory, `${realPath}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)
   let post = {} as PostModel
@@ -35,7 +43,7 @@ export async function getPostBySlug(slug, fields = []): Promise<PostModel> {
     }
 
     if (field === 'slug') {
-      post[field] = realSlug
+      post[field] = slug
     }
 
     if (field === 'content') {
@@ -48,7 +56,14 @@ export async function getPostBySlug(slug, fields = []): Promise<PostModel> {
   })
 
   if (fields.length === 0) {
-    post = { ...data, rawContent: content, content, updated: new Date(data.updated).toDateString(), created: new Date(data.created).toDateString() } as PostModel
+    post = { 
+      ...data, 
+      rawContent: content, 
+      content, 
+      updated: new Date(data.updated).toDateString(), 
+      created: new Date(data.created).toDateString(),
+      slug
+    } as PostModel
   }
 
   if (post.content) {

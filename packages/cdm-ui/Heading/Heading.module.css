@@ -4,26 +4,38 @@
   padding: 0;
 }
 
-.h1 {
-  font-size: 2.35em;
-}
-
-.h2 {
-  font-size: 1.77em;
-}
-
-.h3 {
-  font-size: 1.33em;
-}
-
-.h4 {
-  font-size: 1em;
+.h6 {
+  font-size: 0.44em;
 }
 
 .h5 {
   font-size: 0.66em;
 }
 
-.h6 {
-  font-size: 0.44em;
+.h4 {
+  font-size: 1em;
+}
+
+.h3 {
+  font-size: 1.33em;
+}
+
+.h2 {
+  font-size: 1.77em;
+}
+
+.h1 {
+  font-size: 2.35em;
+}
+
+.title {
+  font-size: 2.5em;
+}
+
+.strapline {
+  font-size: 3.75em;
+}
+
+.headline {
+  font-size: 4.00em;
 }

@@ -1,9 +1,29 @@
 :root {
+  --cdm-background: var(--cdm-color-white-1);
   --cdm-color-white-0: white;
-  --cdm-color-white-1: rgb(241, 238, 229);
+  --cdm-color-white-1: rgb(247, 245, 239);
   --cdm-color-primary: black;
   --cdm-color-secondary: white;
-  --cdm-background: var(--cdm-color-white-1);
+
+  --cdm-font-ratio: 1.33;
+  --cdm-font-xs: calc(var(--cdm-font-sm) / var(--cdm-font-ratio));
+  --cdm-font-sm: 1rem;
+  --cdm-font-md: calc(var(--cdm-font-sm) * var(--cdm-font-ratio));
+  --cdm-font-lg: calc(var(--cdm-font-md) * var(--cdm-font-ratio));
+  --cdm-font-xl: calc(var(--cdm-font-lg) *  var(--cdm-font-ratio));
+
+  --cdm-scale-ratio: 2;
+  --cdm-scale-xs: calc(var(--cdm-scale-sm) / var(--cdm-scale-ratio));
+  --cdm-scale-sm: 1rem;
+  --cdm-scale-md: calc(var(--cdm-scale-sm) * var(--cdm-scale-ratio));
+  --cdm-scale-lg: calc(var(--cdm-scale-md) * var(--cdm-scale-ratio));
+  --cdm-scale-xl: calc(var(--cdm-scale-lg) *  var(--cdm-scale-ratio));
+
+  --cdm-spacing-xs: var(--cdm-scale-xs);
+  --cdm-spacing-sm: var(--cdm-scale-xs);
+  --cdm-spacing-md: var(--cdm-scale-xs);
+  --cdm-spacing-lg: var(--cdm-scale-xs);
+  --cdm-spacing-xl: var(--cdm-scale-xs);
 }
 
 html,
@@ -14,4 +34,5 @@ body,
   min-width: 100%;
   min-height: 100%;
   background: var(--cdm-background);
+  font-family: sans-serif;
 }

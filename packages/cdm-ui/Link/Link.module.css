@@ -1,7 +1,21 @@
 .Link {
   color: inherit;
   cursor: pointer;
-  text-decoration: none;
+}
+
+.Link a:visited {
+  color: #543069;
+  background-image: linear-gradient(to right, #6f2699, #8b46b3);
+}
+
+.Link a,
+.Link a:hover {
+  color: #6f2699;
+  background-image: linear-gradient(to right, #543069, #6f2699);
+}
+
+.Link p {
+  color: black;
 }
 
 .Link h1,
@@ -10,12 +24,22 @@
 .Link h4,
 .Link h5,
 .Link h6 {
+  color: black;
+  background-image: linear-gradient(to right, #EB5454, #DF8383);
+}
+
+.Link h1,
+.Link h2,
+.Link h3,
+.Link h4,
+.Link h5,
+.Link h6,
+.Link a {
   display: inline;
   text-decoration: none;
-  background-image: linear-gradient(to right, #EB5454, #DF8383);
   background-position: 0% 100%;
   background-repeat: no-repeat;
-  background-size: 0% 5px;
+  background-size: 0% 0.1em;
   transition: background-size .3s;
 }
 
@@ -24,6 +48,7 @@
 .Link:hover h3,
 .Link:hover h4,
 .Link:hover h5,
-.Link:hover h6 {
-  background-size: 100% 5px;
+.Link:hover h6,
+.Link:hover a {
+  background-size: 100% 0.1em;
 }

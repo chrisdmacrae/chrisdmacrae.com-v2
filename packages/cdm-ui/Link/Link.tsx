@@ -21,8 +21,8 @@ export const Link: React.FC<LinkProps> = ({
   }
 
   return (
-    <Box className={classNames.join(' ')}>
-      <NextLink href={href} prefetch={true}>
+    <Box as="span" className={classNames.join(' ')}>
+      <NextLink href={href}>
         {children}
       </NextLink>
     </Box>

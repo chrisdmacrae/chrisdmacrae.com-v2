@@ -16,6 +16,9 @@ module.exports = {
     BASE_BRANCH: BRANCH ? BRANCH : process.env.BASE_BRANCH,
     USE_REMOTE: process.env.USE_REMOTE == "true"
   },
+  images: {
+    domains: ['images.unsplash.com', 'images-na.ssl-images-amazon.com'],
+  },
   webpack: (config, options) => {
     config.node = {
       fs: 'empty'

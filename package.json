@@ -16,6 +16,7 @@
     "react": "16.13.1",
     "react-aria": "^0.9.5",
     "react-dom": "16.13.1",
+    "react-markdown": "^6.0.2",
     "react-three-fiber": "^4.2.20",
     "remark": "^13.0.0",
     "remark-html": "^13.0.1",

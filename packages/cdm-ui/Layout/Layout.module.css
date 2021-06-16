@@ -21,6 +21,7 @@
 
 .LayoutItem {
   --layout-item-width: 100;
+  --layout-item-height: 100%;
 
   flex-basis: calc((var(--layout-width) * var(--layout-item-width)) - var(--layout-gutter));
   padding-top: var(--layout-gutter);
@@ -28,6 +29,7 @@
   flex-grow: 1;
   flex-shrink: 1;
   width: calc(100% - 200px);
+  height: var(--layout-item-height);
 }
 
 .LayoutOneHalf {

@@ -8,6 +8,7 @@ export type TextProps = {
   italic?: boolean;
   muted?: boolean;
   highlight?: boolean;
+  underline?: boolean;
 }
 
 export const Text: React.FC<TextProps> = ({ 
@@ -16,6 +17,7 @@ export const Text: React.FC<TextProps> = ({
   italic, 
   muted, 
   highlight, 
+  underline,
   size = 'sm',
   children 
 }) => {
@@ -29,6 +31,8 @@ export const Text: React.FC<TextProps> = ({
   if (size === 'xl') vars['--text-size'] = '2.35em';
   if (muted) vars['--text-color'] = 'rgba(0, 0, 0, 0.5)';
   if (highlight) classNames.push(styles.Highlight);
+  if (underline) classNames.push(styles.Underline);
+  if (underline) as = 'mark';
 
   return (
     <Box as={as} className={classNames.join(' ')} style={vars}>

@@ -1,15 +1,18 @@
 import React, { ReactNode, useEffect } from 'react';
+import { Scale, Scales } from 'cdm-ui';
 import styles from './Stack.module.css';
+import { IntrinsicElements } from 'react-markdown/src/ast-to-react';
 
 export type StackProps = {
   direction?: 'horizontal' | 'vertical';
   align?: 'start' | 'middle' | 'end';
   fill?: boolean;
-  gap?: "apart" | "evenly" | "around";
+  gap?: "apart" | "evenly" | "around" | Scales;
   position?: "start" | "middle" | "end";
   inline?: boolean;
   stretch?: boolean;
-  children: ReactNode | ReactNode[]
+  children: ReactNode | ReactNode[];
+  ref?: any;
 }
 
 export const Stack: React.FC<StackProps> = ({ 
@@ -20,6 +23,7 @@ export const Stack: React.FC<StackProps> = ({
   inline = false, 
   position = 'start',
   stretch = false,
+  ref,
   children 
 }) => {
   const classNames = [styles.Stack];
@@ -35,6 +39,11 @@ export const Stack: React.FC<StackProps> = ({
   if (gap === 'apart') classNames.push(styles.GapApart);
   if (gap === 'around') classNames.push(styles.GapAround);
   if (gap === 'evenly') classNames.push(styles.GapEvenly);
+  if (gap === 'xs') vars['--stack-gap'] = Scale.xs;
+  if (gap === 'sm') vars['--stack-gap'] = Scale.sm;
+  if (gap === 'md') vars['--stack-gap'] = Scale.md;
+  if (gap === 'lg') vars['--stack-gap'] = Scale.lg;
+  if (gap === 'xl') vars['--stack-gap'] = Scale.xl;
   if (align === 'start') classNames.push(styles.AlignStart);
   if (align === 'middle') classNames.push(styles.AlignMiddle);
   if (align === 'end') classNames.push(styles.AlignEnd);
@@ -44,6 +53,7 @@ export const Stack: React.FC<StackProps> = ({
 
   return (
     <div 
+      ref={ref}
       className={classNames.join(' ')}
       style={vars as React.CSSProperties}
     >
@@ -60,7 +70,7 @@ function checkChildrenSize(
   const totalFlex = childArray?.reduce((flexCount: number, currentChild) => {
     const elementChild = currentChild as React.ReactElement<{size: number | { min: number, max: number }}>;
 
-    if (elementChild.props && elementChild.props.size) {
+    if (elementChild?.props && elementChild?.props.size) {
       const size = elementChild.props.size;
 
       if (typeof size == 'number') {

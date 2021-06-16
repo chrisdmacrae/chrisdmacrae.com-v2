@@ -3,6 +3,7 @@ import { Bookshelf } from "../views/Bookshelf";
 
 const BOOKS = [
   {
+    href: "/",
     title: "Example Book",
     description: "A convenient description",
     author: "Dude McGee",
@@ -10,6 +11,7 @@ const BOOKS = [
     src: "https://images-na.ssl-images-amazon.com/images/P/1984877712.01._SCLZZZZZZZ_.jpg"
   },
   {
+    href: "/",
     title: "Example Book",
     description: "A convenient description",
     author: "Dude McGee",
@@ -17,6 +19,7 @@ const BOOKS = [
     src: "https://images-na.ssl-images-amazon.com/images/P/1984877712.01._SCLZZZZZZZ_.jpg"
   },
   {
+    href: "/",
     title: "Example Book",
     description: "A convenient description",
     author: "Dude McGee",
@@ -24,6 +27,7 @@ const BOOKS = [
     src: "https://images-na.ssl-images-amazon.com/images/P/1984877712.01._SCLZZZZZZZ_.jpg"
   },
   {
+    href: "/",
     title: "Example Book",
     description: "A convenient description",
     author: "Dude McGee",
