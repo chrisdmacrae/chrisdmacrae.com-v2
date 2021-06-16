@@ -83,7 +83,7 @@ export async function getPostBySlug(slug, fields = []): Promise<PostModel> {
 }
 
 export async function getAllPosts(fields = []) {
-  const slugs = getPostSlugs()
+  const slugs = await getPostSlugs()
   const posts = await Promise.all(slugs
     .map((slug) => getPostBySlug(slug, fields)))
 
