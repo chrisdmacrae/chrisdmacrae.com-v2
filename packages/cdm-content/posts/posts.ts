@@ -22,9 +22,10 @@ export function getPostPaths() {
 
 export async function getPostSlugs() {
   const paths = getPostPaths();
-  const slugs = await paths.map(p => getPostBySlug(p))
+  const posts = await Promise.all(paths.map(p => getPostBySlug(p)));
+  const slugs = posts
     .filter(p => p !== null)
-    .map(async p => (await p).slug);
+    .map(p => p.slug);
 
   return slugs;
 }
