@@ -32,6 +32,10 @@ export async function getPostBySlug(slug, fields = []): Promise<PostModel> {
   const { data, content } = matter(fileContents)
   let post = {} as PostModel
 
+  if (data.draft && process.env.IS_PRODUCTION) {
+    return null;
+  }
+
   // Ensure only the minimal needed data is exposed
   fields.forEach((field) => {
     if (data[field]) {
@@ -79,7 +83,9 @@ export async function getAllPosts(fields = []) {
     .map((slug) => getPostBySlug(slug, fields)))
 
   // sort posts by date in descending order
-  return posts.sort((post1, post2) => post1.updated ?
-    (post1.updated > post2.updated ? -1 : 1) :
-    (post1.created > post2.created ? -1 : 1))
+  return posts
+    .filter(p => p !== null)
+    .sort((post1, post2) => post1.updated ?
+      (post1.updated > post2.updated ? -1 : 1) :
+      (post1.created > post2.created ? -1 : 1))
 }
