@@ -1,0 +1,10 @@
+{
+  "version": "v1",
+  "packages": {
+    "@chrisdmacrae/teditor": {
+      "signature": "358fabd0cdaa844d9c31f3fb3a55bf56",
+      "file": true,
+      "replaced": "^0.1.7"
+    }
+  }
+}

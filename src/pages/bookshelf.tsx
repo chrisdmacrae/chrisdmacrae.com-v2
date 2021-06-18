@@ -1,45 +1,12 @@
+import { getAllBooks } from "cdm-content/books";
 import { GetStaticProps } from "next";
 import { Bookshelf } from "../views/Bookshelf";
 
-const BOOKS = [
-  {
-    href: "/",
-    title: "Example Book",
-    description: "A convenient description",
-    author: "Dude McGee",
-    rating: 4,
-    src: "https://images-na.ssl-images-amazon.com/images/P/1984877712.01._SCLZZZZZZZ_.jpg"
-  },
-  {
-    href: "/",
-    title: "Example Book",
-    description: "A convenient description",
-    author: "Dude McGee",
-    rating: 4,
-    src: "https://images-na.ssl-images-amazon.com/images/P/1984877712.01._SCLZZZZZZZ_.jpg"
-  },
-  {
-    href: "/",
-    title: "Example Book",
-    description: "A convenient description",
-    author: "Dude McGee",
-    rating: 4,
-    src: "https://images-na.ssl-images-amazon.com/images/P/1984877712.01._SCLZZZZZZZ_.jpg"
-  },
-  {
-    href: "/",
-    title: "Example Book",
-    description: "A convenient description",
-    author: "Dude McGee",
-    rating: 4,
-    src: "https://images-na.ssl-images-amazon.com/images/P/1984877712.01._SCLZZZZZZZ_.jpg"
-  }
-]
-
 export const getStaticProps: GetStaticProps = async () => {
   const props: Record<string, any> = {};
+  const books = await getAllBooks();
 
-  props.books = BOOKS;
+  props.books = books;
 
   return {
     props

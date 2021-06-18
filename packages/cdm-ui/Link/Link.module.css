@@ -1,6 +1,15 @@
 .Link {
   color: inherit;
   cursor: pointer;
+  text-decoration: none;
+}
+
+.Link a {
+  text-decoration: underline;
+}
+
+.Link a:hover {
+  text-decoration: none;
 }
 
 .Link a:visited {

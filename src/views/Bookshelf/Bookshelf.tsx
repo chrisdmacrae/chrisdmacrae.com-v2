@@ -1,4 +1,4 @@
-import { Layout, Heading, Text, Box, Stack } from "cdm-ui";
+import { Layout, Heading, Text, Box, Stack, useBreakpoints } from "cdm-ui";
 import React from "react";
 import { BasicLayout } from "../../layouts"
 import { Book } from "./Book";
@@ -10,6 +10,8 @@ export type BookshelfProps = {
 export const Bookshelf: React.VFC<BookshelfProps> = ({
   books
 }) => {
+  const breakpoints = useBreakpoints();
+
   return (
     <BasicLayout>
       <Layout.Item>
@@ -19,7 +21,7 @@ export const Bookshelf: React.VFC<BookshelfProps> = ({
         </Box>
       </Layout.Item>
       {books.map(book => (
-        <Layout.Item span={0.02}>
+        <Layout.Item align="start" span={breakpoints.sm ? 0.02 : 0.5} key={book.title}>
           <Book {...book as any} />
         </Layout.Item>
       ))}

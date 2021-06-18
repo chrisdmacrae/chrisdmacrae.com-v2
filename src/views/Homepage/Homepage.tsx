@@ -23,7 +23,7 @@ export const Homepage: React.FC<HomepageProps> = ({ posts }) => {
           </Heading>
           <Divider />
         </Box>
-        <Stack stretch>
+        <Stack direction="vertical" stretch>
           <Box padding="sm">
             <Heading as="h3">My thoughts</Heading>
           </Box>

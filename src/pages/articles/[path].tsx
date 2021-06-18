@@ -1,4 +1,5 @@
 import { getAllPosts, getPostBySlug, getPostPaths, getPostSlugs } from "cdm-content";
+import { withPageEditing } from "cdm-content/cms";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { ArticlePage } from "../../views/Article";
 
@@ -37,3 +38,4 @@ export const getStaticProps: GetStaticProps = async (context) => {
 }
 
 export default ArticlePage;
+// export default withPageEditing(ArticlePage);

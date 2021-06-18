@@ -12,9 +12,9 @@ export const Link: React.FC<LinkProps> = ({
 }) => {
   const classNames = [styles.Link];
 
-  if (href.startsWith('http')) {
+  if (href.startsWith('http') || href.startsWith('#')) {
     return (
-      <Box as='a' href={href} className={classNames.join(' ')}>
+      <Box as='a' href={href} className={classNames.join(' ')} target={href.startsWith('#') ? "_top	" : "_blank"}>
         {children}
       </Box>
     )

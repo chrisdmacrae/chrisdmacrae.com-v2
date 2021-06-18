@@ -4,7 +4,7 @@ import styles from './Stack.module.css';
 import { IntrinsicElements } from 'react-markdown/src/ast-to-react';
 
 export type StackProps = {
-  direction?: 'horizontal' | 'vertical';
+  direction?: 'horizontal' | 'vertical' | 'ltr' | 'rtl' | 'ttb' | 'btt';
   align?: 'start' | 'middle' | 'end';
   fill?: boolean;
   gap?: "apart" | "evenly" | "around" | Scales;
@@ -17,7 +17,7 @@ export type StackProps = {
 
 export const Stack: React.FC<StackProps> = ({ 
   align = 'start',
-  direction = 'vertical',
+  direction = 'ltr',
   fill = false,
   gap = 'apart',
   inline = false, 
@@ -31,7 +31,10 @@ export const Stack: React.FC<StackProps> = ({
 
   useEffect(() => Array.isArray(children) ? checkChildrenSize(children) : checkChildrenSize([children]), [children]);
 
-  if (direction === 'horizontal') vars['--stack-direction'] = 'row';
+  if (direction === 'horizontal' || direction === "ltr") 
+    vars['--stack-direction'] = 'row';
+  if (direction === "rtl") vars['--stack-direction'] = 'row-reverse';
+  if (direction === "btt") vars['--stack-direction'] = 'column-reverse';
   if (fill && direction === 'horizontal') vars['--stack-width'] = '100%';
   if (fill && direction === 'vertical') vars['--stack-height'] = '100%';
   if (stretch) classNames.push(styles.Stretch);
