@@ -16,7 +16,7 @@ export const BasicLayout: React.FC<BasicLayoutProps> = ({ className = '', childr
   
   return (
     <main className={classNames.join(' ')} style={vars}>
-      <Layout gutter={breakpoints.md ? 16 : 0}>
+      <Layout gutter={breakpoints.md ? 'sm' : false}>
         <Layout.Item id="header">
           <Box padding="sm">
             <Stack direction="horizontal" stretch>

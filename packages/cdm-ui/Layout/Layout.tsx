@@ -38,11 +38,11 @@ export const Layout: React.FC<LayoutProps> = ({
     vars['--layout-width'] = `${size}px`;
   if (typeof size === 'number' && flow === 'vertical') 
     vars['--layout-height'] = `${size}px`;
-    if (gutter === 'xs') vars['--layout-gutter'] = Scale.xs;
-    if (gutter === 'sm') vars['--layout-gutter'] = Scale.sm;
-    if (gutter === 'md') vars['--layout-gutter'] = Scale.md;
-    if (gutter === 'lg') vars['--layout-gutter'] = Scale.lg;
-    if (gutter === 'xl') vars['--layout-gutter'] = Scale.xl;
+  if (gutter === 'xs') vars['--layout-gutter'] = Scale.xs;
+  if (gutter === 'sm') vars['--layout-gutter'] = Scale.sm;
+  if (gutter === 'md') vars['--layout-gutter'] = Scale.md;
+  if (gutter === 'lg') vars['--layout-gutter'] = Scale.lg;
+  if (gutter === 'xl') vars['--layout-gutter'] = Scale.xl;
   if (gutter === false) vars['--layout-gap'] = 'space-between';
   if (gutter === true) vars['--layout-gap'] = 'space-around';
   if (flow === 'horizontal') vars['--layout-direction'] = 'row';
