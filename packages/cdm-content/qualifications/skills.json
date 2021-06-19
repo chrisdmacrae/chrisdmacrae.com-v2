@@ -12,7 +12,15 @@
     "description": "Over 8 years of experience conducting user and market research, breadboarding and wireframing, and designing websites, web applications, mobile applications, and digital/physical marketing collateral."
   },
   {
+    "title": "Business Analsysis and Requirements",
+    "description": "I am well-read and experienced with jobs to be done, domain-driven design/development, behaviour-driven development, blue ocean strategy, and risk management/actuarial sciences."
+  },
+  {
     "title": "Agile Coaching",
     "description": "A once-certified Scrum master, Lean/Lean Manufacturing, Kanban, Extreme Programming, and the Agile principles are my second language."
+  },
+  {
+    "title": "Other Development Experience",
+    "description": "I have worked with Rails MVC applications, GoLang microservices and CLIs, and Rust microservices in production contexts, likely at a lower-intermediate level."
   }
 ]
