@@ -11,6 +11,7 @@ export type BaseModel = {
   excerpt?: string;
   content?: string;
   rawContent?: string;
+  textContent?: string;
   createdBy: Author
 } & {
   [key: string]: any;
@@ -48,6 +49,7 @@ export async function getContentBySlug<ContentShape extends BaseModel>(slug: str
     data.rawContent = res.content;
     data.excerpt = res.excerpt;
     data.content = await markdownToHtml(res.content);
+    data.textContent = res.content.replace(/<\/?[^>]+(>|$)/g, "")
   }
 
   if (ext.includes('json')) {
