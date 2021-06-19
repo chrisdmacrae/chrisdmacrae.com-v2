@@ -6,8 +6,8 @@ import { fileURLToPath } from "url";
 
 export type BaseModel = {
   slug: string;
-  created: Date;
-  updated: Date;
+  created: string;
+  updated: string;
   excerpt?: string;
   content?: string;
   rawContent?: string;
@@ -65,11 +65,11 @@ export async function getContentBySlug<ContentShape extends BaseModel>(slug: str
     }
 
     if (field === 'created') {
-      post[field] = new Date(data.created ?? fileMeta.birthtime);
+      post[field] = new Date(data.created ?? fileMeta.birthtime).toLocaleDateString();
     }
 
     if (field === 'updated') {
-      post[field] = new Date(data.updated ?? fileMeta.mtime)
+      post[field] = new Date(data.updated ?? fileMeta.mtime).toLocaleDateString()
     }
 
     if (field === 'slug') {

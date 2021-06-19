@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import Image from "next/image";
 import { Box, Heading, useBreakpoints } from "cdm-ui";
 import { Text } from "cdm-ui/Text";
+import { Link } from "cdm-ui/Link";
 
 export type LongFormTextProps = {
   markdown: string;
@@ -46,6 +47,11 @@ export const LongFormText: React.VFC<LongFormTextProps> = ({ markdown }) => {
           <LongFormContentLayout>
             <Text as="p" {...props} />
           </LongFormContentLayout>
+        ),
+        a: (props) => (
+          <Link {...props as any}>
+            <a {...props} />
+          </Link>
         ),
         img: (props) => (
           <LongFormImage src={props.src} alt={props.alt} {...props} />

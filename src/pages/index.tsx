@@ -1,6 +1,6 @@
 import { getAllPosts } from "cdm-content";
 import { GetStaticProps } from "next";
-import { Homepage } from "../views/Homepage";
+import { Homepage } from "../views";
 
 export const getStaticProps: GetStaticProps = async () => {
   const props: Record<string, any> = {};
