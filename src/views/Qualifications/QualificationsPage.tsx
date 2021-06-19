@@ -1,9 +1,8 @@
 import React from "react"
-import { Box, Divider, Heading, Layout, LongFormText, Stack, Text, useBreakpoints } from "cdm-ui";
+import { Box, Divider, Head, Heading, Layout, LongFormText, Stack, Text, useBreakpoints } from "cdm-ui";
 import { BasicLayout } from "../../layouts";
 import { ProfileModel, QualificationModel, SkillModel } from "cdm-content/qualifications";
 import styles from './Qualifications.module.css';
-import { profile } from "console";
 
 export type QualificationsPageProps = {
   profile: ProfileModel;
@@ -14,12 +13,18 @@ export type QualificationsPageProps = {
 export const QualificationsPage: React.VFC<QualificationsPageProps> = ({ qualifications, profile, skills }) => {
   const history = qualifications
     .filter(q => q.type === 'consulting' || q.type === 'employment');
+  const title = "My Qualifications & History";
+  const description = history.filter(h => h.slug === "freelance")[0].textContent;
 
   return (
     <BasicLayout>
+      <Head 
+        title={title} 
+        description={description}
+      />
       <Layout.Item>
         <Box padding="sm">
-          <Heading as="h1" size="headline">My Qualifications & History</Heading>
+          <Heading as="h1" size="headline">{title}</Heading>
           <Divider />
           <Heading as="h2" size="title">{profile.headline}</Heading>
           <Heading as="h3" muted>{profile.strapline}</Heading>
@@ -43,7 +48,7 @@ const Skills = ({ skills }: { skills: SkillModel[] }) => {
           <Heading as="h2" size="title">Skills and Interests</Heading>
         </Layout.Item>
         {skills.map(skill => (
-          <Layout.Item oneThird={breakpoints.md}>
+          <Layout.Item oneThird={breakpoints.md} key={skill.slug}>
             <Heading as="h4">{skill.title}</Heading>
             <Text as="div" muted>{skill.description}</Text>
           </Layout.Item>

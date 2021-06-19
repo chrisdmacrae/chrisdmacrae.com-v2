@@ -1,7 +1,6 @@
 import React from 'react';
-import { Box, Heading, Layout, Link, Stack, Text, useBreakpoints } from 'cdm-ui';
+import { Box, Head, Heading, Layout, Link, Stack, Text, useBreakpoints } from 'cdm-ui';
 import styles from './Basic.module.css';
-import { useCMS } from '@chrisdmacrae/teditor';
 
 export type BasicLayoutProps = {
   className?: string;
@@ -16,6 +15,7 @@ export const BasicLayout: React.FC<BasicLayoutProps> = ({ className = '', childr
   
   return (
     <main className={classNames.join(' ')} style={vars}>
+      <Head title="chrisdmacrae.com" />
       <Layout gutter={breakpoints.md ? 'sm' : false}>
         <Layout.Item id="header">
           <Box padding="sm">

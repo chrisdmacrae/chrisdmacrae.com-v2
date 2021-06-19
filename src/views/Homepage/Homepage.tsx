@@ -1,6 +1,6 @@
 import React from "react";
 import type { PostModel } from "cdm-content";
-import { Box, Heading, Layout, Link, Stack, Text } from "cdm-ui";
+import { Box, Head, Heading, Layout, Link, Stack, Text } from "cdm-ui";
 import { useBreakpoints } from "cdm-ui/Theme";
 import { BasicLayout } from "../../layouts";
 import styles from './Homepage.module.css';
@@ -12,10 +12,9 @@ export type HomepageProps = {
 }
 
 export const Homepage: React.FC<HomepageProps> = ({ posts }) => {
-  const breakpoints = useBreakpoints();
-
   return (
     <BasicLayout className={styles.Homepage}>
+      <Head title="Fullstack Designer" />
       <Layout.Item id="articles">
         <Box padding="sm" id="intro">
           <Heading as="h1" size="title">

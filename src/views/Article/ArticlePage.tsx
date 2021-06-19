@@ -2,6 +2,7 @@ import React from "react";
 import {
   Box,
   Divider,
+  Head,
   Heading,
   Layout,
   Link,
@@ -29,6 +30,10 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
 
   return (
     <BasicLayout className={styles.Article}>
+      <Head 
+        title={post.title} 
+        description={post.description}
+      />
       <Layout.Item align="start" oneFourth>
         <Box padding="sm">
           <Text as="span" size={breakpoints.md ? "md" : "sm"}>
