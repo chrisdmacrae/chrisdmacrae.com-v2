@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Box, Heading, useBreakpoints } from "cdm-ui";
 import { Text } from "cdm-ui/Text";
 import { Link } from "cdm-ui/Link";
+import styles from './LongFormText.module.css';
 
 export type LongFormTextProps = {
   markdown: string;
@@ -12,6 +13,7 @@ export type LongFormTextProps = {
 export const LongFormText: React.VFC<LongFormTextProps> = ({ markdown }) => {
   return (
     <ReactMarkdown
+      className={styles.LongFormText}
       components={{
         h1: (props) => (
           <LongFormContentLayout>
@@ -80,7 +82,7 @@ const LongFormImage = ({ src, alt, ...props }) => {
 
 const LongFormContentLayout: React.FC = ({ children }) => {
   return (
-    <Box size={{ min: 0, max: 700 }} align="left">
+    <Box size={{ min: 0, max: 700 }} align="left" className={styles.LongFormLayout}>
       {children}
     </Box>
   );
