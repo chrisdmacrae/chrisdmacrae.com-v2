@@ -1,7 +1,8 @@
-import { readdirSync, readFileSync } from "fs";
+import { readdirSync, readFileSync, statSync } from "fs";
 import { extname, join } from "path";
 import matter from "gray-matter";
 import markdownToHtml from "./markdownToHtml";
+import { fileURLToPath } from "url";
 
 export type BaseModel = {
   slug: string;
@@ -34,6 +35,7 @@ export async function getContentBySlug<ContentShape extends BaseModel>(slug: str
     .replace(ext, '');
   const fullPath = join(directoryPath, `${realPath}`) + ext;
   const fileContents = readFileSync(fullPath, 'utf8')
+  const fileMeta = statSync(fullPath);
   let data: any;
   let post = {} as ContentShape
 
@@ -60,8 +62,12 @@ export async function getContentBySlug<ContentShape extends BaseModel>(slug: str
       post = data[field]
     }
 
-    if (field === 'created' || field === 'updated') {
-      post[field] = new Date(data[field]);
+    if (field === 'created') {
+      post[field] = new Date(data.created ?? fileMeta.birthtime);
+    }
+
+    if (field === 'updated') {
+      post[field] = new Date(data.updated ?? fileMeta.mtime)
     }
 
     if (field === 'slug') {
