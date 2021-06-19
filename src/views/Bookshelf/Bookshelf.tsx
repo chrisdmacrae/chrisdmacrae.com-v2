@@ -28,7 +28,7 @@ export const Bookshelf: React.VFC<BookshelfProps> = ({
         </Box>
       </Layout.Item>
       {books.map(book => (
-        <Layout.Item align="start" span={breakpoints.sm ? 0.02 : 0.5} key={book.title}>
+        <Layout.Item align="start" span={breakpoints.sm ? 0.25 : 0.5} key={book.title}>
           <Book {...book as any} />
         </Layout.Item>
       ))}
