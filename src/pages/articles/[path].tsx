@@ -5,9 +5,7 @@ import { ArticlePage } from "../../views/Article";
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getAllPosts();
   const paths = posts.map(p => ({ params: { path: p.slug.replace('articles/', '') }}));
-
-  console.log({ slugs: paths.map(p => p.params.path) }) 
-
+  
   return {
     paths,
     fallback: 'blocking'
