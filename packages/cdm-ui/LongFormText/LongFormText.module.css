@@ -1,0 +1,9 @@
+.LongFormText {}
+
+.LongFormLayout > * {
+  margin-top: 1.66em;
+}
+
+.LongFormLayout:first-child > * {
+  margin-top: 0;
+}
