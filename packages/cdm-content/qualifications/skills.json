@@ -1,0 +1,18 @@
+[
+  {
+    "title": ".NET Development",
+    "description": "Building ASP.NET Core MVC Apps and REST APIs, Enterprise Service Buses, BDD Acceptance Tests, Identity Servers, IoT Brokers, and more."
+  },
+  {
+    "title": "React, Angular, Vue, and General Frontend Development",
+    "description": "Building SPAs, Websites, Web-native Mobile Applications, Javascript Libraries and Tools, including detailed experience in web bundling with Webpack, Rollup, ESBuild, Gulp, and more."
+  },
+  {
+    "title": "User Experience Design / Human Centered Design",
+    "description": "Over 8 years of experience conducting user and market research, breadboarding and wireframing, and designing websites, web applications, mobile applications, and digital/physical marketing collateral."
+  },
+  {
+    "title": "Agile Coaching",
+    "description": "A once-certified Scrum master, Lean/Lean Manufacturing, Kanban, Extreme Programming, and the Agile principles are my second language."
+  }
+]

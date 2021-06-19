@@ -5,8 +5,8 @@ import markdownToHtml from "./markdownToHtml";
 
 export type BaseModel = {
   slug: string;
-  created: Date;
-  updated: Date;
+  created: string;
+  updated: string;
   excerpt?: string;
   content?: string;
   rawContent?: string;
@@ -61,7 +61,7 @@ export async function getContentBySlug<ContentShape extends BaseModel>(slug: str
     }
 
     if (field === 'created' || field === 'updated') {
-      post[field] = new Date(data[field]);
+      post[field] = new Date(data[field]).toLocaleDateString();
     }
 
     if (field === 'slug') {

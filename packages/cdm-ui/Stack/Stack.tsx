@@ -1,7 +1,6 @@
 import React, { ReactNode, useEffect } from 'react';
 import { Scale, Scales } from 'cdm-ui';
 import styles from './Stack.module.css';
-import { IntrinsicElements } from 'react-markdown/src/ast-to-react';
 
 export type StackProps = {
   direction?: 'horizontal' | 'vertical' | 'ltr' | 'rtl' | 'ttb' | 'btt';
