@@ -1,13 +1,15 @@
-import { getAllPosts, getPostBySlug, getPostPaths, getPostSlugs } from "cdm-content";
-import { withPageEditing } from "cdm-content/cms";
+import { getAllPosts, getPostBySlug } from "cdm-content";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { ArticlePage } from "../../views/Article";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getAllPosts();
+  const paths = posts.map(p => ({ params: { path: p.slug.replace('articles/', '') }}));
+
+  console.log({ slugs: paths.map(p => p.params.path) }) 
 
   return {
-    paths: posts.map(p => ({ params: { path: p.slug.replace('/articles/', '') }})),
+    paths,
     fallback: 'blocking'
   }
 }

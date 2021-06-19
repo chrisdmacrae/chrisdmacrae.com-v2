@@ -1,7 +1,8 @@
-import { readdirSync, readFileSync } from "fs";
-import { extname, join } from "path";
+import { readdirSync, readFileSync, statSync } from "fs";
+import { extname, join, posix } from "path";
 import matter from "gray-matter";
 import markdownToHtml from "./markdownToHtml";
+import { fileURLToPath } from "url";
 
 export type BaseModel = {
   slug: string;
@@ -28,12 +29,15 @@ export function getContentPaths(directoryPath: string, ext: string[]) {
 }
 
 export async function getContentBySlug<ContentShape extends BaseModel>(slug: string, directoryPath: string, ext: string, basePath: string = '', fields: string[] = []): Promise<BaseModel> {
-  const realSlug = join(basePath, slug)
-    .replace(ext, '');
+  const realSlug = posix.normalize(join(basePath, slug)
+    .replace(ext, '')
+    .replace(`\\`, '/')
+  );
   const realPath = slug.replace(basePath, '')
     .replace(ext, '');
   const fullPath = join(directoryPath, `${realPath}`) + ext;
   const fileContents = readFileSync(fullPath, 'utf8')
+  const fileMeta = statSync(fullPath);
   let data: any;
   let post = {} as ContentShape
 
@@ -50,7 +54,7 @@ export async function getContentBySlug<ContentShape extends BaseModel>(slug: str
     data = JSON.parse(fileContents);
   }
 
-  if (data?.draft && process.env.IS_PRODUCTION) {
+  if (data?.draft && process.env.IS_PRODUCTION || data === null) {
     return null;
   }
 
@@ -60,8 +64,12 @@ export async function getContentBySlug<ContentShape extends BaseModel>(slug: str
       post = data[field]
     }
 
-    if (field === 'created' || field === 'updated') {
-      post[field] = new Date(data[field]).toLocaleDateString();
+    if (field === 'created') {
+      post[field] = new Date(data.created ?? fileMeta.birthtime).toLocaleDateString();
+    }
+
+    if (field === 'updated') {
+      post[field] = new Date(data.updated ?? fileMeta.mtime).toLocaleDateString()
     }
 
     if (field === 'slug') {
@@ -95,13 +103,15 @@ export async function getContentBySlug<ContentShape extends BaseModel>(slug: str
 
 export async function getAllContent<ContentShape extends BaseModel>(directory: string, ext: string[], basePath: string = '', fields = []) {
   const slugs = await getContentPaths(directory, ext);
-  const content = await Promise.all(slugs
-    .map((slug) => getContentBySlug(slug, directory, extname(slug), basePath , fields))
-    .filter(c => c !== null));
+  const content = await Promise.all(
+    slugs
+      .map((slug) => getContentBySlug(slug, directory, extname(slug), basePath , fields))
+  );
 
   // sort content by date in descending order
   return content
-    .sort((post1, post2) => post1.updated ?
-      (post1.updated > post2.updated ? -1 : 1) :
-      (post1.created > post2.created ? -1 : 1)) as ContentShape[]
+    .filter(c => c !== null)
+    .sort((post1, post2) => post1?.updated ?
+      (post1?.updated > post2?.updated ? -1 : 1) :
+      (post1?.created > post2?.created ? -1 : 1)) as ContentShape[]
 }
