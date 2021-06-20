@@ -133,6 +133,7 @@ idea of different results
 
 ...we can try to succeed in life without taking risks that will ruin us, or
 worse, kill us.
+
 ## Taking Reading All The Way
 
 With a basic understanding of the causal ladder, let's loop back to our
@@ -170,8 +171,9 @@ result.
 
 Without the act of experiencing or observing, then the act of intervening,
 and our ability to imagine scenarios where we intervene, we do not learn,
-we do not improve our mental models, and we do not succeed and thrive. So, if you aren't the type to _do_, it's time to lift your leg off the first rung and
-move it up to the second.
+we do not improve our mental models, and we do not succeed and thrive. So, 
+if you aren't the type to _do_, it's time to lift your leg off the first rung 
+and move it up to the second.
 
 ---
 
