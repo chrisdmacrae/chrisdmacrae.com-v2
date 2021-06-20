@@ -3,6 +3,9 @@ title: Reading Is Necessary; Reading Is Not Enough
 description: | 
   Almost everyone has a book, teacher, or story that was pivotal to the major
   success of their life. This begs the question, why?
+createdBy: chris
+updatedBy: chris
+created: 2021-06-18
 ---
 In 2017, I took on the personal challenge of **reading fifty-two books  with at least of 200 pages  in the
 year**, making for 10,400 pages to cover in 8700

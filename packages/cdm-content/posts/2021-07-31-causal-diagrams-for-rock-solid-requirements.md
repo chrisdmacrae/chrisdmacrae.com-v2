@@ -5,7 +5,6 @@ description: An introduction to the emerging field of causal science and the val
 createdBy: chris
 updatedBy: chris
 created: 2021-07-31
-updated: null
 ---
 ## I am alive
 
