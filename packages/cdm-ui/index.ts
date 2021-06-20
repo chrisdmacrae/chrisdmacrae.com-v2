@@ -2,6 +2,7 @@ export * from './Box';
 export * from './Divider';
 export * from './Head';
 export * from './Heading';
+export * from './Image';
 export * from './Layout';
 export * from './Link';
 export * from './LongFormText';

@@ -1,6 +1,5 @@
-import { Box, Heading, Layout, Link, Text } from "cdm-ui"
-import Image from "next/image"
 import React from "react"
+import { Box, Heading, Image, Layout, Link, Text } from "cdm-ui"
 
 export type BookProps = {
   href: string;

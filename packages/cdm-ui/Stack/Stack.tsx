@@ -1,8 +1,9 @@
 import React, { ReactNode, useEffect } from 'react';
-import { Scale, Scales } from 'cdm-ui';
+import { Box, Scale, Scales } from 'cdm-ui';
 import styles from './Stack.module.css';
 
 export type StackProps = {
+  as: keyof JSX.IntrinsicElements;
   direction?: 'horizontal' | 'vertical' | 'ltr' | 'rtl' | 'ttb' | 'btt';
   align?: 'start' | 'middle' | 'end';
   fill?: boolean;
@@ -15,6 +16,7 @@ export type StackProps = {
 }
 
 export const Stack: React.FC<StackProps> = ({ 
+  as = 'div',
   align = 'start',
   direction = 'ltr',
   fill = false,
@@ -25,6 +27,7 @@ export const Stack: React.FC<StackProps> = ({
   ref,
   children 
 }) => {
+  const Element = as;
   const classNames = [styles.Stack];
   const vars = {};
 
@@ -54,13 +57,14 @@ export const Stack: React.FC<StackProps> = ({
   if (position === 'end') classNames.push(styles.PositionEnd);
 
   return (
-    <div 
+    <Box 
+      as={as}
       ref={ref}
       className={classNames.join(' ')}
       style={vars as React.CSSProperties}
     >
         {children}
-    </div>
+    </Box>
   );
 }
 

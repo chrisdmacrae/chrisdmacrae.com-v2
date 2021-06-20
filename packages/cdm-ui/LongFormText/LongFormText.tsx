@@ -1,10 +1,12 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
-import Image from "next/image";
-import { Box, Heading, useBreakpoints } from "cdm-ui";
+import gfm from "remark-gfm";
+import footnotes from "remark-gfm";
+import { Box, Heading, Image, Stack, useBreakpoints } from "cdm-ui";
 import { Text } from "cdm-ui/Text";
 import { Link } from "cdm-ui/Link";
 import styles from './LongFormText.module.css';
+import { Divider } from "cdm-ui/Divider";
 
 export type LongFormTextProps = {
   markdown: string;
@@ -14,6 +16,7 @@ export const LongFormText: React.VFC<LongFormTextProps> = ({ markdown }) => {
   return (
     <ReactMarkdown
       className={styles.LongFormText}
+      remarkPlugins={[gfm, footnotes]}
       components={{
         h1: (props) => (
           <LongFormContentLayout>
@@ -50,6 +53,16 @@ export const LongFormText: React.VFC<LongFormTextProps> = ({ markdown }) => {
             <Text as="p" {...props} />
           </LongFormContentLayout>
         ),
+        ul: (props) => (
+          <LongFormContentLayout>
+            <Stack {...props} as="ul" gap="sm" direction="vertical" />
+          </LongFormContentLayout>
+        ),
+        ol: (props) => (
+          <LongFormContentLayout>
+            <Stack {...props} as="ol" gap="sm" direction="vertical" />
+          </LongFormContentLayout>
+        ),
         a: (props) => (
           <Link {...props as any}>
             <a {...props} />
@@ -60,6 +73,11 @@ export const LongFormText: React.VFC<LongFormTextProps> = ({ markdown }) => {
         ),
         strong: (props) => <Text as="strong" highlight {...props} />,
         em: (props) => <Text as="em" italic {...props} />,
+        hr: (props) => (
+          <LongFormContentLayout>
+            <Divider />
+          </LongFormContentLayout>
+        )
       }}
     >
       {markdown}
@@ -71,11 +89,8 @@ const LongFormImage = ({ src, alt, ...props }) => {
   const breakpoints = useBreakpoints();
 
   return (
-    <Box
-      size={{ min: 0, max: breakpoints.lg ? 1200 : "100%" }}
-      style={{ position: "relative", paddingBottom: "56.25%" }}
-    >
-      <Image {...props} src={src} alt={alt} layout="fill" />
+    <Box size={{ min: 0, max: breakpoints.lg ? 1200 : "100%" }}>
+      <Image {...props} src={src} alt={alt} layout='responsive' />
     </Box>
   );
 };
