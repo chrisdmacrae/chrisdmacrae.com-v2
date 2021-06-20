@@ -3,7 +3,7 @@ import { Box, Scale, Scales } from 'cdm-ui';
 import styles from './Stack.module.css';
 
 export type StackProps = {
-  as: keyof JSX.IntrinsicElements;
+  as?: keyof JSX.IntrinsicElements;
   direction?: 'horizontal' | 'vertical' | 'ltr' | 'rtl' | 'ttb' | 'btt';
   align?: 'start' | 'middle' | 'end';
   fill?: boolean;
