@@ -22,7 +22,7 @@ export const Article: React.FC<ArticleProps> = ({
           <Stack.Item>
             <Heading as='h2'>{title}</Heading>
             <Text>{description}</Text>
-            <Text size={breakpoints.md ? 'xs' : 'sm'} muted>
+            <Text as="span" size={breakpoints.md ? 'xs' : 'sm'} muted>
               Posted on {new Date(created).toLocaleDateString()} · 
               Last updated {new Date(updated).toLocaleDateString()}
             </Text>
