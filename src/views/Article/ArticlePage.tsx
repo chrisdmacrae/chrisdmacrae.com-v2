@@ -27,6 +27,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
   prev,
 }) => {
   const breakpoints = useBreakpoints();
+  const shouldShowNavigation = typeof next !== 'undefined' || typeof prev !== 'undefined';
 
   return (
     <BasicLayout className={styles.Article}>
@@ -77,7 +78,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = ({
             <Stack.Item>
               <LongFormText markdown={post.rawContent} />
             </Stack.Item>
-            {(next || prev) && <Divider />}
+            {shouldShowNavigation && <Divider />}
             <Stack gap="apart" direction="horizontal" fill>
                 {next?.slug && (
                   <Link href={next.slug}>
