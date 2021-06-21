@@ -60,6 +60,9 @@ export async function getContentBySlug<ContentShape extends BaseModel>(slug: str
     return null;
   }
 
+  const created = data.created ? new Date(data.created).toLocaleDateString() : fileMeta.birthtime.toLocaleDateString();
+  const updated = data.updated ? new Date(data.updated).toLocaleDateString() : created;
+
   // Ensure only the minimal needed data is exposed
   fields.forEach((field) => {
     if (data[field]) {
@@ -67,11 +70,11 @@ export async function getContentBySlug<ContentShape extends BaseModel>(slug: str
     }
 
     if (field === 'created') {
-      post[field] = new Date(data.created ?? fileMeta.birthtime).toLocaleDateString();
+      post[field] = created;
     }
 
     if (field === 'updated') {
-      post[field] = new Date(data.updated ?? fileMeta.mtime).toLocaleDateString()
+      post[field] = updated;
     }
 
     if (field === 'slug') {
@@ -90,8 +93,8 @@ export async function getContentBySlug<ContentShape extends BaseModel>(slug: str
   if (fields.length === 0) {
     post = { 
       ...data,
-      updated: new Date(data.updated).toDateString(), 
-      created: new Date(data.created).toDateString(),
+      created,
+      updated, 
       slug: realSlug
     } as ContentShape
   }
@@ -114,6 +117,6 @@ export async function getAllContent<ContentShape extends BaseModel>(directory: s
   return content
     .filter(c => c !== null)
     .sort((post1, post2) => post1?.updated ?
-      (post1?.updated > post2?.updated ? -1 : 1) :
-      (post1?.created > post2?.created ? -1 : 1)) as ContentShape[]
+      (post1?.updated > post2?.updated ? 1 : -1) :
+      (post1?.created > post2?.created ? 1 : -1)) as ContentShape[]
 }

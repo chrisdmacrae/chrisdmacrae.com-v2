@@ -18,7 +18,7 @@ export const Article: React.FC<ArticleProps> = ({
     <Link href={slug}>
       <Box padding="sm" className='post'>
         <Stack align="start" direction={breakpoints.md ? 'horizontal' : 'vertical'}>
-          <Text highlight>#{i + 1}</Text>
+          {i > -1 && <Text highlight>#{i + 1}</Text>}
           <Stack.Item>
             <Heading as='h2'>{title}</Heading>
             <Text>{description}</Text>

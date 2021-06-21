@@ -5,7 +5,6 @@ description: An introduction to systems thinking for the lay-person, a short cut
 createdBy: chris
 updatedBy: chris
 created: 2021-07-31
-updated: null
 ---
 ## I am alive
 

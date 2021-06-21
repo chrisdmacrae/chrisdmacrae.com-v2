@@ -26,7 +26,7 @@ export const Homepage: React.FC<HomepageProps> = ({ posts }) => {
           <Box padding="sm">
             <Heading as="h3">My thoughts</Heading>
           </Box>
-          {posts?.map((post, i) => <Article {...post} i={i} />)}
+          {posts?.map((post, i) => <Article {...post} i={i} key={post.slug} />)}
         </Stack>
       </Layout.Item>
     </BasicLayout>
