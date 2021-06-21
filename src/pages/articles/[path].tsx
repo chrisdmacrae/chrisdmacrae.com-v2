@@ -4,7 +4,7 @@ import { ArticlePage } from "../../views/Article";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getAllPosts();
-  const paths = posts.map(p => ({ params: { path: p.slug.replace('articles/', '') }}));
+  const paths = posts.map(p => ({ params: { path: p.slug.replace('/articles/', '') }}));
   
   return {
     paths,
