@@ -117,6 +117,6 @@ export async function getAllContent<ContentShape extends BaseModel>(directory: s
   return content
     .filter(c => c !== null)
     .sort((post1, post2) => post1?.updated ?
-      (post1?.updated > post2?.updated ? 1 : -1) :
-      (post1?.created > post2?.created ? 1 : -1)) as ContentShape[]
+      (post1?.updated > post2?.updated ? -1 : 1) :
+      (post1?.created > post2?.created ? -1 : 1)) as ContentShape[]
 }

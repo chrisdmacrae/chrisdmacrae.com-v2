@@ -1,3 +1,4 @@
+import Head from "next/head";
 import React, { createContext, useEffect, useState } from "react";
 import { BuiltInBreakpoints } from "./useBreakpoint";
 
@@ -39,6 +40,15 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ breakpoints = {}, 
       rootFontSize, 
       breakpoints: allBreakpoints 
     }}>
+      <Head>
+        <style id="cdm-theme">
+        {`
+        :root {${Object.keys(allBreakpoints).map(name => `
+            --cdm-breakpoint-${name}: ${allBreakpoints[name]};
+          `).join('')}}
+        `}
+        </style>
+      </Head>
       {children}
     </ThemeContext.Provider>
   );
