@@ -30,7 +30,7 @@ export function getContentPaths(directoryPath: string, ext: string[]) {
 }
 
 export async function getContentBySlug<ContentShape extends BaseModel>(slug: string, directoryPath: string, ext: string, basePath: string = '', fields: string[] = []): Promise<BaseModel> {
-  const realSlug = posix.normalize(join(basePath, slug)
+  const realSlug = posix.normalize(join('/', basePath, slug)
     .replace(ext, '')
     .replace(`\\`, '/')
   );
