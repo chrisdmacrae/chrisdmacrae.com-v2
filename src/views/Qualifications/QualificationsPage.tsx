@@ -14,7 +14,7 @@ export const QualificationsPage: React.VFC<QualificationsPageProps> = ({ qualifi
   const history = qualifications
     .filter(q => q.type === 'consulting' || q.type === 'employment');
   const title = "My Qualifications & History";
-  const description = history.filter(h => h.slug === "freelance")[0].textContent;
+  const description = history.filter(h => h.slug === "/freelance")[0].textContent;
 
   return (
     <BasicLayout>
@@ -48,7 +48,7 @@ const Skills = ({ skills }: { skills: SkillModel[] }) => {
           <Heading as="h2" size="title">Skills and Interests</Heading>
         </Layout.Item>
         {skills.map(skill => (
-          <Layout.Item oneThird={breakpoints.md} key={skill.slug}>
+          <Layout.Item oneThird={breakpoints.md} key={skill.slug ?? skill.title}>
             <Heading as="h4">{skill.title}</Heading>
             <Text as="div" muted>{skill.description}</Text>
           </Layout.Item>
@@ -75,7 +75,7 @@ const ProfessionalHistory = ({ history }: { history: QualificationModel[] }) => 
       <Heading as="h2" size="title">Professional History</Heading>
       <Stack gap="md" direction="vertical">
         {history.map(item => (
-          <Stack.Item>
+          <Stack.Item key={item.slug ?? item.title}>
             <Heading as="h3">{item.title}</Heading>
             <Heading as="h4" muted>{item.roles?.join(', ')}</Heading>
             <Text as="div" muted>{getTime(item)} {getType(item)}</Text>
