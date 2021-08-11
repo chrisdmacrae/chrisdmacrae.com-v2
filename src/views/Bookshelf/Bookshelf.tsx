@@ -23,6 +23,7 @@ export const Bookshelf: React.VFC<BookshelfProps> = ({
       <Layout.Item>
         <Box padding="sm">
           <Heading as="h1" size="headline">{title}</Heading>
+          <Heading as="h2" size="headline">SUCKA MA DICKA</Heading>
           <Text>{description}</Text>
           <Divider />
         </Box>
