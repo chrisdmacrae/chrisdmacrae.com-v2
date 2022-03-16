@@ -22,7 +22,7 @@
     "remark": "^13.0.0",
     "remark-footnotes": "2.0.0",
     "remark-gfm": "^1.0.0",
-    "remark-html": "^13.0.1",
+    "remark-html": "^13.0.2",
     "remark-preset-lint-markdown-style-guide": "^3.0.1",
     "slugify": "^1.4.5",
     "vercel": "^19.1.1"
