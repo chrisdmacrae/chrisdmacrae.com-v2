@@ -2,7 +2,6 @@ import { readdirSync, readFileSync, statSync } from "fs";
 import { extname, join, posix } from "path";
 import matter from "gray-matter";
 import markdownToHtml from "./markdownToHtml";
-import { fileURLToPath } from "url";
 
 export type BaseModel = {
   slug: string;
@@ -24,8 +23,24 @@ export type Author = {
   avatar?: string;
 }
 
-export function getContentPaths(directoryPath: string, ext: string[]) {
-  return readdirSync(directoryPath)
+export function getContentPaths(directoryPath: string, ext: string[], baseDir: string =  '') {
+  const res = readdirSync(directoryPath)
+
+  return res
+    .reduce((paths: string[], path: string) => {
+      const fullPath = join(directoryPath, path)
+
+      if (statSync(fullPath).isDirectory()) {
+        const subPaths = getContentPaths(fullPath, ext, path)
+
+        paths = paths.concat(subPaths)
+      }
+      else if (!paths.includes(path)) {
+        paths.push(join(baseDir, path))
+      }
+
+      return paths
+    }, [])
     .filter(f => ext.includes(extname(f)))
 }
 
@@ -33,10 +48,23 @@ export async function getContentBySlug<ContentShape extends BaseModel>(slug: str
   const realSlug = posix.normalize(join('/', basePath, slug)
     .replace(ext, '')
     .replace(`\\`, '/')
+    .replace('/index', '')
   );
   const realPath = slug.replace(basePath, '')
     .replace(ext, '');
-  const fullPath = join(directoryPath, `${realPath}`) + ext;
+    
+  let fullPath: string;
+  try {
+    const object = await statSync(join(directoryPath, realPath))
+
+    if (object.isDirectory()) {
+      fullPath = join(directoryPath, realPath, '/index') + ext
+    }
+  }
+  catch {
+    fullPath = join(directoryPath, realPath) + ext
+  }
+
   const fileContents = readFileSync(fullPath, 'utf8')
   const fileMeta = statSync(fullPath);
   let data: any;
@@ -117,6 +145,6 @@ export async function getAllContent<ContentShape extends BaseModel>(directory: s
   return content
     .filter(c => c !== null)
     .sort((post1, post2) => post1?.updated ?
-      (post1?.updated > post2?.updated ? -1 : 1) :
-      (post1?.created > post2?.created ? -1 : 1)) as ContentShape[]
+      (new Date(post2?.updated).getUTCMilliseconds() > new Date(post1?.updated).getUTCMilliseconds() ? 1 : -1) :
+      (new Date(post2?.created).getUTCMilliseconds() > new Date(post1?.created).getUTCMilliseconds()) ? 1 : -1) as ContentShape[]
 }
