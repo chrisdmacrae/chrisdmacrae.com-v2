@@ -2,7 +2,6 @@ import { readdirSync, readFileSync, statSync } from "fs";
 import { extname, join, posix } from "path";
 import matter from "gray-matter";
 import markdownToHtml from "./markdownToHtml";
-import { stat } from "fs/promises";
 
 export type BaseModel = {
   slug: string;
@@ -56,7 +55,7 @@ export async function getContentBySlug<ContentShape extends BaseModel>(slug: str
     
   let fullPath: string;
   try {
-    const object = await stat(join(directoryPath, realPath))
+    const object = await statSync(join(directoryPath, realPath))
 
     if (object.isDirectory()) {
       fullPath = join(directoryPath, realPath, '/index') + ext
