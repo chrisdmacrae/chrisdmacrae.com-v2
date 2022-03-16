@@ -34,7 +34,16 @@
 .Link h5,
 .Link h6 {
   color: black;
-  background-image: linear-gradient(to right, #EB5454, #DF8383);
+  background-image: linear-gradient(to right, #543069, #6f2699);
+}
+
+.Link h1:visited,
+.Link h2:visited,
+.Link h3:visited,
+.Link h4:visited,
+.Link h5:visited,
+.Link h6:visited {
+  background-image: linear-gradient(to right, #6f2699, #8b46b3);
 }
 
 .Link h1,

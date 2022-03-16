@@ -20,8 +20,8 @@ export const Homepage: React.FC<HomepageProps> = ({ posts }) => {
           <Heading as="h1" size="title">
             An <Text as="span" highlight>island man</Text> with too much time to <Link href="/bookshelf">read books</Link>, <Link href="/">drink posh coffee</Link>, and <Link href="/bookshelf">think hard about not thinking</Link>.
           </Heading>
-          <Divider />
         </Box>
+        <Divider />
         <Stack direction="vertical" stretch>
           <Box padding="sm">
             <Heading as="h3">My thoughts</Heading>
