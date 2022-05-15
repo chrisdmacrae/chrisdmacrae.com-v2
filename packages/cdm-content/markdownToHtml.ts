@@ -1,4 +1,4 @@
-import {unified} from 'unified'
+import unified from 'unified'
 import remark from 'remark-parse'
 import rehypeRemark from 'rehype-remark'
 import autoHeadings from 'rehype-autolink-headings'
