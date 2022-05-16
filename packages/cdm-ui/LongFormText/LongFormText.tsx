@@ -16,7 +16,7 @@ export const LongFormText: React.VFC<LongFormTextProps> = ({ markdown }) => {
   return (
     <ReactMarkdown
       className={styles.LongFormText}
-      remarkPlugins={[gfm, footnotes]}
+      remarkPlugins={[gfm as any, footnotes as any]}
       components={{
         h1: (props) => (
           <LongFormContentLayout>
