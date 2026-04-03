@@ -1,0 +1,8 @@
+collections:
+    - name: posts
+      path: posts/*.md
+      format: markdown
+      fields:
+        - name: title
+          type: string
+          required: true
