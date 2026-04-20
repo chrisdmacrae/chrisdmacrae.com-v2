@@ -1,5 +1,6 @@
 require('dotenv').config()
 const { resolve } = require("path")
+const withTM = require('next-transpile-modules')(['unified']);
 
 const VERCEL_BRANCH = process.env.VERCEL_GITHUB_COMMIT_REF;
 const SYSTEM_BRANCH = require("child_process")
@@ -8,7 +9,7 @@ const SYSTEM_BRANCH = require("child_process")
   .trim();
 const BRANCH = VERCEL_BRANCH ? VERCEL_BRANCH : SYSTEM_BRANCH;
 
-module.exports = {
+module.exports = withTM({
   env: {
     IS_PRODUCTION: process.env.NODE_ENV === "production",
     GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
@@ -32,4 +33,4 @@ module.exports = {
 
     return config;
   }
-}
+})
